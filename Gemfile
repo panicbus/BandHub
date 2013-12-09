@@ -6,13 +6,16 @@ gem 'rails', '3.2.15'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'typhoeus'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'haml-rails'
+  gem 'haml_coffee_assets'
+  gem 'execjs'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -21,6 +24,16 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'underscore-rails'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'nyan-cat-formatter'
+  gem 'shoulda-matchers'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'dotenv-rails'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
