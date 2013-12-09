@@ -13,5 +13,3 @@ end
 
 
 # http://developer.echonest.com/api/v4/artist/profile?api_key=7BXTVE4UNRULDHBZ3&name=vampire%20weekend&format=json&bucket=biographies&bucket=blogs
-
-# http://developer.echonest.com/api/v4/artist/profile?api_key=7BXTVE4UNRULDHBZ3&id=ARH6W4X1187B99274F&format=json&bucket=biographies&bucket=blogs&bucket=familiarity&bucket=hotttnesss&bucket=images&bucket=news&bucket=reviews&bucket=terms&bucket=urls&bucket=video&bucket=id:musicbrainz

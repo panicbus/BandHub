@@ -24,14 +24,14 @@ $(function(){
     // grab the params of the search form
     var query = $('#search_bands').val();
 
-
     // "GET" request to send search params to api
     var get_request = $.ajax({
-      // hits the apis controller for using the api
+      // sends the rq to the apisController
       url: "apis/api",
       type: "get",
       dataType: "json",
-      data: {band: query}
+      // encodeURIComponent removes the space b/t words & encodes it w a proper searchable symbol
+      data: {band: encodeURIComponent(query)}
        }); // ends ajax rq
 
 
