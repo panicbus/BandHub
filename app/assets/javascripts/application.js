@@ -34,22 +34,25 @@ $(function(){
       data: {band: encodeURIComponent(query)}
        }); // ends ajax rq
 
-
-    // clear the div and the searchx
+    // clear the div and the search field
     $("#bands_results").empty();
     $("search_bands").val("");
-
-    // loop to get band and id
     get_request.done(function(data){
       // console.log(data);
-      item = data['response']['artist']['blogs'];
-      item2 = data['response']['artist']['reviews'];
+      blogs = data['response']['artist']['blogs'];
+      reviews = data['response']['artist']['reviews'];
+      image = data['response']['artist']['images'][0];
 
-      console.log(item);
-      console.log(item2);
-      for (var i = 0; i < item.length; i++){
-        $('#bands_results').append("<li>" + item[i]['name'] + "</li>" +
-                                   "<li>" + item2[i]['name'] + "</li>");
+      console.log(blogs);
+      console.log(reviews);
+      console.log(image);
+        // gets the first 2 items of the results
+      $('#bands_results').append("<div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + image.url + "'></div>");
+      for (var i = 0; i < 2; i++){
+        $('#bands_results').append("<div class='searchlist'>" +
+                                  "<li>" + blogs[i]['name'] + "</li>" +
+                                  "<li>" + reviews[i]['name'] + "</li>" +
+                                  "<div>");
         $('li').css('cursor', 'pointer');
       }; // ends loop
     }) // ends get_request function

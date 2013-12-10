@@ -11,3 +11,23 @@
  *= require_self
  *= require_tree .
  */
+
+
+a {
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.searchlist li {
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.searchlist li:hover {
+  background-color: lightgray;
+}
+
+.band_photo {
+  height: 200px;
+  width: 300px;
+}
