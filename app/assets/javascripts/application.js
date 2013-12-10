@@ -35,19 +35,23 @@ $(function(){
        }); // ends ajax rq
 
 
-    // clear the div and the search
-    // $("bands_results").empty();
-    // $("search_bands").val("");
+    // clear the div and the searchx
+    $("#bands_results").empty();
+    $("search_bands").val("");
 
     // loop to get band and id
     get_request.done(function(data){
-      console.log(data)
-      item = data["name"]
+      // console.log(data);
+      item = data['response']['artist']['blogs'];
+      item2 = data['response']['artist']['reviews'];
+
+      console.log(item);
+      console.log(item2);
       for (var i = 0; i < item.length; i++){
-        var idNumber = item[i]['name']
-        $('bands_results').append("<li id=" + item[i]['name'] + " class='bandname'>" + item[i]['id'] + "</li>");
-      $('li').css('cursor', 'pointer');
-      } // ends loop
+        $('#bands_results').append("<li>" + item[i]['name'] + "</li>" +
+                                   "<li>" + item2[i]['name'] + "</li>");
+        $('li').css('cursor', 'pointer');
+      }; // ends loop
     }) // ends get_request function
 
   }) // ends bigDaddySearch
