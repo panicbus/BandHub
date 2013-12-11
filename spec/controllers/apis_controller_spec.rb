@@ -11,7 +11,7 @@ describe ApisController do
 
 end
 
-# describe BandsController do
+describe BandsController do
 
 #   describe "GET index" do
 #     it "has a 200 status code" do
@@ -21,14 +21,14 @@ end
 #   end
 
 
-#   describe "POST create" do
-#     it "should create a new Band" do
-#       expect{ post :create, band: {name: 'new name', user_id: 1}}.to
-#         change(Band, :count).by(1)
-#       end
-#     end
+  describe "POST create" do
+    it "should create a new Band favorite" do
+      expect{ post :create, band: {name: 'new name'}}.to
+        change(Favorite, :count).by(1)
+      end
+    end
 
-#   end
+  end
 
 #   describe "DELETE band" do
 #     it "should delete the Band" do

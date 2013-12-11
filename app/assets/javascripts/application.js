@@ -17,6 +17,27 @@
 
 
 $(function(){
+  $('#see_favorites').on('click', function(){
+  $('#bands_results').empty();
+
+    $.getJSON("bands/favorite").done(function(faves){
+       // console.log(faves["current_fave_movie"][1]);
+       console.log(faves);
+       console.log("Zing Bash!")
+      for (var i = 0; i < faves.length; i++){
+        $("<div data-id='" + faves[i]['name'] +
+          "'>").hide().appendTo('#bands_results').fadeIn(1000);
+      } // end of loop
+    }) // end of getJSON
+
+
+    ////////////////////////////////////////
+    ////////DELETE METHOD WILL GO HERE///////
+    ////////////////////////////////////////
+
+  }); // ends the see favorites onclick
+
+
   // $('#main_field').empty();
   $("#bigDaddySearch").on('click', function(){
     event.preventDefault();
@@ -24,7 +45,7 @@ $(function(){
     // grab the params of the search form
     var query = $('#search_bands').val();
 
-    // "GET" request to send search params to api
+    // "GET" request to send search params to echonest api
     var get_request = $.ajax({
       // sends the rq to the apisController
       url: "apis/api",
@@ -32,13 +53,14 @@ $(function(){
       dataType: "json",
       // encodeURIComponent removes the space b/t words & encodes it w a proper searchable symbol
       data: {band: encodeURIComponent(query)}
-       }); // ends ajax rq
+       }); // ends echonest ajax rq// "GET" request to send search params to echonest api
 
     // clear the div and the search field
     $("#bands_results").empty();
     $("search_bands").val("");
 
     get_request.done(function(data){
+      console.log(data);
       search_list_item = data['response']['artist']['name'];
       console.log(search_list_item)
       // image = data['response']['artist']['images'][0];
@@ -62,15 +84,39 @@ $(function(){
       reviews = data['response']['artist']['reviews'];
       image = data['response']['artist']['images'][0];
 
-      console.log(blogs);
-      console.log(reviews);
-      console.log(image);
+      // console.log(blogs);
+      // console.log(reviews);
+      // console.log(image);
       console.log('BOOM!');
-      console.log(reviews.url);
+      // console.log(reviews.url);
+
+      var songkick_get_request = $.ajax({
+      // sends the rq to the apisController for songkick
+      url: "apis/songkick",
+      type: "get",
+      dataType: "json",
+      data: {band: encodeURIComponent(query)}
+       }); // ends songkick ajax rq
+
+      songkick_get_request.done(function(data){
+      // console.log(data);
+      on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
+      tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
+
+      console.log(on_tour);
+      console.log(tour_dates);
 
         // gets the first 2 items of the results
       $('#bands_results').append("<div class='band_name'>" + search_list_item + "</div>" +
                                  "<div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + image.url + "'></div>");
+
+      if (on_tour == null){
+        $('#bands_results').append("<div class='on_tour_div'>" + search_list_item + " is not currently on tour.</div>");
+      } else {
+        $('#bands_results').append("<div class='on_tour_div'>" + search_list_item + " is touring until: " + on_tour + ".</div>" +
+                                   "<div class='tour_dates_link'><a href='" + tour_dates + "' target='_blank'>Click for tour dates and locations</a>.</div");
+      };
+
       for (var i = 0; i < 2; i++){
         $('#bands_results').append("<div class='searchlist'>" +
                                   "<li><a href='" + blogs[i].url + "' target='_blank'>" + blogs[i]['name'] + "</a></li>" +
@@ -78,9 +124,24 @@ $(function(){
                                   "<div>");
         $('li').css('cursor', 'pointer');
       }; // ends loop
-    }); // ends search_list_item click function
+        $('#bands_results').append("<button id='add_favorite'>Add Artist to Your Favorites!</button>");
+          $('#add_favorite').on('click', function(){
+            // event.stopPropagation();
+            item = data['resultsPage']['results']['artist'][0]['displayName']
+            console.log(item);
 
-  }) // ends show display onclick
+            var favorites = $.ajax({
+              url: "bands/create",
+              // assigns a new key value pair in params
+              data: {item: item} ,
+              type: "POST"
+              // success: showSuccessMessage
+            }); // ends favorites ajax
+          }); // ends #add_favorite actions
+      ////////////////
+    });  // ends songkick_get_request.done
+    }); // ends first get_request.done
+    }) // ends START OF THE SHOW DISPLAY onclick
 
   }) // ends bigDaddySearch
 
