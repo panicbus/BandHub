@@ -2,8 +2,8 @@ Bandhub::Application.routes.draw do
 
   get "apis/api" => "apis#api"
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
-  # devise_for :users
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
+                   controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :bands
   root :to => "bands#index"

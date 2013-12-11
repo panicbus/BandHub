@@ -18,12 +18,12 @@ a {
   text-decoration: none;
 }
 
-.searchlist li {
+.search_list_item, .searchlist li {
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
-.searchlist li:hover {
+.search_list_item:hover, .searchlist li:hover {
   background-color: lightgray;
 }
 
@@ -34,6 +34,6 @@ a {
 
 .devise {
   float: right;
-  background-color: lightgray;
+  /*background-color: lightgray;*/
 }
 

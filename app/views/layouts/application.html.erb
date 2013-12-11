@@ -9,12 +9,13 @@
 <header>
   <div class="devise">
     <% if user_signed_in? %>
-      You're BandHubbing as <strong><%= current_user.username %></strong>.
+      You're BandHubbing as <strong><%= current_user.username.capitalize %></strong>.
     <%= link_to 'Edit profile', edit_user_registration_path %> |
     Not you? <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>
     <%= link_to "Sign up", new_user_registration_path %> |
-    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Login", new_user_session_path %> |
+    <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
     <% end %>
   </div>
 </header>

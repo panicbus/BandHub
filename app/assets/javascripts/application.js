@@ -37,8 +37,27 @@ $(function(){
     // clear the div and the search field
     $("#bands_results").empty();
     $("search_bands").val("");
+
     get_request.done(function(data){
+      search_list_item = data['response']['artist']['name'];
+      console.log(search_list_item)
+      // image = data['response']['artist']['images'][0];
+      // for (var i = 0; i < 5; i++){
+        $('#bands_results').append("<div class='search_list_item'>" + search_list_item + "<div>");
+        $('li').css('cursor', 'pointer');
+      // } // ends for loop
+    }) // ends get_request.done function
+
+
+
+      //>>>START OF THE SHOW DISPLAY<<<
+    $('#bands_results').on('click', '.search_list_item', function(){
+      var id = $(this).attr('id');  // Nico, fix the ('id')
+
+      $("#bands_results").empty();
+      get_request.done(function(data){
       // console.log(data);
+      // name = data['response']
       blogs = data['response']['artist']['blogs'];
       reviews = data['response']['artist']['reviews'];
       image = data['response']['artist']['images'][0];
@@ -46,21 +65,24 @@ $(function(){
       console.log(blogs);
       console.log(reviews);
       console.log(image);
+      console.log('BOOM!');
+      console.log(reviews.url);
+
         // gets the first 2 items of the results
-      $('#bands_results').append("<div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + image.url + "'></div>");
+      $('#bands_results').append("<div class='band_name'>" + search_list_item + "</div>" +
+                                 "<div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + image.url + "'></div>");
       for (var i = 0; i < 2; i++){
         $('#bands_results').append("<div class='searchlist'>" +
-                                  "<li>" + blogs[i]['name'] + "</li>" +
-                                  "<li>" + reviews[i]['name'] + "</li>" +
+                                  "<li><a href='" + blogs[i].url + "' target='_blank'>" + blogs[i]['name'] + "</a></li>" +
+                                  "<li><a href='" + reviews[i].url + "' target='_blank'>" + reviews[i]['name'] + "</a></li>" +
                                   "<div>");
         $('li').css('cursor', 'pointer');
       }; // ends loop
-    }) // ends get_request function
+    }); // ends search_list_item click function
+
+  }) // ends show display onclick
 
   }) // ends bigDaddySearch
 
-
-
-
-
 }) // ends main js function
+

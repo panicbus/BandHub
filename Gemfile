@@ -51,4 +51,5 @@ end
 # gem 'debugger'
 
 gem 'devise'
+gem 'omniauth-twitter'
 
