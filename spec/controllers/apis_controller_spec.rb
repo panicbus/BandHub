@@ -22,13 +22,12 @@ describe BandsController do
 
 
   describe "POST create" do
-    it "should create a new Band favorite" do
-      expect{ post :create, band: {name: 'new name'}}.to
-        change(Favorite, :count).by(1)
+    it "should create a new Band" do
+      expect{ post :create, band: Favorite.create
+        }.to change(Favorite,:count).by(1)
       end
     end
 
-  end
 
 #   describe "DELETE band" do
 #     it "should delete the Band" do
@@ -38,4 +37,4 @@ describe BandsController do
 #     end
 #   end
 
-# end
+end

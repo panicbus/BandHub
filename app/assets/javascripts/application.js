@@ -21,14 +21,13 @@ $(function(){
   $('#bands_results').empty();
 
     $.getJSON("bands/favorite").done(function(faves){
-       // console.log(faves["current_fave_movie"][1]);
-       console.log(faves);
        console.log("Zing Bash!")
       for (var i = 0; i < faves.length; i++){
+        console.log(faves);
         $("<div data-id='" + faves[i]['name'] +
-          "'>").hide().appendTo('#bands_results').fadeIn(1000);
-      } // end of loop
-    }) // end of getJSON
+          "'>" + faves[i]['name'] + "</div>").hide().appendTo('#bands_results').fadeIn(1000);
+      }; // end of loop
+    }); // end of getJSON
 
 
     ////////////////////////////////////////
