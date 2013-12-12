@@ -19,7 +19,7 @@
 $(function(){
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
-
+    //// main profile favorites bandlist ////
     $.getJSON("bands/favorite").done(function(faves){
        console.log("Zing Bash!")
       for (var i = 0; i < faves.length; i++){
@@ -55,6 +55,7 @@ $(function(){
       data: {band: encodeURIComponent(query)}
        }); // ends echonest ajax rq// "GET" request to send search params to echonest api
 
+    //// FIRST LIST OF BAND NAMES ////
     // clear the div and the search field
     $("#bands_results").empty();
     $("search_bands").val("");
@@ -62,7 +63,8 @@ $(function(){
     get_request.done(function(data){
       console.log(data);
       search_list_item = data['response']['artist']['name'];
-      console.log(search_list_item)
+      console.log("below is search_list_item= data[response][artist][name]")
+      console.log(search_list_item);
       // image = data['response']['artist']['images'][0];
       // for (var i = 0; i < 5; i++){
         $('#bands_results').append("<div class='search_list_item'>" + search_list_item + "<div>");
@@ -82,7 +84,7 @@ $(function(){
       // name = data['response']
       blogs = data['response']['artist']['blogs'].slice(0,2);
       reviews = data['response']['artist']['reviews'].slice(0,2);
-      image = data['response']['artist']['images'].slice(0);
+      image = data['response']['artist']['images'][0];
       image_url = data['response']['artist'];
       news = data['response']['artist']['news'].slice(0,2);
       biographies = data['response']['artist']['biographies'][0];
@@ -91,7 +93,8 @@ $(function(){
 
       // console.log(blogs);
       // console.log(reviews);
-      // console.log(image);
+      console.log('below is image object')
+      console.log(image);
       console.log('BOOM!');
       // console.log(reviews.url);
 
@@ -142,9 +145,8 @@ $(function(){
               url: "bands/create",
               // assigns a new key value pair in params for ajax Favorite create
               data: {band_name: band_name, blogs: blogs,
-                     image: image, image_url: image_url,
-                     blogs: blogs, news: news, reviews: reviews,
-                     on_tour: on_tour, tour_dates: tour_dates,
+                     image: image, image_url: image_url, news: news,
+                     reviews: reviews, on_tour: on_tour, tour_dates: tour_dates,
                      biographies: biographies, artist_location: artist_location,
                      video: video},
               type: "POST"
