@@ -3,7 +3,6 @@ class ApisController < ApplicationController
     query = params[:band]
     echonest_key = ENV["ECHONEST_KEY"]
     url = "http://developer.echonest.com/api/v4/artist/profile?api_key=" + echonest_key + "&name=" + query + "&format=json&bucket=biographies&bucket=blogs&bucket=news&bucket=reviews&bucket=images&bucket=artist_location&bucket=video"
-     # raise url.inspect
     e_req = Typhoeus.get(url)
     render :json => e_req.body
     # render :json => s_req.body

@@ -25,7 +25,8 @@ $(function(){
       for (var i = 0; i < faves.length; i++){
         console.log(faves);
         $("<div data-id='" + faves[i]['name'] +
-          "'>" + faves[i]['name'] + "</div>").hide().appendTo('#bands_results').fadeIn(1000);
+          "'>" + faves[i]['name'] +
+          "</div>").hide().appendTo('#bands_results').fadeIn(1000);
       }; // end of loop
     }); // end of getJSON
 
@@ -79,9 +80,14 @@ $(function(){
       get_request.done(function(data){
       // console.log(data);
       // name = data['response']
-      blogs = data['response']['artist']['blogs'];
-      reviews = data['response']['artist']['reviews'];
-      image = data['response']['artist']['images'][0];
+      blogs = data['response']['artist']['blogs'].slice(0,2);
+      reviews = data['response']['artist']['reviews'].slice(0,2);
+      image = data['response']['artist']['images'].slice(0);
+      image_url = data['response']['artist'];
+      news = data['response']['artist']['news'].slice(0,2);
+      biographies = data['response']['artist']['biographies'][0];
+      artist_location = data['response']['artist']['artist_location'];//['city']['country'];
+      video = data['response']['artist']['video'].slice(0,1);
 
       // console.log(blogs);
       // console.log(reviews);
@@ -102,6 +108,7 @@ $(function(){
       on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
       tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
 
+      console.log("the songkick api results")
       console.log(on_tour);
       console.log(tour_dates);
 
@@ -126,13 +133,20 @@ $(function(){
         $('#bands_results').append("<button id='add_favorite'>Add Artist to Your Favorites!</button>");
           $('#add_favorite').on('click', function(){
             // event.stopPropagation();
-            item = data['resultsPage']['results']['artist'][0]['displayName']
-            console.log(item);
+            band_name = data['resultsPage']['results']['artist'][0]['displayName']
+
+            console.log(band_name);
+            console.log("The blog is ..... ", blogs);
 
             var favorites = $.ajax({
               url: "bands/create",
-              // assigns a new key value pair in params
-              data: {item: item} ,
+              // assigns a new key value pair in params for ajax Favorite create
+              data: {band_name: band_name, blogs: blogs,
+                     image: image, image_url: image_url,
+                     blogs: blogs, news: news, reviews: reviews,
+                     on_tour: on_tour, tour_dates: tour_dates,
+                     biographies: biographies, artist_location: artist_location,
+                     video: video},
               type: "POST"
               // success: showSuccessMessage
             }); // ends favorites ajax
