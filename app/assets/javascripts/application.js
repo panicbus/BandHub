@@ -21,7 +21,8 @@ $(function(){
   $('#bands_results').empty();
     //// main profile favorites bandlist ////
     $.getJSON("bands/favorite").done(function(faves){
-       console.log("Zing Bash!")
+       console.log("Zing Bash!");
+       console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
         console.log(faves);
         $("<div data-id='" + faves[i]['name'] +
@@ -138,18 +139,26 @@ $(function(){
             // event.stopPropagation();
             band_name = data['resultsPage']['results']['artist'][0]['displayName']
 
-            console.log(band_name);
+            console.log("////CLICK ON FAVE ARTIST ATTRIBUTES////")
+            console.log("The band name is...", band_name);
             console.log("The blog is ..... ", blogs);
+            console.log("The news is ..... ", news);
+            console.log("The on_tour is ..... ", on_tour);
+            console.log("The tour_dates is ..... ", tour_dates);
+            console.log("The artist_location is ..... ", artist_location);
+            console.log("The biographies is ..... ", biographies);
+            console.log("The video is ..... ", video);
+            console.log("///////////")
 
             var favorites = $.ajax({
               url: "bands/create",
+              type: "POST",
               // assigns a new key value pair in params for ajax Favorite create
               data: {band_name: band_name, blogs: blogs,
                      image: image, image_url: image_url, news: news,
                      reviews: reviews, on_tour: on_tour, tour_dates: tour_dates,
                      biographies: biographies, artist_location: artist_location,
-                     video: video},
-              type: "POST"
+                     video: video}
               // success: showSuccessMessage
             }); // ends favorites ajax
           }); // ends #add_favorite actions

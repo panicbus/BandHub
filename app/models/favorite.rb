@@ -1,7 +1,7 @@
 class Favorite < ActiveRecord::Base
-  attr_accessible :bio, :name, :news, :response, :reviews, :user_id
+  attr_accessible :band_id
 
   belongs_to :user
 
-  validates_uniqueness_of :name, :scope => :user_id
+  validates_uniqueness_of :band_id, :scope => :user_id
 end
