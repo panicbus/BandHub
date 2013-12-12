@@ -36,7 +36,8 @@ class BandsController < ApplicationController
 
   def favorite
     #bands = current_user.favorites
-    bands = Favorite.where(user_id: current_user.id)
+    # this is grabbing data from the bands table through the favorites model
+    bands = current_user.bands
     render json: bands
   end
 

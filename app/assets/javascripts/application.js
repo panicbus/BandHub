@@ -154,10 +154,16 @@ $(function(){
               url: "bands/create",
               type: "POST",
               // assigns a new key value pair in params for ajax Favorite create
-              data: {band_name: band_name, blogs: blogs,
-                     image: image, image_url: image_url, news: news,
-                     reviews: reviews, on_tour: on_tour, tour_dates: tour_dates,
-                     biographies: biographies, artist_location: artist_location,
+              data: {band_name: band_name,
+                     blogs: blogs,
+                     image: image,
+                     image_url: image_url,
+                     news: news,
+                     reviews: reviews,
+                     on_tour: on_tour,
+                     tour_dates: tour_dates,
+                     biographies: biographies,
+                     artist_location: artist_location,
                      video: video}
               // success: showSuccessMessage
             }); // ends favorites ajax
