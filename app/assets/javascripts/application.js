@@ -21,12 +21,21 @@ $(function(){
   $('#bands_results').empty();
     //// main profile favorites bandlist ////
     $.getJSON("bands/favorite").done(function(faves){
-       console.log("Zing Bash!");
        console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
-        console.log(faves);
-        $("<div data-id='" + faves[i]['name'] +
-          "'>" + faves[i]['name'] +
+        console.log("FAVES EYE !!")
+        console.log(faves[i]['news']);
+        console.log(faves[i]['artist_location']);
+
+        // debugger
+        $("<div class='favorite_box' data-id='" + faves[i]['name'] +
+          "'><p>" + faves[i]['name'] + "</p>" +
+           "<p>" + faves[i]['image'] + "</p>" +
+           "<p>" + faves[i]['on_tour'] + "</p>" +
+           "<p>" + faves[i]['tour_dates'] + "</p>" +
+           "<p>" + faves[i]['news'] + "</p>" +
+           "<p>" + faves[i]['blogs'] + "</p>" +
+           "<p>" + faves[i]['video'] + "</p>" +
           "</div>").hide().appendTo('#bands_results').fadeIn(1000);
       }; // end of loop
     }); // end of getJSON
@@ -86,16 +95,14 @@ $(function(){
       blogs = data['response']['artist']['blogs'].slice(0,2);
       reviews = data['response']['artist']['reviews'].slice(0,2);
       image = data['response']['artist']['images'][0];
-      image_url = data['response']['artist'];
+      // image_url = data['response']['artist'];
       news = data['response']['artist']['news'].slice(0,2);
       biographies = data['response']['artist']['biographies'][0];
-      artist_location = data['response']['artist']['artist_location'];//['city']['country'];
+      artist_location = data['response']['artist']['artist_location'];
       video = data['response']['artist']['video'].slice(0,1);
 
-      // console.log(blogs);
-      // console.log(reviews);
-      console.log('below is image object')
-      console.log(image);
+      console.log('below is artist_location')
+      console.log(artist_location);
       console.log('BOOM!');
       // console.log(reviews.url);
 
@@ -157,7 +164,7 @@ $(function(){
               data: {band_name: band_name,
                      blogs: blogs,
                      image: image,
-                     image_url: image_url,
+                     // image_url: image_url,
                      news: news,
                      reviews: reviews,
                      on_tour: on_tour,
