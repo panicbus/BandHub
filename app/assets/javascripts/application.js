@@ -25,8 +25,10 @@ $(function(){
       for (var i = 0; i < faves.length; i++){
         // console.log("FAVES EYE !!")
         // console.log(faves[i]['artist_location']);
+
         var favorite_card = $("<div class='favorite_card'></div>");
-        $("<div class='favorite_box' data-id='" + faves[i]['name'] +
+
+        $("<div class='band_photo_box' data-id='" + faves[i]['name'] +
           "'><p>" + faves[i]['name'] + "</p>" +
            "<p><div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
@@ -44,7 +46,7 @@ $(function(){
            "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a></p>" +
            // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
            "<br><div id='del_button'>" +
-           "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
+           "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['name'] +
            "'>Unfavorite</button>" +
            "</div>" + // ends del_button div
           "</div>").appendTo(favorite_card); // ends favorite box div
@@ -52,32 +54,30 @@ $(function(){
           $('.remove_favorite').on('click', function(){
 
           }); // end of delete button
-           $('#bands_results').hide().append(favorite_card).fadeIn(1000);
+           $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
       }; // end of for loop
     }); // end of getJSON
-
-
 
     ////////////////////////////////////////
     ////////DELETE METHOD WILL GO HERE///////
     ////////////////////////////////////////
 
-     // $('#bands_results').on('click', 'button[data-method="delete"]', function(event){
-     //   event.stopPropagation();
-     //    var id = $(this).attr("data-id")
-     //    $.ajax({
-     //      url: "/movies/"+id,
-     //      method: "DELETE",
-     //    }).done(function(){
+     $(favorite_card).on('click', 'button[data-method="delete"]', function(event){
+       event.stopPropagation();
+        var id = $(this).attr("data-id")
+        $.ajax({
+          url: "/bands/favorites/"+id,
+          method: "DELETE",
+        }).done(function(){
 
-     //      var item_id = "#" + id;
-     //      // console.log(item_id);
-     //      $(item_id).fadeOut(1000, function(){
-     //        $(this).remove();
-     //      });
-     //    })
+          var item_id = "#" + id;
+          // console.log(item_id);
+          $(item_id).fadeOut(1000, function(){
+            $(this).remove();
+          });
+        })
 
-     //  }); //ends delete
+      }); //ends delete
 
 
   }); // ends the see favorites onclick
