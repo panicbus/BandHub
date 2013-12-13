@@ -27,7 +27,9 @@ class BandsController < ApplicationController
                         artist_location: params[:artist_location],
                         video: params[:video]['0']['url'])
 
-      # binding.pry
+      #blogs, news & reviews are the links
+      #blog1, news1 & reviews1 are the titles of each respective post
+
 
       favorite = current_user.favorites.create(band_id: @band.id)
     # binding.pry
@@ -39,7 +41,6 @@ class BandsController < ApplicationController
   end
 
   def favorite
-    #bands = current_user.favorites
     # this is grabbing data from the bands table through the favorites model
     bands = current_user.bands
     render json: bands
