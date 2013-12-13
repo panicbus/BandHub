@@ -24,20 +24,27 @@ $(function(){
        console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
         console.log("FAVES EYE !!")
-        console.log(faves[i]['news']);
         console.log(faves[i]['artist_location']);
+        console.log(faves[i]['on_tour']);
 
-        // debugger
         $("<div class='favorite_box' data-id='" + faves[i]['name'] +
           "'><p>" + faves[i]['name'] + "</p>" +
-           "<p>" + faves[i]['image'] + "</p>" +
-           "<p>" + faves[i]['on_tour'] + "</p>" +
-           "<p>" + faves[i]['tour_dates'] + "</p>" +
-           "<p>" + faves[i]['news'] + "</p>" +
-           "<p>" + faves[i]['blogs'] + "</p>" +
-           "<p>" + faves[i]['video'] + "</p>" +
+           "<p><div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
+           "</div>").hide().appendTo('#bands_results').fadeIn(1000);
+
+        if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
+                $('#bands_results').append("<div class='on_tour_div'>" + faves[i]['name'] + " is not currently on tour.</div>");
+              } else {
+                $('#bands_results').append("<div class='on_tour_div'>Score! " + faves[i]['name'] + " is touring until " + faves[i]['on_tour'] + ".</div>" +
+                                           "<div class='tour_dates_link'><a href='" + faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div");
+              };
+
+        $("<div class='favorite_box' data-id='" + faves[i]['name'] +
+          "'><p><a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news'] + "</a></p>" +
+           "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs'] + "</a></p>" +
+           "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
           "</div>").hide().appendTo('#bands_results').fadeIn(1000);
-      }; // end of loop
+      }; // end of for loop
     }); // end of getJSON
 
 

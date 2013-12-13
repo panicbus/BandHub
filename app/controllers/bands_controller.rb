@@ -11,7 +11,7 @@ class BandsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @band = Band.create(name: params[:band_name],
                         blogs: params[:blogs]['0']['url'],
                         image: params[:image]['url'],
