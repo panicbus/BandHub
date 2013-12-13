@@ -14,10 +14,13 @@ class BandsController < ApplicationController
     # binding.pry
     @band = Band.create(name: params[:band_name],
                         blogs: params[:blogs]['0']['url'],
+                        blogs1: params[:blogs1]['0']['name'],
                         image: params[:image]['url'],
                         # image_url: params[:image_url],
                         news: params[:news]['0']['url'],
+                        news1: params[:news1]['0']['name'],
                         reviews: params[:reviews]['0']['url'],
+                        reviews1: params[:reviews1]['0']['name'],
                         on_tour: params[:on_tour],
                         tour_dates: params[:tour_dates],
                         # biographies: params[:biographies],

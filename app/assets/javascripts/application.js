@@ -25,7 +25,7 @@ $(function(){
       for (var i = 0; i < faves.length; i++){
         console.log("FAVES EYE !!")
         console.log(faves[i]['artist_location']);
-        console.log(faves[i]['on_tour']);
+        console.log(faves[i]['blogs1']);
 
         $("<div class='favorite_box' data-id='" + faves[i]['name'] +
           "'><p>" + faves[i]['name'] + "</p>" +
@@ -40,10 +40,13 @@ $(function(){
               };
 
         $("<div class='favorite_box' data-id='" + faves[i]['name'] +
-          "'><p><a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news'] + "</a></p>" +
-           "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs'] + "</a></p>" +
+          "'><p><a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a></p>" +
+           "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a></p>" +
            "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
+           "<p>Hey-o!</p>" +
           "</div>").hide().appendTo('#bands_results').fadeIn(1000);
+        $('#bands_results').append("<button id='remove_favorite'>Remove Artist</button>");
+          $('#remove_favorite').on('click', function(){});
       }; // end of for loop
     }); // end of getJSON
 
@@ -100,10 +103,13 @@ $(function(){
       // console.log(data);
       // name = data['response']
       blogs = data['response']['artist']['blogs'].slice(0,2);
+      blogs1 = data['response']['artist']['blogs'].slice(0,2);
       reviews = data['response']['artist']['reviews'].slice(0,2);
+      reviews1 = data['response']['artist']['reviews'].slice(0,2);
       image = data['response']['artist']['images'][0];
       // image_url = data['response']['artist'];
       news = data['response']['artist']['news'].slice(0,2);
+      news1 = data['response']['artist']['news'].slice(0,2);
       biographies = data['response']['artist']['biographies'][0];
       artist_location = data['response']['artist']['artist_location'];
       video = data['response']['artist']['video'].slice(0,1);
@@ -154,14 +160,14 @@ $(function(){
             band_name = data['resultsPage']['results']['artist'][0]['displayName']
 
             console.log("////CLICK ON FAVE ARTIST ATTRIBUTES////")
-            console.log("The band name is...", band_name);
-            console.log("The blog is ..... ", blogs);
-            console.log("The news is ..... ", news);
-            console.log("The on_tour is ..... ", on_tour);
-            console.log("The tour_dates is ..... ", tour_dates);
-            console.log("The artist_location is ..... ", artist_location);
-            console.log("The biographies is ..... ", biographies);
-            console.log("The video is ..... ", video);
+            console.log("The blog1 is...", blogs1);
+            // console.log("The blog is ..... ", blogs);
+            // console.log("The news is ..... ", news);
+            // console.log("The on_tour is ..... ", on_tour);
+            // console.log("The tour_dates is ..... ", tour_dates);
+            // console.log("The artist_location is ..... ", artist_location);
+            // console.log("The biographies is ..... ", biographies);
+            // console.log("The video is ..... ", video);
             console.log("///////////")
 
             var favorites = $.ajax({
@@ -170,10 +176,13 @@ $(function(){
               // assigns a new key value pair in params for ajax Favorite create
               data: {band_name: band_name,
                      blogs: blogs,
+                     blogs1: blogs1,
                      image: image,
                      // image_url: image_url,
                      news: news,
+                     news1: news1,
                      reviews: reviews,
+                     reviews1: reviews1,
                      on_tour: on_tour,
                      tour_dates: tour_dates,
                      biographies: biographies,
