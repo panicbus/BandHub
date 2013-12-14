@@ -38,6 +38,9 @@ img {
   font-size: 22px;
 }
 
+.results_div {
+
+}
 
 .band_photo {
   height: 200px;
@@ -47,18 +50,30 @@ img {
   margin-left: auto;
 }
 
+.success_message {
+  width: 65%;
+  font-size: 20px;
+  background-color: lightblue;
+  border-radius: 3px;
+  text-align: center;
+  color: darkred;
+  padding: 8px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .devise {
   float: right;
   /*background-color: lightgray;*/
 }
 
-.favorite_card {
+.favorite_card, .results_div {
   float: left;
   border: 2px solid black;
   border-radius: 5px;
   padding: 0 15px 15px 15px;
   margin: 15px;
   width: 320px;
-  height: 450px;
+  height: auto;
 }
 

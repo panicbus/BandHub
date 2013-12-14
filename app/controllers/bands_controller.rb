@@ -16,7 +16,6 @@ class BandsController < ApplicationController
                         blogs: params[:blogs]['0']['url'],
                         blogs1: params[:blogs1]['0']['name'],
                         image: params[:image]['url'],
-                        # image_url: params[:image_url],
                         news: params[:news]['0']['url'],
                         news1: params[:news1]['0']['name'],
                         reviews: params[:reviews]['0']['url'],
@@ -41,7 +40,7 @@ class BandsController < ApplicationController
   end
 
   def favorite
-    # this is grabbing data from the bands table through the favorites model
+    # this is grabbing data from the bands table through the favorites model & sticking it in user
     bands = current_user.bands
     render json: bands
   end

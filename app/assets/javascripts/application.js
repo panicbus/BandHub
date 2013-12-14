@@ -23,9 +23,8 @@ $(function(){
     $.getJSON("bands/favorite").done(function(faves){
        // console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
-        // console.log("FAVES EYE !!")
         // console.log(faves[i]['name']);
-
+        // all the things get shoved into favorite_card divs
         var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
         $("<div class='band_photo_box' data-id='" + faves[i]['name'] +
@@ -34,15 +33,17 @@ $(function(){
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
 
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
-                $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + " is not currently on tour.</div>");
+                $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + ": not currently on tour.</div>");
               } else {
-                $(favorite_card).append("<div class='on_tour_div'>Score! " + faves[i]['name'] + " will be on tour until " + faves[i]['on_tour'] + ".</div>" +
+                $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + ".</div>" +
                                            "<div class='tour_dates_link'><a href='" +
                                             faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div").hide().appendTo('#bands_results').fadeIn(1000);;
               };
-
-        $("<div class='favorite_box' data-id='" + faves[i]['name'] +
-          "'><p><a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a></p>" +
+            // news and blogs
+        $("<div class='news_box' data-id='" + faves[i]['name'] +
+          "'><p>Recent news items tagged with " + faves[i]['name'] + ":</p>" +
+           "<p><a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a></p>" +
+           "<p>Recent blog posts featuring " + faves[i]['name'] + ":</p>" +
            "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a></p>" +
            // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
            "<br><div id='del_button'>" +
@@ -61,7 +62,6 @@ $(function(){
 
        $('.remove_favorite').on('click', function(event){
               console.log(this)
-            // event.stopPropagation();
 
             var id = $(this).attr("data-id")
             $.ajax({
@@ -69,8 +69,8 @@ $(function(){
               method: "DELETE",
               data: id
             }).done(function(){
-              console.log("The div's id:");
               console.log(id);
+        // this associates the entire .favorite_card with the [data-id='+ id +'] id .
             $('.favorite_card[data-id='+ id +']').fadeOut(1000, function(){
               $(this).remove();
               }); // ends .fadeOut remove function
@@ -108,7 +108,7 @@ $(function(){
     get_request.done(function(data){
       console.log(data);
       search_list_item = data['response']['artist']['name'];
-      console.log("below is search_list_item= data[response][artist][name]")
+      // console.log("below is search_list_item= data[response][artist][name]")
       console.log(search_list_item);
       // image = data['response']['artist']['images'][0];
       // for (var i = 0; i < 5; i++){
@@ -116,7 +116,6 @@ $(function(){
         $('li').css('cursor', 'pointer');
       // } // ends for loop
     }) // ends get_request.done function
-
 
 
       //>>>START OF THE SHOW DISPLAY<<<
@@ -160,37 +159,30 @@ $(function(){
       console.log(tour_dates);
 
         // gets the first 2 items of the results
-      $('#bands_results').append("<div class='band_name'>" + search_list_item + "</div>" +
-                                 "<div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + image.url + "'></div>");
+      $('#bands_results').append("<div class='results_div'>" + search_list_item +
+                                 "<img style='height: 200px; width: auto' src='" + image.url +
+                                 "'><button id='add_favorite'>Add Artist to Your Favorites</button>" +
+                                 "</div>");
 
-      if (on_tour == null){
-        $('#bands_results').append("<div class='on_tour_div'>" + search_list_item + " is not currently on tour.</div>");
-      } else {
-        $('#bands_results').append("<div class='on_tour_div'>" + search_list_item + " is touring until: " + on_tour + ".</div>" +
-                                   "<div class='tour_dates_link'><a href='" + tour_dates + "' target='_blank'>Click for tour dates and locations</a>.</div");
-      };
 
-      for (var i = 0; i < 2; i++){
-        $('#bands_results').append("<div class='searchlist'>" +
-                                  "<li><a href='" + blogs[i].url + "' target='_blank'>" + blogs[i]['name'] + "</a></li>" +
-                                  "<li><a href='" + reviews[i].url + "' target='_blank'>" + reviews[i]['name'] + "</a></li>" +
-                                  "<div>");
-        $('li').css('cursor', 'pointer');
-      }; // ends loop
-        $('#bands_results').append("<button id='add_favorite'>Add Artist to Your Favorites!</button>");
+      // for (var i = 0; i < 2; i++){
+      //   $('#bands_results').append("<div class='searchlist'>" +
+      //                             "<li><a href='" + blogs[i].url + "' target='_blank'>" + blogs[i]['name'] + "</a></li>" +
+      //                             "<li><a href='" + reviews[i].url + "' target='_blank'>" + reviews[i]['name'] + "</a></li>" +
+      //                             "<div>");
+      //   $('li').css('cursor', 'pointer');
+      // }; // ends loop
+      //   // $('#bands_results').append("<button id='add_favorite'>Add Artist to Your Favorites!</button>");
           $('#add_favorite').on('click', function(){
-            // event.stopPropagation();
+            $('#bands_results').empty().fadeOut(1000);
+            console.log("slide");
+            $('#bands_results').hide().append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
+                                              "Click 'View BandHub Page' button to see " + search_list_item + " along with all your saved bands!</div>").slideDown("slow").delay(3000).fadeOut(1000);
+
             band_name = data['resultsPage']['results']['artist'][0]['displayName']
 
             console.log("////CLICK ON FAVE ARTIST ATTRIBUTES////")
             console.log("The blog1 is...", blogs1);
-            // console.log("The blog is ..... ", blogs);
-            // console.log("The news is ..... ", news);
-            // console.log("The on_tour is ..... ", on_tour);
-            // console.log("The tour_dates is ..... ", tour_dates);
-            // console.log("The artist_location is ..... ", artist_location);
-            // console.log("The biographies is ..... ", biographies);
-            // console.log("The video is ..... ", video);
             console.log("///////////")
 
             var favorites = $.ajax({
