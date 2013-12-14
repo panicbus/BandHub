@@ -12,10 +12,33 @@
  *= require_tree .
  */
 
+body {
+  margin: 0px;
+}
 
 a {
   transition: all 0.3s ease;
   text-decoration: none;
+}
+
+/*.devise {
+  float: right;
+  background-color: lightgray;
+}*/
+
+.topbar {
+  margin: 0;
+  width: 100%;
+  background: #2f2f2f;
+  background: rgba(0, 0, 0, 0.86);
+  height: 47px;
+  font-size: 16px;
+}
+
+.devise {
+  float: right;
+  color: #ffffff;
+  padding: 5px 20px 0 0;
 }
 
 .search_list_item, .searchlist li {
@@ -84,11 +107,15 @@ img {
   height: 100%;
   background-color: lightgray;
   border-radius: 5px;
+  text-align: center;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
+}
 
+.face p {
+  margin-top: 80px;
 }
 
 .face.back {
@@ -130,11 +157,6 @@ img {
   padding: 8px;
   margin-right: auto;
   margin-left: auto;
-}
-
-.devise {
-  float: right;
-  /*background-color: lightgray;*/
 }
 
 .favorite_card {

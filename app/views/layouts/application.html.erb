@@ -6,37 +6,28 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<header>
-  <div class="devise">
-    <% if user_signed_in? %>
-      You're BandHubbing as <strong><%= current_user.username.capitalize %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path %> |
-    Not you? <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> |
-    <%= link_to "Login", new_user_session_path %> |
-    <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
-    <% end %>
+  <div class="topbar">
+     <div class="devise">
+      <% if user_signed_in? %>
+        You're BandHubbing as <strong><%= current_user.username.capitalize %></strong>.<br>
+      Not you? &nbsp;<%= link_to "Logout", destroy_user_session_path, method: :delete %> | &nbsp;&nbsp;
+      <%= link_to 'Edit profile', edit_user_registration_path %>
+        <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> |
+      <%= link_to "Login", new_user_session_path %> |
+      <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+      <% end %>
+    </div>
   </div>
+
+<header>
 </header>
 <body>
+  <div class="container">
 
+    <%= yield %>
 
-
-<%= yield %>
-
-<!-- <div id="flip_container">
-<div id="flip_card" class="shadow">
-  <div class="front face">
-    <p>FRONT OF THE CARD</p>
   </div>
-  <div class="back face center">
-    <p>This is nice for exposing more information about an image.</p>
-    <p>Any content can go here.</p>
-  </div>
-</div>
-</div> -->
-
 
 </body>
 </html>

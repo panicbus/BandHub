@@ -35,7 +35,7 @@ $(function(){
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
                 $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + ": not currently on tour.</div>");
               } else {
-                $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + ".</div>" +
+                $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + " is currently on tour until " + faves[i]['on_tour'] + ".</div>" +
                                            "<div class='tour_dates_link'><a href='" +
                                             faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div").hide().appendTo('#bands_results').fadeIn(1000);;
               };
@@ -161,11 +161,11 @@ $(function(){
         // gets the first 2 items of the results
       $('#bands_results').append("<div id='flip_container'>" +
                                  "<div id='flip_card' class='shadow'>" +
-                                 "<div class='front face'>" + search_list_item +
-                                 "</div>" +
+                                 "<div class='front face'><p>" + search_list_item +
+                                 "</p></div>" +
                                  "<div class='back face center'>" +
                                  "<img style='height: 200px; width: auto' src='" + image.url +
-                                 "'><button id='add_favorite'>Add Artist to Your Favorites</button></div>" +
+                                 "'><button id='add_favorite'>Add " + search_list_item + " to Your Favorites Profile</button></div>" +
                                  "</div></div></div>");
 
 
