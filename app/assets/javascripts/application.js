@@ -159,10 +159,14 @@ $(function(){
       console.log(tour_dates);
 
         // gets the first 2 items of the results
-      $('#bands_results').append("<div class='results_div'>" + search_list_item +
+      $('#bands_results').append("<div id='flip_container'>" +
+                                 "<div id='flip_card' class='shadow'>" +
+                                 "<div class='front face'>" + search_list_item +
+                                 "</div>" +
+                                 "<div class='back face center'>" +
                                  "<img style='height: 200px; width: auto' src='" + image.url +
-                                 "'><button id='add_favorite'>Add Artist to Your Favorites</button>" +
-                                 "</div>");
+                                 "'><button id='add_favorite'>Add Artist to Your Favorites</button></div>" +
+                                 "</div></div></div>");
 
 
       // for (var i = 0; i < 2; i++){
