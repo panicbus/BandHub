@@ -47,7 +47,8 @@ class BandsController < ApplicationController
   end
 
   def destroy
-    Favorite.delete(params[:id])
+    # will delete from favorite table too... via dependent: :destroy method in favorite model
+    Band.delete(params[:id])
     render nothing: true, status: 200
   end
 end

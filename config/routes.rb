@@ -19,5 +19,6 @@ Bandhub::Application.routes.draw do
 
   get "bands/favorite" => "bands#favorite"
   post "bands/favorite" => "bands#favorite"
+  delete "bands/favorite/:id" => "bands#destroy"
 
 end

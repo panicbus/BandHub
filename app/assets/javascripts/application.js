@@ -21,12 +21,12 @@ $(function(){
   $('#bands_results').empty();
     //// main profile favorites bandlist ////
     $.getJSON("bands/favorite").done(function(faves){
-       console.log("//Favorites Data//");
+       // console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
         // console.log("FAVES EYE !!")
-        // console.log(faves[i]['artist_location']);
+        // console.log(faves[i]['name']);
 
-        var favorite_card = $("<div class='favorite_card'></div>");
+        var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
         $("<div class='band_photo_box' data-id='" + faves[i]['name'] +
           "'><p>" + faves[i]['name'] + "</p>" +
@@ -46,38 +46,38 @@ $(function(){
            "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a></p>" +
            // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
            "<br><div id='del_button'>" +
-           "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['name'] +
+           "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
            "'>Unfavorite</button>" +
            "</div>" + // ends del_button div
           "</div>").appendTo(favorite_card); // ends favorite box div
-        // $('#bands_results').append("<button id='remove_favorite' data-method='delete'>Remove Artist</button>");
-          $('.remove_favorite').on('click', function(){
 
-          }); // end of delete button
-           $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
+
+        $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
       }; // end of for loop
+
+        //////////////////////////////
+        ////////DELETE BUTTON////////
+        /////////////////////////////
+
+       $('.remove_favorite').on('click', function(event){
+              console.log(this)
+            // event.stopPropagation();
+
+            var id = $(this).attr("data-id")
+            $.ajax({
+              url: "/bands/favorite/"+id,
+              method: "DELETE",
+              data: id
+            }).done(function(){
+              console.log("The div's id:");
+              console.log(id);
+            $('.favorite_card[data-id='+ id +']').fadeOut(1000, function(){
+              $(this).remove();
+              }); // ends .fadeOut remove function
+            }) // ends .done
+          }); //ends delete
+
     }); // end of getJSON
-
-    ////////////////////////////////////////
-    ////////DELETE METHOD WILL GO HERE///////
-    ////////////////////////////////////////
-
-     $(favorite_card).on('click', 'button[data-method="delete"]', function(event){
-       event.stopPropagation();
-        var id = $(this).attr("data-id")
-        $.ajax({
-          url: "/bands/favorites/"+id,
-          method: "DELETE",
-        }).done(function(){
-
-          var item_id = "#" + id;
-          // console.log(item_id);
-          $(item_id).fadeOut(1000, function(){
-            $(this).remove();
-          });
-        })
-
-      }); //ends delete
 
 
   }); // ends the see favorites onclick
