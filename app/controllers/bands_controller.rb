@@ -20,6 +20,9 @@ class BandsController < ApplicationController
                         news1: params[:news1]['0']['name'],
                         reviews: params[:reviews]['0']['url'],
                         reviews1: params[:reviews1]['0']['name'],
+                        urls: params[:urls]['official_url'],
+                        urls1: params[:urls1]['lastfm_url'],
+                        urls2: params[:urls2]['twitter_url'],
                         on_tour: params[:on_tour],
                         tour_dates: params[:tour_dates],
                         # biographies: params[:biographies],
@@ -29,9 +32,10 @@ class BandsController < ApplicationController
       #blogs, news & reviews are the links
       #blog1, news1 & reviews1 are the titles of each respective post
 
+    # binding.pry
 
       favorite = current_user.favorites.create(band_id: @band.id)
-    # binding.pry
+
     if favorite.save
       flash[:message] = "Artist saved to Favorites"
     else

@@ -23,7 +23,8 @@ $(function(){
     $.getJSON("bands/favorite").done(function(faves){
        // console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
-        // console.log(faves[i]['name']);
+        console.log('their official site ------------>');
+        console.log(faves[i]['urls']);
         // all the things get shoved into favorite_card divs
         var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
@@ -45,6 +46,9 @@ $(function(){
            "<p><a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a></p>" +
            "<p>Recent blog posts featuring " + faves[i]['name'] + ":</p>" +
            "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a></p>" +
+           "<p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
+           "<p><a href='" + faves[i]['urls1'] + "' target='_blank'>" + faves[i]['name'] + " on Last.fm</a>.</p>" +
+           "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p>" +
            // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
            "<br><div id='del_button'>" +
            "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
@@ -78,7 +82,6 @@ $(function(){
           }); //ends delete
 
     }); // end of getJSON
-
 
   }); // ends the see favorites onclick
 
@@ -126,6 +129,8 @@ $(function(){
       get_request.done(function(data){
       // console.log(data);
       // name = data['response']
+
+      // PARSING ALL THE ECHONEST API DATA
       image = data['response']['artist']['images'][0];
       blogs = data['response']['artist']['blogs'].slice(0,2);
       blogs1 = data['response']['artist']['blogs'].slice(0,2);
@@ -133,13 +138,15 @@ $(function(){
       reviews1 = data['response']['artist']['reviews'].slice(0,2);
       news = data['response']['artist']['news'].slice(0,2);
       news1 = data['response']['artist']['news'].slice(0,2);
-      biographies = data['response']['artist']['biographies'][0];
+      urls = data['response']['artist']['urls'];
+      urls1 = data['response']['artist']['urls'];
+      urls2 = data['response']['artist']['urls'];
+      // biographies = data['response']['artist']['biographies'][0];
       artist_location = data['response']['artist']['artist_location'];
       video = data['response']['artist']['video'].slice(0,1);
 
       console.log('below is artist_location')
-      console.log(artist_location);
-      console.log('BOOM!');
+      console.log(urls);
       // console.log(reviews.url);
 
       var songkick_get_request = $.ajax({
@@ -158,7 +165,7 @@ $(function(){
       console.log(on_tour);
       console.log(tour_dates);
 
-        // gets the first 2 items of the results
+        // the flip card show display
       $('#bands_results').append("<div id='flip_container'>" +
                                  "<div id='flip_card' class='shadow'>" +
                                  "<div class='front face'><p>" + search_list_item +
@@ -201,9 +208,12 @@ $(function(){
                      news1: news1,
                      reviews: reviews,
                      reviews1: reviews1,
+                     urls: urls,
+                     urls1: urls1,
+                     urls2: urls2,
                      on_tour: on_tour,
                      tour_dates: tour_dates,
-                     biographies: biographies,
+                     // biographies: biographies,
                      artist_location: artist_location,
                      video: video}
               // success: showSuccessMessage

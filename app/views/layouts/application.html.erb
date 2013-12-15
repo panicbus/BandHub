@@ -5,6 +5,12 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script>
+    $(window).load(function(){
+      $('.loading').fadeOut(2000);
+    });
+  </script>
+
 </head>
   <div class="topbar">
      <div class="devise">
@@ -21,6 +27,13 @@
   </div>
 
 <header>
+  <div class="main_search">
+    <p class="title">This is the BandHub</p>
+    <input id="search_bands" type="text" placeholder="i.e. Vampire Weekend" class="search_bar"/>
+    <button id="bigDaddySearch">Search!</button><br>
+    <button id='see_favorites'>View Your BandHub Page</button>
+  </div>
+
 </header>
 <body>
   <div class="container">

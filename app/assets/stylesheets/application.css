@@ -21,10 +21,10 @@ a {
   text-decoration: none;
 }
 
-/*.devise {
-  float: right;
-  background-color: lightgray;
-}*/
+a:hover {
+  color: #2287B5;
+  text-decoration: none;
+}
 
 .topbar {
   margin: 0;
@@ -41,19 +41,59 @@ a {
   padding: 5px 20px 0 0;
 }
 
+.title {
+  font-size: 50px;
+  margin: 0;
+}
+
+.main_search {
+  margin: 15px 0 15px 30px;
+}
+
+.container {
+  margin: 15px;
+}
+
 .search_list_item, .searchlist li {
+  background: #2f2f2f;
+  background: rgba(0, 0, 0, 0.86);
+  color: #fff;
   transition: all 0.3s ease;
   text-decoration: none;
+  padding: 18px;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
 }
 
 .search_list_item:hover, .searchlist li:hover {
   background-color: lightgray;
+  color: #cccccc;
 }
+
+.loading {
+  background:url(http://loadinggif.com/images/image-selection/36.gif) no-repeat center center;
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  z-index: 1000;
+  margin-top: 35px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
 
 img {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  /*margin: 0 0 8px 0;*/
 }
 
 .band_photo_box p {
