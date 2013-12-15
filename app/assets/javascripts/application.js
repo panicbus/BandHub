@@ -23,8 +23,8 @@ $(function(){
     $.getJSON("bands/favorite").done(function(faves){
        // console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
-        console.log('their official site ------------>');
-        console.log(faves[i]['urls']);
+        // console.log('their official site ------------>');
+        // console.log(faves[i]['urls']);
         // all the things get shoved into favorite_card divs
         var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
@@ -188,7 +188,7 @@ $(function(){
             $('#bands_results').empty().fadeOut(1000);
             console.log("slide");
             $('#bands_results').hide().append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
-                                              "Click 'View BandHub Page' button to see " + search_list_item + " along with all your saved bands!</div>").slideDown("slow").delay(3000).fadeOut(1000);
+                                              "Click 'View BandHub Page' button to see " + search_list_item + " along with all your saved bands!</div>").slideDown("fast").delay(3000).fadeOut(1000);
 
             band_name = data['resultsPage']['results']['artist'][0]['displayName']
 

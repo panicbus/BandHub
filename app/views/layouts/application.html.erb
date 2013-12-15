@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Nixie+One|Seymour+One|Average+Sans|New+Rocker|Coustard|Maiden+Orange|Short+Stack|Paytone+One|Cagliostro|Exo+2|Varela+Round|Amatic+SC|Text+Me+One|Imprima|Krona+One|Comfortaa|Faster+One|Miltonian+Tattoo|Numans|Autour+One' rel='stylesheet' type='text/css'>
   <script>
     $(window).load(function(){
       $('.loading').fadeOut(2000);
@@ -16,12 +17,12 @@
      <div class="devise">
       <% if user_signed_in? %>
         You're BandHubbing as <strong><%= current_user.username.capitalize %></strong>.<br>
-      Not you? &nbsp;<%= link_to "Logout", destroy_user_session_path, method: :delete %> | &nbsp;&nbsp;
+      Not you? &nbsp;<%= link_to "Logout ", destroy_user_session_path, method: :delete %> &nbsp;|&nbsp;
       <%= link_to 'Edit profile', edit_user_registration_path %>
         <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
-      <%= link_to "Login", new_user_session_path %> |
-      <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+      <%= link_to "Sign up", new_user_registration_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to "Login", new_user_session_path %>
+      <%= link_to( image_tag("sign-in-twitter.png"), user_omniauth_authorize_path(:twitter) ) %>
       <% end %>
     </div>
   </div>
