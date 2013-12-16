@@ -35,8 +35,14 @@ a:hover {
   text-decoration: none;
 }
 
-p.alert {
+.alert {
   display: none;
+}
+
+.alert, .notice {
+  background-color: #990021;
+  color: white;
+  border: none;
 }
 
 /*----------fixed top navbar--------*/

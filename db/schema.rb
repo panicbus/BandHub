@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215045430) do
+ActiveRecord::Schema.define(:version => 20131216220305) do
 
   create_table "bands", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(:version => 20131215045430) do
     t.string   "urls"
     t.string   "urls1"
     t.string   "urls2"
+    t.string   "newsa"
+    t.string   "news1a"
+    t.string   "blogsa"
+    t.string   "blogs1a"
   end
 
   create_table "favorites", :force => true do |t|

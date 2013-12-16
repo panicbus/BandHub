@@ -14,10 +14,14 @@ class BandsController < ApplicationController
     # binding.pry
     @band = Band.create(name: params[:band_name],
                         blogs: params[:blogs]['0']['url'],
+                        blogsa: params[:blogsa]['url'],
                         blogs1: params[:blogs1]['0']['name'],
+                        blogs1a: params[:blogs1a]['name'],
                         image: params[:image]['url'],
                         news: params[:news]['0']['url'],
+                        newsa: params[:newsa]['url'],
                         news1: params[:news1]['0']['name'],
+                        news1a: params[:news1a]['name'],
                         reviews: params[:reviews]['0']['url'],
                         reviews1: params[:reviews1]['0']['name'],
                         urls: params[:urls]['official_url'],
@@ -35,9 +39,11 @@ class BandsController < ApplicationController
       favorite = current_user.favorites.create(band_id: @band.id)
 
     if favorite.save
-      flash[:message] = "Artist saved to Favorites"
+      flash[:notice] = "Artist saved to Band Corral."
+    elsif current_user.favorites
+      flash[:notice] = "Too many likes! That artist is already in your Band Corral."
     else
-      flash[:message] = "Oops, artist didn't save. Please try again."
+      flash[:notice] = "Oops, artist didn't save. Please try again."
     end
   end
 

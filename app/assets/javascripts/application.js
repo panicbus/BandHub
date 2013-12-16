@@ -16,18 +16,10 @@
 //= require_tree .
 
 
-$(function(){
-  $(document).ready(function(){
-    $('.title').css('cursor', 'pointer');
-   });
-
-  $('#see_favorites').on('click', function(){
-  $('#bands_results').empty();
-    //// main profile favorites bandlist ////
+var showFavorites = function(){
+ //    //// Bandhub Corral data ////
     $.getJSON("bands/favorite").done(function(faves){
 
-
-       // console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
 
         var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
@@ -37,8 +29,7 @@ $(function(){
            "<p><div class='band_photo' data-id='" + faves[i]['id'] +
            "'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
-
-
+          $('.band_photo').css('cursor', 'pointer');
 
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
                 $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + ": not currently on tour.</div>");
@@ -46,13 +37,15 @@ $(function(){
                 $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + "!<br>" +
                                            "<div class='tour_dates_link'><a href='" +
                                             faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div></div>").hide().appendTo('#bands_results').fadeIn(1000);;
-              };
+              }; // ends else
             // news and blogs
         $("<div data-id='" + faves[i]['id'] + "' class='news_box' data-id='" + faves[i]['name'] +
           "'>Recent news stories tagged with " + faves[i]['name'] + ":<br>" +
-           "<a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a><br><br>" +
+           "• <a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a><br>" +
+           "• <a href='" + faves[i]['newsa'] + "' target='_blank'>" + faves[i]['news1a'] + "</a><br><br>" +
            "Recent blog posts featuring " + faves[i]['name'] + ":<br>" +
-           "<a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a><br></div>" +
+           "• <a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a><br>" +
+           "• <a href='" + faves[i]['blogsa'] + "' target='_blank'>" + faves[i]['blogs1a'] + "</a><br></div>" +
            "<div data-id='" + faves[i]['id'] + "' class='links_box'><p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
            "<p><a href='" + faves[i]['urls1'] + "' target='_blank'>" + faves[i]['name'] + " on Last.fm</a>.</p>" +
            "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p></div>" +
@@ -64,7 +57,7 @@ $(function(){
           "</div>").appendTo(favorite_card); // ends favorite_card div
 
 
-        $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
+        $('#bands_results').hide().prepend(favorite_card).fadeIn(1000); // appends all the favorite cards
       }; // end of for loop
 
       // FAVE CARD SLIDE TOGGLE ON IMG CLICK
@@ -81,7 +74,7 @@ $(function(){
             $('.on_tour_box[data-id='+ id +']').slideToggle('slow');
             $('.news_box[data-id='+ id +']').slideToggle('slow');
             $('.links_box[data-id='+ id +']').slideToggle('slow');
-          });
+          }); // ends band_photo toggle
         }); /// end fave card slide toggle ///
 
         //////////////////////////////
@@ -105,7 +98,20 @@ $(function(){
 
     }); // end of getJSON
 
-  }); // ends the see favorites onclick
+  // }); // ends the see favorites onclick
+}
+
+$(function(){
+  $(document).ready(function(){
+    $('.title').css('cursor', 'pointer');
+    $('img').css('cursor', 'pointer');
+   });
+
+  // THE TOP NAV SHOW FAVES CLICK EVENT
+  $('#see_favorites').on('click', function(){
+  $('#bands_results').empty();
+    showFavorites();
+  });
 
   // START OF MAIN SEARCH
   // $('#main_field').empty();
@@ -134,7 +140,7 @@ $(function(){
       console.log(data);
       search_list_item = data['response']['artist']['name'];
       // console.log("below is search_list_item= data[response][artist][name]")
-      console.log(search_list_item);
+      // console.log(search_list_item);
       // image = data['response']['artist']['images'][0];
       // for (var i = 0; i < 5; i++){
         $('#bands_results').append("<div class='search_list_item'>" + search_list_item + "<div>");
@@ -155,11 +161,15 @@ $(function(){
       // PARSING ALL THE ECHONEST API DATA
       image = data['response']['artist']['images'][0];
       blogs = data['response']['artist']['blogs'].slice(0,2);
+      blogsa = data['response']['artist']['blogs'][1];
       blogs1 = data['response']['artist']['blogs'].slice(0,2);
+      blogs1a = data['response']['artist']['blogs'][1];
       reviews = data['response']['artist']['reviews'].slice(0,2);
       reviews1 = data['response']['artist']['reviews'].slice(0,2);
       news = data['response']['artist']['news'].slice(0,2);
+      newsa = data['response']['artist']['news'][1];
       news1 = data['response']['artist']['news'].slice(0,2);
+      news1a = data['response']['artist']['news'][1];
       urls = data['response']['artist']['urls'];
       urls1 = data['response']['artist']['urls'];
       urls2 = data['response']['artist']['urls'];
@@ -167,8 +177,8 @@ $(function(){
       artist_location = data['response']['artist']['artist_location'];
       video = data['response']['artist']['video'].slice(0,1);
 
-      console.log('below is artist_location')
-      console.log(urls);
+      // console.log('below is artist_location')
+      // console.log(urls);
       // console.log(reviews.url);
 
       var songkick_get_request = $.ajax({
@@ -207,16 +217,21 @@ $(function(){
       // }; // ends loop
       //   // $('#bands_results').append("<button id='add_favorite'>Add Artist to Your Favorites!</button>");
           $('#add_favorite').on('click', function(){
-            $('#bands_results').empty().fadeOut(1000);
-            console.log("slide");
-            $('#bands_results').hide().append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
+            // $('#bands_results').empty().fadeOut(1000);
+            // console.log(">>>added to favorite first<<<")
+            // console.log(this)
+            // $('#flip_container').hide();
+            $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
                                               "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
+////////////////////////////////////////
+              $('#bands_results').empty();
+
 
             band_name = data['resultsPage']['results']['artist'][0]['displayName']
 
-            console.log("////CLICK ON FAVE ARTIST ATTRIBUTES////")
-            console.log("The blog1 is...", blogs1);
-            console.log("///////////")
+            // console.log("////CLICK ON FAVE ARTIST ATTRIBUTES////")
+            // console.log("The blog1 is...", blogs1);
+            // console.log("///////////")
 
             var favorites = $.ajax({
               url: "bands/create",
@@ -224,10 +239,14 @@ $(function(){
               // assigns a new key value pair in params for ajax Favorite create
               data: {band_name: band_name,
                      blogs: blogs,
+                     blogsa: blogsa,
                      blogs1: blogs1,
+                     blogs1a: blogs1a,
                      image: image,
                      news: news,
+                     newsa: newsa,
                      news1: news1,
+                     news1a: news1a,
                      reviews: reviews,
                      reviews1: reviews1,
                      urls: urls,
@@ -239,7 +258,12 @@ $(function(){
                      artist_location: artist_location,
                      video: video}
               // success: showSuccessMessage
+
+            }).done(function(){
+              showFavorites(); // displays the favorites page after favoriting action
+
             }); // ends favorites ajax
+
           }); // ends #add_favorite actions
       ////////////////
     });  // ends songkick_get_request.done
