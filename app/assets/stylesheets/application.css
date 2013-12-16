@@ -375,6 +375,7 @@ img .favorite_card {
 
 .on_tour_box, .links_box, .news_box {
   padding: 6px 10px 10px 15px;
+  display: none;
 }
 
 .links_box {

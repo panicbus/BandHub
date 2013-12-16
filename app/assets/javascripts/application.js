@@ -17,6 +17,10 @@
 
 
 $(function(){
+  $(document).ready(function(){
+    $('.title').css('cursor', 'pointer');
+   });
+
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
     //// main profile favorites bandlist ////
@@ -25,11 +29,8 @@ $(function(){
 
        // console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
-        // console.log('their official site ------------>');
-        // console.log(faves[i]['urls']);
-        // all the things get shoved into favorite_card divs
-        var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
+        var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
         $("<div class='band_photo_box' data-id='" + faves[i]['id'] +
           "'><p>" + faves[i]['name'] + "</p>" +
@@ -66,24 +67,26 @@ $(function(){
         $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
       }; // end of for loop
 
-      // fave card slide toggle
+      // FAVE CARD SLIDE TOGGLE ON IMG CLICK
         $(document).ready(function(){
+           $('.title').on('click', function(){
+            $('.on_tour_box').slideUp('slow');
+            $('.news_box').slideUp('slow');
+            $('.links_box').slideUp('slow');
+           }) // ending the close all function
           $('.band_photo').on('click', function(event){
             console.log(this);
-            console.log('fuck');
-
             var id = $(this).attr("data-id");
              // console.log('[data-id='+ id +']');
             $('.on_tour_box[data-id='+ id +']').slideToggle('slow');
             $('.news_box[data-id='+ id +']').slideToggle('slow');
             $('.links_box[data-id='+ id +']').slideToggle('slow');
           });
-        }); // end fave card slide toggle
+        }); /// end fave card slide toggle ///
 
         //////////////////////////////
         ////////DELETE BUTTON////////
         /////////////////////////////
-
        $('.remove_favorite').on('click', function(event){
 
             var id = $(this).attr("data-id")
@@ -98,7 +101,7 @@ $(function(){
               $(this).remove();
               }); // ends .fadeOut remove function
             }) // ends .done
-          }); //ends delete
+          }); ///ends delete///
 
     }); // end of getJSON
 
@@ -207,7 +210,7 @@ $(function(){
             $('#bands_results').empty().fadeOut(1000);
             console.log("slide");
             $('#bands_results').hide().append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
-                                              "Click 'View BandHub Page' button to see " + search_list_item + " along with all your saved bands!</div>").slideDown("fast").delay(3000).fadeOut(1000);
+                                              "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
 
             band_name = data['resultsPage']['results']['artist'][0]['displayName']
 
