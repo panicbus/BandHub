@@ -15,6 +15,7 @@
 body {
   margin: 0px;
   font-family: 'Numans', sans-serif;
+  background-color: #990021
 }
 
 header {
@@ -97,13 +98,15 @@ p.alert {
 }
 
 #see_favorites {
-  margin-right: auto;
+  /*margin-right: auto;
   margin-left: auto;
-  display: block;
-  width: 400px;
+  display: block;*/
+  width: 30%;
+  float: left;
+  margin: 14px 0px 0px 12%;
 }
 
-#bigDaddySearch, #see_favorites {
+#bigDaddySearch, #see_favorites, .remove_favorite {
   background-color: #74AC31;
   color: white;
 }
@@ -119,7 +122,6 @@ p.alert {
   height: 30px;
   margin: 0 0 0 25px;
   padding-left: 10px;
-  border-left: 2px solid gray;
 }
 
 .see_favorites_button_div {
@@ -262,6 +264,10 @@ img {
   margin-left: auto;
 }
 
+.band_photo_box {
+  margin-top: 15px;
+}
+
 .success_message {
   width: 65%;
   font-size: 20px;
@@ -276,15 +282,64 @@ img {
 
 .favorite_card {
   float: left;
-  border: 2px solid black;
-  border-radius: 5px;
-  padding: 0 15px 15px 15px;
-  margin: 15px;
+  /*border: 2px solid black;*/
+  border-radius: 3px;
+  padding: 0 0 15px 0;
+  margin: 25px 20px 15px 15px;
   width: 320px;
+  height: auto;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.16, #B4C7E0),
+    color-stop(1, #E3EAF3)
+  );
+  background-image: -o-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -moz-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -webkit-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -ms-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: linear-gradient(to bottom, #B4C7E0 16%, #E3EAF3 100%);
+}
+
+img .favorite_card {
+  width: 90%;
   height: auto;
 }
 
+.on_tour_box {
+  font-weight: bold;
+}
+
+.on_tour_box, .links_box {
+  margin-bottom: 10px;
+  background-color: #F3F6FA;
+  width: 92.2%;
+  /*padding: 10px 0 3px 0;*/
+}
+
+.on_tour_box, .links_box, .news_box {
+  padding: 6px 10px 10px 15px;
+}
+
+.links_box {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.remove_favorite {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 50%;
+  border-radius: 5px;
+}
 
 
+@media (min-width: 425px) and (max-width: 700px) {
 
+}
 
+@media (max-width: 425px) {
+
+}

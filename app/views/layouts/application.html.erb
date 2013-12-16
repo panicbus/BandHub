@@ -14,6 +14,10 @@
       <img class="horns" src="assets/horns.png">
       <p class="nav_title">BandHub</p>
     </div>
+      <!-- <div class="see_favorites_button_div"> -->
+        <button id='see_favorites'>View Your BandHub Page</button>
+      <!-- </div> -->
+
      <div class="devise">
       <% if user_signed_in? %>
         You're BandHubbing as <strong><%= current_user.username.capitalize %></strong><br>
@@ -28,6 +32,8 @@
   </div>
 
 <header>
+</header>
+<body>
   <div class="main_search">
     <p class="title">This is the BandHub</p>
     <div class="searchbar_and_button">
@@ -36,13 +42,8 @@
         <button id="bigDaddySearch">Search!</button><br>
       </div>
     </div>
-    <div class="see_favorites_button_div">
-      <button id='see_favorites'>View Your BandHub Page</button>
-    </div>
   </div>
 
-</header>
-<body>
   <div class="container">
 
     <%= yield %>

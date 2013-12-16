@@ -34,27 +34,27 @@ $(function(){
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
 
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
-                $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + ": not currently on tour.</div>");
+                $(favorite_card).append("<div class='on_tour_box'>" + faves[i]['name'] + ": not currently on tour.</div>");
               } else {
-                $(favorite_card).append("<div class='on_tour_div'>" + faves[i]['name'] + " is currently on tour until " + faves[i]['on_tour'] + ".</div>" +
+                $(favorite_card).append("<div class='on_tour_box'>" + faves[i]['name'] + " is currently on tour until " + faves[i]['on_tour'] + "!<br>" +
                                            "<div class='tour_dates_link'><a href='" +
-                                            faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div").hide().appendTo('#bands_results').fadeIn(1000);;
+                                            faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div></div>").hide().appendTo('#bands_results').fadeIn(1000);;
               };
             // news and blogs
         $("<div class='news_box' data-id='" + faves[i]['name'] +
-          "'><p>Recent news items tagged with " + faves[i]['name'] + ":</p>" +
-           "<p><a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a></p>" +
-           "<p>Recent blog posts featuring " + faves[i]['name'] + ":</p>" +
-           "<p><a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a></p>" +
-           "<p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
+          "'>Recent news stories tagged with " + faves[i]['name'] + ":<br>" +
+           "<a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a><br><br>" +
+           "Recent blog posts featuring " + faves[i]['name'] + ":<br>" +
+           "<a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a><br></div>" +
+           "<div class='links_box'><p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
            "<p><a href='" + faves[i]['urls1'] + "' target='_blank'>" + faves[i]['name'] + " on Last.fm</a>.</p>" +
-           "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p>" +
+           "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p></div>" +
            // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
            "<br><div id='del_button'>" +
            "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
            "'>Unfavorite</button>" +
            "</div>" + // ends del_button div
-          "</div>").appendTo(favorite_card); // ends favorite box div
+          "</div>").appendTo(favorite_card); // ends favorite_card div
 
 
         $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
