@@ -17,6 +17,10 @@ body {
   font-family: 'Numans', sans-serif;
 }
 
+header {
+  margin-top: 100px;
+}
+
 a {
   transition: all 0.3s ease;
   text-decoration: none;
@@ -27,13 +31,35 @@ a:hover {
   text-decoration: none;
 }
 
+p.alert {
+  display: none;
+}
+
 .topbar {
-  margin: 0;
-  width: 100%;
+  margin: 0px 0 0 -10px;
+  width: 102%;
   background: #2f2f2f;
   background: rgba(0, 0, 0, 0.86);
   height: 54px;
   font-size: 17px;
+  position: fixed;
+  top: 0;
+  box-shadow: 0px 5px 30px #5E5E5E;
+}
+
+.nav_title {
+  font-size: 30px;
+  padding: 20px 0 0 20px;
+  float: left;
+  font-family: 'Krona One', sans-serif;
+  color: #cccccc;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+}
+
+.horns {
+  float: left;
+  height: 43px;
+  margin: 6px -10px 10px 22px;
 }
 
 .devise {
@@ -58,11 +84,46 @@ a:hover {
   font-size: 50px;
   margin: 0;
   font-family: 'Krona One', sans-serif;
-
+  float: left;
 }
 
 .main_search {
   margin: 15px 0 15px 30px;
+}
+
+#bigDaddySearch {
+  height: 30px;
+  margin-left: -4px;
+}
+
+#see_favorites {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 400px;
+}
+
+#bigDaddySearch, #see_favorites {
+  background-color: #74AC31;
+  color: white;
+}
+
+.search_bar {
+  float: left;
+  border-radius: 0px;
+}
+
+.searchbar_and_button {
+  float: left;
+  width: 400px;
+  height: 30px;
+  margin: 0 0 0 25px;
+  padding-left: 10px;
+  border-left: 2px solid gray;
+}
+
+.see_favorites_button_div {
+  clear: both;
 }
 
 .container {
@@ -90,7 +151,7 @@ a:hover {
   color: #cccccc;
 }
 
-.loading {
+/*.loading {
   background:url(http://loadinggif.com/images/image-selection/36.gif) no-repeat center center;
   height: 100px;
   width: 100px;
@@ -102,7 +163,7 @@ a:hover {
   margin-left: auto;
   text-align: center;
 }
-
+*/
 
 img {
   display: block;
@@ -222,4 +283,8 @@ img {
   width: 320px;
   height: auto;
 }
+
+
+
+
 

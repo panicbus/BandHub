@@ -2,21 +2,21 @@
 <html>
 <head>
   <title>BandHub</title>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Nixie+One|Seymour+One|Average+Sans|New+Rocker|Coustard|Maiden+Orange|Short+Stack|Paytone+One|Cagliostro|Exo+2|Varela+Round|Amatic+SC|Text+Me+One|Imprima|Krona+One|Comfortaa|Faster+One|Miltonian+Tattoo|Numans|Autour+One' rel='stylesheet' type='text/css'>
-  <script>
-    $(window).load(function(){
-      $('.loading').fadeOut(2000);
-    });
-  </script>
-
 </head>
+
   <div class="topbar">
+    <div class="title">
+      <img class="horns" src="assets/horns.png">
+      <p class="nav_title">BandHub</p>
+    </div>
      <div class="devise">
       <% if user_signed_in? %>
-        You're BandHubbing as <strong><%= current_user.username.capitalize %></strong>.<br>
+        You're BandHubbing as <strong><%= current_user.username.capitalize %></strong><br>
       Not you? &nbsp;<%= link_to "Logout ", destroy_user_session_path, method: :delete %> &nbsp;|&nbsp;
       <%= link_to 'Edit profile', edit_user_registration_path %>
         <% else %>
@@ -30,9 +30,15 @@
 <header>
   <div class="main_search">
     <p class="title">This is the BandHub</p>
-    <input id="search_bands" type="text" placeholder="i.e. Vampire Weekend" class="search_bar"/>
-    <button id="bigDaddySearch">Search!</button><br>
-    <button id='see_favorites'>View Your BandHub Page</button>
+    <div class="searchbar_and_button">
+      <input id="search_bands" type="text" placeholder="i.e. Vampire Weekend" class="search_bar"/>
+      <div class="search_button_div">
+        <button id="bigDaddySearch">Search!</button><br>
+      </div>
+    </div>
+    <div class="see_favorites_button_div">
+      <button id='see_favorites'>View Your BandHub Page</button>
+    </div>
   </div>
 
 </header>

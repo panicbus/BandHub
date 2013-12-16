@@ -32,8 +32,6 @@ class BandsController < ApplicationController
       #blogs, news & reviews are the links
       #blog1, news1 & reviews1 are the titles of each respective post
 
-    # binding.pry
-
       favorite = current_user.favorites.create(band_id: @band.id)
 
     if favorite.save
