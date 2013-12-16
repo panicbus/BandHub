@@ -23,7 +23,10 @@ header {
 }
 
 a {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
+    -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
+    -o-transition: all 0.2s ease-in-out; /* Opera */
   text-decoration: none;
 }
 
@@ -36,6 +39,8 @@ p.alert {
   display: none;
 }
 
+/*----------fixed top navbar--------*/
+
 .topbar {
   margin: 0px 0 0 -10px;
   width: 102%;
@@ -46,6 +51,7 @@ p.alert {
   position: fixed;
   top: 0;
   box-shadow: 0px 5px 30px #5E5E5E;
+  z-index: 1000;
 }
 
 .nav_title {
@@ -81,11 +87,17 @@ p.alert {
   margin: 2px 0px 0px 1px;
 }
 
+
+/*---------main header banner----------*/
 .title {
   font-size: 50px;
+  letter-spacing: 4px;
   margin: 0;
   font-family: 'Krona One', sans-serif;
   float: left;
+  text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+  color: #090A0B;
+  opacity: 0.75;
 }
 
 .main_search {
@@ -106,7 +118,7 @@ p.alert {
   margin: 14px 0px 0px 12%;
 }
 
-#bigDaddySearch, #see_favorites, .remove_favorite {
+#bigDaddySearch, #see_favorites, .remove_favorite, #add_favorite {
   background-color: #74AC31;
   color: white;
 }
@@ -128,6 +140,8 @@ p.alert {
   clear: both;
 }
 
+
+/*----------band show page------------*/
 .container {
   margin: 15px;
 }
@@ -136,8 +150,6 @@ p.alert {
   background: #2f2f2f;
   background: rgba(0, 0, 0, 0.86);
   color: #fff;
-  transition: all 0.3s ease;
-  text-decoration: none;
   padding: 18px;
   text-align: center;
   font-size: 18px;
@@ -146,6 +158,11 @@ p.alert {
   margin-right: auto;
   margin-left: auto;
   display: block;
+  transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out; /* Firefox 4 */
+    -webkit-transition: all 0.3s ease-in-out; /* Safari and Chrome */
+    -o-transition: all 0.3s ease-in-out; /* Opera */
+  text-decoration: none;
 }
 
 .search_list_item:hover, .searchlist li:hover {
@@ -178,12 +195,12 @@ img {
   font-size: 22px;
 }
 
- /*The flip action*/
+ /*--------the card flip action---------*/
 
 #flip_container {
   position: relative;
   margin: 10px auto;
-  width: 400px;
+  width: 30%;
   height: 250px;
   z-index: 1;
 
@@ -220,10 +237,28 @@ img {
 
 .face {
   position: absolute;
-  width: 100%;
+  width: 95%;
   height: 100%;
-  background-color: lightgray;
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.16, #B4C7E0),
+    color-stop(1, #E3EAF3)
+  );
+  background-image: -o-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -moz-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -webkit-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -ms-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: linear-gradient(to bottom, #B4C7E0 16%, #E3EAF3 100%);
+
   border-radius: 5px;
+  font-family: "Krona One";
+  padding: 15px;
+  font-size: 30px;
+  letter-spacing: 7px;
+  line-height: 120%;
   text-align: center;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -232,40 +267,57 @@ img {
 }
 
 .face p {
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .face.back {
   display: block;
-  -webkit-transform: rotateY(180deg);
-  -webkit-box-sizing: border-box;
-  -moz-transform: rotateY(180deg);
-  -moz-box-sizing: border-box;
-  -o-transform: rotateY(180deg);
-  -o-box-sizing: border-box;
-  transform: rotateY(180deg);
-  box-sizing: border-box;
+    -webkit-transform: rotateY(180deg);
+    -webkit-box-sizing: border-box;
+    -moz-transform: rotateY(180deg);
+    -moz-box-sizing: border-box;
+    -o-transform: rotateY(180deg);
+    -o-box-sizing: border-box;
+    transform: rotateY(180deg);
+    box-sizing: border-box;
   padding: 10px;
+
+  width: 100%;
+  height: 110%;
   color: white;
   text-align: center;
-  background-color: #aaa;
   border-radius: 5px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.16, #B4C7E0),
+    color-stop(1, #E3EAF3)
+  );
+  background-image: -o-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -moz-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -webkit-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: -ms-linear-gradient(bottom, #B4C7E0 16%, #E3EAF3 100%);
+  background-image: linear-gradient(to bottom, #B4C7E0 16%, #E3EAF3 100%);
 }
 
-
-/*///////////////*/
-
+/*//////end flip action/////////*/
 
 .band_photo {
-  height: 200px;
+/*  height: 200px;
   width: 300px;
-  display: block;
+*/  display: block;
   margin-right: auto;
   margin-left: auto;
+  padding: 0 10px 0 10px;
 }
 
 .band_photo_box {
   margin-top: 15px;
+}
+
+#add_favorite {
+  margin-top: 8px;
 }
 
 .success_message {
@@ -279,6 +331,9 @@ img {
   margin-right: auto;
   margin-left: auto;
 }
+
+
+/*---------favorites display-----------*/
 
 .favorite_card {
   float: left;
@@ -335,6 +390,7 @@ img .favorite_card {
   border-radius: 5px;
 }
 
+/*----------responsive media-----------*/
 
 @media (min-width: 425px) and (max-width: 700px) {
 

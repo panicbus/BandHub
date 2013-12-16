@@ -21,6 +21,8 @@ $(function(){
   $('#bands_results').empty();
     //// main profile favorites bandlist ////
     $.getJSON("bands/favorite").done(function(faves){
+
+
        // console.log("//Favorites Data//");
       for (var i = 0; i < faves.length; i++){
         // console.log('their official site ------------>');
@@ -28,29 +30,33 @@ $(function(){
         // all the things get shoved into favorite_card divs
         var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
-        $("<div class='band_photo_box' data-id='" + faves[i]['name'] +
+
+        $("<div class='band_photo_box' data-id='" + faves[i]['id'] +
           "'><p>" + faves[i]['name'] + "</p>" +
-           "<p><div class='band_photo'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
+           "<p><div class='band_photo' data-id='" + faves[i]['id'] +
+           "'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
 
+
+
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
-                $(favorite_card).append("<div class='on_tour_box'>" + faves[i]['name'] + ": not currently on tour.</div>");
+                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + ": not currently on tour.</div>");
               } else {
-                $(favorite_card).append("<div class='on_tour_box'>" + faves[i]['name'] + " is currently on tour until " + faves[i]['on_tour'] + "!<br>" +
+                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + "!<br>" +
                                            "<div class='tour_dates_link'><a href='" +
                                             faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div></div>").hide().appendTo('#bands_results').fadeIn(1000);;
               };
             // news and blogs
-        $("<div class='news_box' data-id='" + faves[i]['name'] +
+        $("<div data-id='" + faves[i]['id'] + "' class='news_box' data-id='" + faves[i]['name'] +
           "'>Recent news stories tagged with " + faves[i]['name'] + ":<br>" +
            "<a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a><br><br>" +
            "Recent blog posts featuring " + faves[i]['name'] + ":<br>" +
            "<a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a><br></div>" +
-           "<div class='links_box'><p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
+           "<div data-id='" + faves[i]['id'] + "' class='links_box'><p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
            "<p><a href='" + faves[i]['urls1'] + "' target='_blank'>" + faves[i]['name'] + " on Last.fm</a>.</p>" +
            "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p></div>" +
            // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
-           "<br><div id='del_button'>" +
+           "<br><div data-id='" + faves[i]['id'] + "' id='del_button'>" +
            "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
            "'>Unfavorite</button>" +
            "</div>" + // ends del_button div
@@ -60,12 +66,25 @@ $(function(){
         $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
       }; // end of for loop
 
+      // fave card slide toggle
+        $(document).ready(function(){
+          $('.band_photo').on('click', function(event){
+            console.log(this);
+            console.log('fuck');
+
+            var id = $(this).attr("data-id");
+             // console.log('[data-id='+ id +']');
+            $('.on_tour_box[data-id='+ id +']').slideToggle('slow');
+            $('.news_box[data-id='+ id +']').slideToggle('slow');
+            $('.links_box[data-id='+ id +']').slideToggle('slow');
+          });
+        }); // end fave card slide toggle
+
         //////////////////////////////
         ////////DELETE BUTTON////////
         /////////////////////////////
 
        $('.remove_favorite').on('click', function(event){
-              console.log(this)
 
             var id = $(this).attr("data-id")
             $.ajax({
@@ -172,7 +191,7 @@ $(function(){
                                  "</p></div>" +
                                  "<div class='back face center'>" +
                                  "<img style='height: 200px; width: auto' src='" + image.url +
-                                 "'><button id='add_favorite'>Add " + search_list_item + " to Your Favorites Profile</button></div>" +
+                                 "'><button id='add_favorite'>Add " + search_list_item + " to Your BandHub Corral</button></div>" +
                                  "</div></div></div>");
 
 
