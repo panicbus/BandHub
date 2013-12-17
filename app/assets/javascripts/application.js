@@ -104,19 +104,10 @@ var showFavorites = function(){
 $(function(){
   $(document).ready(function(){
     $('.title').css('cursor', 'pointer');
-    $('img').css('cursor', 'pointer');
+    // $('img').css('cursor', 'pointer');
    });
 
   // THE TOP NAV SHOW FAVES CLICK EVENT
-
- // $('#see_favorites').on('click', function(){
-    // if current_user !== null {
-      // $('#bands_results').empty();
-        // showFavorites();
-    // } else {
-      // $('#see_favorites').hide();
-    // };
-  // });
 
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
@@ -167,7 +158,7 @@ $(function(){
          el.style.backgroundColor
          setTimeout(function(){
           fadeOut(op-.01);
-         },20)
+         },1)
         }
       }
       fadeOut(1)

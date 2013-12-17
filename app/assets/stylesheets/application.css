@@ -149,8 +149,9 @@ a:hover {
 
 /*---------main header banner----------*/
 .title {
-  font-size: 50px;
-  letter-spacing: 4px;
+  float: left;
+  font-size: 52px;
+  letter-spacing: 14px;
   margin: 0;
   font-family: 'Krona One', sans-serif;
   float: left;
@@ -160,22 +161,47 @@ a:hover {
 }
 
 .main_search {
-  margin: 15px 0 15px 30px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 65%;
+  height: 15px;
+}
+
+.searchbar_and_button {
+  float: right;
+  width: 400px;
+  height: 38px;
+  margin: -8px -30px 0px 0px;
+}
+
+.search_bar {
+  float: left; /* keeps the button on the right of the field*/
+}
+
+#search_bands {
+  height: 25px;
+  width: 300px;
+  font-size: 20px;
+  padding: 6px 0 6px 12px;
 }
 
 #bigDaddySearch {
-  height: 30px;
-  margin-left: -4px;
+  height: 39px;
+  margin-left: -3px;
+  border: 0px;
 }
 
 #see_favorites {
-  /*margin-right: auto;
-  margin-left: auto;
-  display: block;*/
   width: 30%;
   float: left;
   margin: 14px 0px 0px 12%;
   border-radius: 25px;
+}
+
+.see_favorites_button_div {
+  clear: both;
 }
 
 #bigDaddySearch, #see_favorites, .remove_favorite, #add_favorite {
@@ -183,27 +209,13 @@ a:hover {
   color: white;
 }
 
-.search_bar {
-  float: left;
-  border-radius: 0px;
-}
-
-.searchbar_and_button {
-  float: left;
-  width: 400px;
-  height: 30px;
-  margin: 0 0 0 25px;
-  padding-left: 10px;
-}
-
-.see_favorites_button_div {
-  clear: both;
-}
-
-
 /*----------band show page--------------------*/
 .container {
-  margin: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 87%;
+
 }
 
 .search_list_item, .searchlist li {
@@ -230,22 +242,6 @@ a:hover {
   background-color: #303030;
   color: #A0A0A0;
 }
-
-/*.loading {
-  background:url(http://loadinggif.com/images/image-selection/36.gif) no-repeat center center;
-  height: 100px;
-  width: 100px;
-  position: fixed;
-  z-index: 1000;
-  margin-top: 35px;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-*/
-
-
 
 img {
   display: block;
@@ -399,7 +395,6 @@ img {
 
 .favorite_card {
   float: left;
-  /*border: 2px solid black;*/
   border-radius: 3px;
   padding: 0 0 15px 0;
   margin: 25px 20px 15px 15px;
