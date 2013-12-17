@@ -14,11 +14,11 @@
 
   <div class="topbar">
     <div class="title">
-      <img class="horns" src="assets/horns.png">
+      <img style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" class="horns" src="assets/horns.png">
       <p class="nav_title">BandHub</p>
     </div>
       <!-- <div class="see_favorites_button_div"> -->
-        <button id='see_favorites'>View Your BandHub Corral</button>
+        <button style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" id='see_favorites'>View Your BandHub Corral</button>
       <!-- </div> -->
 
      <div class="devise">

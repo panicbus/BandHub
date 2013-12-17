@@ -32,7 +32,7 @@ var showFavorites = function(){
           $('.band_photo').css('cursor', 'pointer');
 
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
-                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " are not currently on tour.</div>");
+                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " not currently on tour.</div>");
               } else {
                 $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + "!<br>" +
                                            "<div class='tour_dates_link'><a href='" +
@@ -108,6 +108,16 @@ $(function(){
    });
 
   // THE TOP NAV SHOW FAVES CLICK EVENT
+
+ // $('#see_favorites').on('click', function(){
+    // if current_user !== null {
+      // $('#bands_results').empty();
+        // showFavorites();
+    // } else {
+      // $('#see_favorites').hide();
+    // };
+  // });
+
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
     showFavorites();
@@ -148,10 +158,20 @@ $(function(){
          //>>>START OF THE SHOW DISPLAY<<<
     $('#bands_results').on('click', '.search_list_item', function(){
       var id = $(this).attr('id');
-      $('.search_list_item').fadeOut(1000, function(){
-        console.log(this);
-        $(this).remove();
-      });
+      var el = $('.search_list_item')[0]
+
+      var fadeOut = function (op) {
+        console.log("sdf")
+        if(op>0){
+         el.style.opacity = op;
+         el.style.backgroundColor
+         setTimeout(function(){
+          fadeOut(op-.01);
+         },20)
+        }
+      }
+      fadeOut(1)
+
 
       // $("#bands_results").empty();  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>
 
