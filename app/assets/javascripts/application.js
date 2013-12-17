@@ -32,7 +32,7 @@ var showFavorites = function(){
           $('.band_photo').css('cursor', 'pointer');
 
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
-                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + ": not currently on tour.</div>");
+                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " are not currently on tour.</div>");
               } else {
                 $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + "!<br>" +
                                            "<div class='tour_dates_link'><a href='" +
@@ -88,7 +88,7 @@ var showFavorites = function(){
               method: "DELETE",
               data: id
             }).done(function(){
-              console.log(id);
+              // console.log(id);
         // this associates the entire .favorite_card with the [data-id='+ id +'] id .
             $('.favorite_card[data-id='+ id +']').fadeOut(1000, function(){
               $(this).remove();
@@ -137,23 +137,24 @@ $(function(){
     $("search_bands").val("");
 
     get_request.done(function(data){
-      console.log(data);
+      // console.log(data);
       search_list_item = data['response']['artist']['name'];
-      // console.log("below is search_list_item= data[response][artist][name]")
-      // console.log(search_list_item);
-      // image = data['response']['artist']['images'][0];
-      // for (var i = 0; i < 5; i++){
+
         $('#bands_results').append("<div class='search_list_item'>" + search_list_item + "<div>");
-        $('li').css('cursor', 'pointer');
-      // } // ends for loop
+        $('.search_list_item').css('cursor', 'pointer');
+
     }) // ends get_request.done function
 
-
-      //>>>START OF THE SHOW DISPLAY<<<
+         //>>>START OF THE SHOW DISPLAY<<<
     $('#bands_results').on('click', '.search_list_item', function(){
-      var id = $(this).attr('id');  // Nico, fix the ('id')
+      var id = $(this).attr('id');
+      $('.search_list_item').fadeOut(1000, function(){
+        console.log(this);
+        $(this).remove();
+      });
 
-      $("#bands_results").empty();
+      // $("#bands_results").empty();  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>
+
       get_request.done(function(data){
       // console.log(data);
       // name = data['response']
@@ -193,10 +194,6 @@ $(function(){
       on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
       tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
 
-      console.log("the songkick api results")
-      console.log(on_tour);
-      console.log(tour_dates);
-
         // the flip card show display
       $('#bands_results').append("<div id='flip_container'>" +
                                  "<div id='flip_card' class='shadow'>" +
@@ -217,7 +214,7 @@ $(function(){
       // }; // ends loop
       //   // $('#bands_results').append("<button id='add_favorite'>Add Artist to Your Favorites!</button>");
           $('#add_favorite').on('click', function(){
-            // $('#bands_results').empty().fadeOut(1000);
+            $('#flip_container').remove().fadeOut(1000);
             // console.log(">>>added to favorite first<<<")
             // console.log(this)
             // $('#flip_container').hide();
@@ -228,10 +225,6 @@ $(function(){
 
 
             band_name = data['resultsPage']['results']['artist'][0]['displayName']
-
-            // console.log("////CLICK ON FAVE ARTIST ATTRIBUTES////")
-            // console.log("The blog1 is...", blogs1);
-            // console.log("///////////")
 
             var favorites = $.ajax({
               url: "bands/create",
