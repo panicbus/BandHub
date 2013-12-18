@@ -23,10 +23,10 @@ $.ajaxSetup({
   }
 });
 
-// ISOTOPE INITIALIZER //
+// Kicks to the Isotope (not Isotope) calls file //
 $(function(){
   isotope();
-}); // end isotope
+});
 
 
 var showFavorites = function(){
@@ -179,7 +179,6 @@ $(function(){
 
       get_request.done(function(data){
       // console.log(data);
-      // name = data['response']
 
       // PARSING ALL THE ECHONEST API DATA
       image = data['response']['artist']['images'][0];
@@ -200,7 +199,6 @@ $(function(){
       artist_location = data['response']['artist']['artist_location'];
       video = data['response']['artist']['video'].slice(0,1);
 
-      // console.log('below is artist_location')
       // console.log(urls);
       // console.log(reviews.url);
 

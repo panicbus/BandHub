@@ -8,7 +8,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link href='http://fonts.googleapis.com/css?family=Nixie+One|Seymour+One|Average+Sans|New+Rocker|Coustard|Maiden+Orange|Short+Stack|Paytone+One|Cagliostro|Exo+2|Varela+Round|Amatic+SC|Text+Me+One|Imprima|Krona+One|Comfortaa|Faster+One|Miltonian+Tattoo|Numans|Autour+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Krona+One|Numans' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="jquery.pageslide.css">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -47,7 +47,7 @@
 </header>
 <body>
 
-
+    <!-- to only show the hamburger to users logged in -->
   <div style="visibility: <%= current_user == nil ? "hidden" : "visible" %>">
     <a class="impatient" href="#secondary"><i id="hamburger" class="fa fa-bars fa-3x"></i></a>
   </div>
@@ -58,7 +58,7 @@
     <div class="pageslide_links">
       <p class="stc">Sort the Corral:</p>
       <ul id="sort_by" >
-        <li><a href="#data-name">By name</a></li>
+        <li><a href="#data-name">By name</a></li>  <!-- for the sorting fn in isotopeCalls.js -->
         <li><a href="#data-date">By date added</a></li>
       </ul>
     </div>

@@ -11,7 +11,6 @@ class BandsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @band = Band.create(name: params[:band_name],
                         blogs: params[:blogs]['0']['url'],
                         blogsa: params[:blogsa]['url'],
@@ -32,7 +31,7 @@ class BandsController < ApplicationController
                         # biographies: params[:biographies],
                         artist_location: params[:artist_location],
                         video: params[:video]['0']['url'])
-      # binding.pry
+
       #blogs, news & reviews are the links
       #blog1, news1 & reviews1 are the titles of each respective post
 

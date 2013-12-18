@@ -41,7 +41,7 @@ li {
 }
 
 
-a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite {
+a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite {
   transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
     -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
@@ -215,6 +215,7 @@ a:hover {
 #hamburger {
   float: left;
   margin: 20px 0 0 20px;
+  position: fixed;
 }
 
 .horns {
