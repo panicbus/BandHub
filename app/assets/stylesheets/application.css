@@ -215,7 +215,7 @@ a:hover {
 #hamburger {
   float: left;
   margin: 20px 0 0 20px;
-  position: fixed;
+  position:;
 }
 
 .horns {
@@ -245,14 +245,6 @@ a:hover {
   line-height: 25px;
   margin: 0 0 15px 5px;
 }
-
-/*#sort_by a {
-  color: #74AC31;
-}*/
-
-/*#sort_by a {
-  color: #74AC31;
-}*/
 
 /*----------band show page--------------------*/
 .container {
