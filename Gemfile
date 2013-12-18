@@ -36,6 +36,21 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+
+group :development do
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'nyan-cat-formatter'
+  gem 'shoulda-matchers'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'dotenv-rails'
+end
+
+group :production do
+  gem 'pg'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
