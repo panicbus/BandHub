@@ -19,7 +19,6 @@
 
   <div class="topbar">
     <div class="title">
-      <img style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" class="horns" src="assets/horns.png">
       <p class="nav_title">BandHub</p>
     </div>
 
@@ -53,11 +52,13 @@
   </div>
 
   <div id="secondary">
-     <button id='see_favorites'>View Your BandHub Corral</button>
+    <img style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" class="horns" src="assets/horns.png">
+    <button id='see_favorites'>View Your BandHub Corral</button>
     <div class="pageslide_links">
+      <p class="stc">Sort the Corral:</p>
       <ul id="sort_by" >
-        <li><a href="#data-name">Sort by name</a></li>
-        <li><a href="#data-date">Sort by date added</a></li>
+        <li><a href="#data-name">By name</a></li>
+        <li><a href="#data-date">By date added</a></li>
       </ul>
     </div>
   </div>

@@ -31,7 +31,7 @@ button {
 }
 
 li {
-  list-style-type: none;
+  /*list-style-type: none;*/
 }
 
 #see_favorites, .remove_favorite {
@@ -67,64 +67,8 @@ a:hover {
   font-family: "Numans";
 }
 
-/*ISOTOPE DEFINITIONS*/
 
-#iBox {
-  margin: 35px auto 0 auto;
-  display: block;
-  width: 40%;
-  clear: both;
-}
-
-#iBox a {
-    margin-right: 10px;
-    color:#666;
-    text-decoration:none;
-}
-
-#iBox a.current {
-    font-weight:bold;
-}
-
-.isotope,
-.isotope .isotope-item {
-  /* change duration value to whatever you like */
-  -webkit-transition-duration: 0.8s;
-     -moz-transition-duration: 0.8s;
-      -ms-transition-duration: 0.8s;
-       -o-transition-duration: 0.8s;
-          transition-duration: 0.8s;
-}
-
-.isotope {
-  -webkit-transition-property: height, width;
-     -moz-transition-property: height, width;
-      -ms-transition-property: height, width;
-       -o-transition-property: height, width;
-          transition-property: height, width;
-}
-
-.isotope .isotope-item {
-  -webkit-transition-property: -webkit-transform, opacity;
-     -moz-transition-property:    -moz-transform, opacity;
-      -ms-transition-property:     -ms-transform, opacity;
-       -o-transition-property:      -o-transform, opacity;
-          transition-property:         transform, opacity;
-}
-
-/**** disabling Isotope CSS3 transitions ****/
-
-.isotope.no-transition,
-.isotope.no-transition .isotope-item,
-.isotope .isotope-item.no-transition {
-  -webkit-transition-duration: 0s;
-     -moz-transition-duration: 0s;
-      -ms-transition-duration: 0s;
-       -o-transition-duration: 0s;
-          transition-duration: 0s;
-}
-
-/*----------fixed top navbar--------*/
+/*----------fixed top bar--------*/
 
 .topbar {
   margin: 0px 0 0 -10px;
@@ -140,24 +84,46 @@ a:hover {
 }
 
 .nav_title {
-  font-size: 30px;
-  padding: 20px 0 0 20px;
+  font-size: 36px;
+  padding: 20px 0 0 30px;
+  margin-top: 0;
   float: left;
   font-family: 'Krona One', sans-serif;
   color: #cccccc;
     text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
 }
 
-.horns {
+.searchbar_and_button {
   float: left;
-  height: 43px;
-  margin: 6px -10px 10px 22px;
+  margin: 8px 0px 0px 12%;
+}
+
+.search_bar {
+  float: left;
+}
+
+#search_bands {
+  height: 25px;
+  width: 300px;
+  font-size: 20px;
+  padding: 6px 0 6px 12px;
+}
+
+#bigDaddySearch {
+  height: 39px;
+  margin-left: -3px;
+  border: 0px;
+}
+
+#bigDaddySearch, #see_favorites, .remove_favorite, #add_favorite {
+  background-color: #74AC31;
+  color: white;
 }
 
 .devise {
   float: right;
   color: #cccccc;
-  padding: 7px 40px 0 0;
+  padding: 10px 40px 0 0;
 }
 
 .devise a:visited {
@@ -207,7 +173,7 @@ a:hover {
 }
 
 /*---------main header banner----------*/
-.title {
+/*.title {
   float: left;
   font-size: 52px;
   letter-spacing: 14px;
@@ -218,37 +184,7 @@ a:hover {
   color: #090A0B;
   opacity: 0.75;
 }
-
-
-
-.searchbar_and_button {
-  float: left;
-  margin: 7px 0px 0px 60px;
-}
-
-.search_bar {
-  float: left; /* keeps the button on the right of the field*/
-}
-
-#search_bands {
-  height: 25px;
-  width: 300px;
-  font-size: 20px;
-  padding: 6px 0 6px 12px;
-}
-
-#bigDaddySearch {
-  height: 39px;
-  margin-left: -3px;
-  border: 0px;
-}
-
-
-
-#bigDaddySearch, #see_favorites, .remove_favorite, #add_favorite {
-  background-color: #74AC31;
-  color: white;
-}
+*/
 
 
 /*--------------SIDE BAR---------------------*/
@@ -258,21 +194,35 @@ a:hover {
   margin: 20px 0 0 20px;
 }
 
+.horns {
+  height: 70px;
+  margin: 15% auto -42px auto;
+}
+
 .pageslide_links {
-  padding-bottom: 15px;
+  padding: 15px;
   font-size: 18px;
-  clear: both;
 }
 
 #see_favorites {
   width: 90%;
-  margin: 63px 0px 20px 10px;
+  margin: 36% 0 10px 10px;
   border-radius: 10px;
+  font-size: 15px;
 }
 
 .see_favorites_button_div {
   clear: both;
 }
+
+.stc {
+  font-size: 20px;
+  letter-spacing: 10px;
+  line-height: 25px;
+  margin: 0 0 8px 15px;
+  text-align: center;
+}
+
 
 /*----------band show page--------------------*/
 .container {
