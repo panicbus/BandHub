@@ -63,6 +63,63 @@ a:hover {
   font-family: "Numans";
 }
 
+/*ISOTOPE DEFINITIONS*/
+
+#iBox {
+  margin: 35px auto 0 auto;
+  display: block;
+  width: 40%;
+  clear: both;
+}
+
+#iBox a {
+    margin-right: 10px;
+    color:#666;
+    text-decoration:none;
+}
+
+#iBox a.current {
+    font-weight:bold;
+}
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
 /*----------fixed top navbar--------*/
 
 .topbar {
@@ -114,9 +171,7 @@ a:hover {
 /*-------------DEVISE FORMS--------*/
 
 .devise_form {
-  margin-top: 30px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 30px auto 0 auto;
   display: block;
   width: 30%;
   font-size: 20px;
@@ -161,9 +216,7 @@ a:hover {
 }
 
 .main_search {
-  margin-top: 20px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 20px auto 0 auto;
   display: block;
   width: 65%;
   height: 15px;
@@ -225,7 +278,7 @@ a:hover {
   padding: 18px;
   text-align: center;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 50px;
   width: 60%;
   border-radius: 50px;
   margin-right: auto;
@@ -415,12 +468,9 @@ img {
 }
 
 
-/*this may be removable*/
-img .favorite_card {
-  width: 90%;
-  height: auto;
+.favorite_card img {
+  border-radius: 4px;
 }
-/*///////*/
 
 
 .on_tour_box {

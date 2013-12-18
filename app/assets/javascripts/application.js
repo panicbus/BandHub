@@ -16,21 +16,28 @@
 //= require_tree .
 
 
+// ISOTOPE INITIALIZER //
+$(function(){
+  isotope();
+}); // end isotope
+
+
 var showFavorites = function(){
  //    //// Bandhub Corral data ////
     $.getJSON("bands/favorite").done(function(faves){
 
       for (var i = 0; i < faves.length; i++){
 
-        var favorite_card = $("<div data-method='faves_card' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
+        var favorite_card = $("<div id='icard' data-method='faves_card' data-name='" + faves[i]['name'] + "' data-date='" + faves[i]['created_at'] + "' data-id='" + faves[i]['id'] + "' class='favorite_card'></div>");
 
-        $("<div class='band_photo_box' data-id='" + faves[i]['id'] +
-          "'><p>" + faves[i]['name'] + "</p>" +
+        $("<div class='band_photo_box' data-name='" + faves[i]['name'] + "' data-date='" + faves[i]['created_at'] + "' data-id='" + faves[i]['id'] +
+          "'><p class='name'>" + faves[i]['name'] + "</p>" +
            "<p><div class='band_photo' data-id='" + faves[i]['id'] +
            "'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
           $('.band_photo').css('cursor', 'pointer');
 
+          // <hidden in slide toggle>
         if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
                 $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " not currently on tour.</div>");
               } else {
@@ -50,6 +57,7 @@ var showFavorites = function(){
            "<p><a href='" + faves[i]['urls1'] + "' target='_blank'>" + faves[i]['name'] + " on Last.fm</a>.</p>" +
            "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p></div>" +
            // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
+           // </hidden in slide toggle>
            "<br><div data-id='" + faves[i]['id'] + "' id='del_button'>" +
            "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
            "'>Unfavorite</button>" +
@@ -104,7 +112,6 @@ var showFavorites = function(){
 $(function(){
   $(document).ready(function(){
     $('.title').css('cursor', 'pointer');
-    // $('img').css('cursor', 'pointer');
    });
 
   // THE TOP NAV SHOW FAVES CLICK EVENT
@@ -164,8 +171,6 @@ $(function(){
       fadeOut(1)
 
 
-      // $("#bands_results").empty();  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>
-
       get_request.done(function(data){
       // console.log(data);
       // name = data['response']
@@ -215,20 +220,9 @@ $(function(){
                                  "'><button id='add_favorite'>Add " + search_list_item + " to Your BandHub Corral</button></div>" +
                                  "</div></div></div>");
 
-
-      // for (var i = 0; i < 2; i++){
-      //   $('#bands_results').append("<div class='searchlist'>" +
-      //                             "<li><a href='" + blogs[i].url + "' target='_blank'>" + blogs[i]['name'] + "</a></li>" +
-      //                             "<li><a href='" + reviews[i].url + "' target='_blank'>" + reviews[i]['name'] + "</a></li>" +
-      //                             "<div>");
-      //   $('li').css('cursor', 'pointer');
-      // }; // ends loop
-      //   // $('#bands_results').append("<button id='add_favorite'>Add Artist to Your Favorites!</button>");
           $('#add_favorite').on('click', function(){
             $('#flip_container').remove().fadeOut(1000);
-            // console.log(">>>added to favorite first<<<")
-            // console.log(this)
-            // $('#flip_container').hide();
+
             $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
                                               "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
 ////////////////////////////////////////

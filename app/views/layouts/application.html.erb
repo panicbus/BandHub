@@ -41,15 +41,23 @@
     <p class="title">BandHub</p>
     <div class="searchbar_and_button">
       <input id="search_bands" type="text" placeholder="Enter your favorite band..." class="search_bar"/>
-      <!-- <div class="search_button_div"> -->
         <button id="bigDaddySearch">Search!</button>
-      <!-- </div> -->
     </div>
   </div>
+<div id="iBox">
+  <ul id="sort_by" >
+    <li><a href="#data-name">Sort by name</a></li>
+   <li><a href="#data-date">Sort by date added</a></li>
+    <!-- <li><a href=".category" data-filter=".icategory">sort by category</a></li> -->
+  </ul>
 
-  <div class="container">
+</div>
+  <div id="container" class="container">
   <p class="notice"><%= flash[:notice] %></p>
   <p class="alert"><%= flash[:alert] %></p>
+
+
+
   <div id="bands_results">
 
   </div>
