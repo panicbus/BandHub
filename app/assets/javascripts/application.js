@@ -159,7 +159,7 @@ $(function(){
       var el = $('.search_list_item')[0]
 
       var fadeOut = function (op) {
-        console.log("sdf")
+        // console.log("fadeout")
         if(op>0){
          el.style.opacity = op;
          el.style.backgroundColor

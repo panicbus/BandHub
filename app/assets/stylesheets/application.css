@@ -32,6 +32,7 @@ button {
 
 li {
   /*list-style-type: none;*/
+  margin-bottom: 8px;
 }
 
 #see_favorites, .remove_favorite {
@@ -40,7 +41,7 @@ li {
 }
 
 
-a {
+a, #sort_by a {
   transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
     -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
@@ -48,9 +49,13 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover, #sort_by a:hover {
   color: #2287B5;
   text-decoration: none;
+}
+
+#sort_by a {
+  color: #74AC31;
 }
 
 .alert {
@@ -71,21 +76,22 @@ a:hover {
 /*----------fixed top bar--------*/
 
 .topbar {
-  margin: 0px 0 0 -10px;
-  width: 102%;
+  margin: 0;
+  width: 100%;
   background: #2f2f2f;
   background: rgba(0, 0, 0, 0.86);
-  height: 54px;
+  height: 60px;
   font-size: 17px;
   position: fixed;
   top: 0;
-  box-shadow: 0px 5px 30px #5E5E5E;
+  /*box-shadow: 0px 5px 30px #5E5E5E;*/
   z-index: 1000;
 }
 
 .nav_title {
   font-size: 36px;
-  padding: 20px 0 0 30px;
+  letter-spacing: 10px;
+  padding: 25px 0 0 30px;
   margin-top: 0;
   float: left;
   font-family: 'Krona One', sans-serif;
@@ -95,7 +101,7 @@ a:hover {
 
 .searchbar_and_button {
   float: left;
-  margin: 8px 0px 0px 12%;
+  margin: 12px 0px 0px 10%;
 }
 
 .search_bar {
@@ -115,10 +121,16 @@ a:hover {
   border: 0px;
 }
 
+
 #bigDaddySearch, #see_favorites, .remove_favorite, #add_favorite {
   background-color: #74AC31;
   color: white;
 }
+
+#bigDaddySearch:hover, #see_favorites:hover, .remove_favorite:hover, #add_favorite:hover {
+   box-shadow: 0px 0px 15px #74AC31;
+}
+
 
 .devise {
   float: right;
@@ -126,11 +138,11 @@ a:hover {
   padding: 10px 40px 0 0;
 }
 
-.devise a:visited {
+a:visited {
   color: #cccccc;
 }
 
-.devise a:hover {
+a:hover {
    color: #2287B5;
  }
 
@@ -172,21 +184,6 @@ a:hover {
   margin-bottom: -10px;
 }
 
-/*---------main header banner----------*/
-/*.title {
-  float: left;
-  font-size: 52px;
-  letter-spacing: 14px;
-  margin: 0;
-  font-family: 'Krona One', sans-serif;
-  float: left;
-  text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
-  color: #090A0B;
-  opacity: 0.75;
-}
-*/
-
-
 /*--------------SIDE BAR---------------------*/
 
 #hamburger {
@@ -219,10 +216,16 @@ a:hover {
   font-size: 20px;
   letter-spacing: 10px;
   line-height: 25px;
-  margin: 0 0 8px 15px;
-  text-align: center;
+  margin: 0 0 15px 5px;
 }
 
+/*#sort_by a {
+  color: #74AC31;
+}*/
+
+/*#sort_by a {
+  color: #74AC31;
+}*/
 
 /*----------band show page--------------------*/
 .container {

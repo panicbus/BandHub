@@ -15,7 +15,7 @@ function isotope(){
       // a must be equal to b
       return 0;
     });
-    console.log(bands)
+    console.log(bands);
 
     var appendAnim = function(items, index){
       $(items[index]).hide();

@@ -68,8 +68,9 @@
     <p class="notice"><%= flash[:notice] %></p>
     <p class="alert"><%= flash[:alert] %></p>
 
-    <div id="bands_results">
-    </div>
+  <div id="bands_results">
+    <img style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" class="concert" src="assets/concert.png">
+  </div>
 
 
       <%= yield %>
