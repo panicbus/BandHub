@@ -32,6 +32,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-remote'
   gem 'dotenv-rails'
 end
 

@@ -32,7 +32,7 @@ class BandsController < ApplicationController
                         # biographies: params[:biographies],
                         artist_location: params[:artist_location],
                         video: params[:video]['0']['url'])
-
+      # binding.pry
       #blogs, news & reviews are the links
       #blog1, news1 & reviews1 are the titles of each respective post
 
@@ -40,11 +40,14 @@ class BandsController < ApplicationController
 
     if favorite.save
       flash[:notice] = "Artist saved to Band Corral."
-    elsif current_user.favorites
-      flash[:notice] = "Too many likes! That artist is already in your Band Corral."
     else
-      flash[:notice] = "Oops, artist didn't save. Please try again."
+      # binding.pry_remote
     end
+    # elsif current_user.favorites
+    #   flash[:notice] = "Too many likes! That artist is already in your Band Corral."
+    # else
+    #   flash[:notice] = "Oops, artist didn't save. Please try again."
+    # end
   end
 
   def favorite

@@ -16,6 +16,13 @@
 //= require_tree .
 
 
+// helps with security authentication tokens
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
 // ISOTOPE INITIALIZER //
 $(function(){
   isotope();
@@ -90,7 +97,7 @@ var showFavorites = function(){
         /////////////////////////////
        $('.remove_favorite').on('click', function(event){
 
-            var id = $(this).attr("data-id")
+            var id = $(this).attr("data-id");
             $.ajax({
               url: "/bands/favorite/"+id,
               method: "DELETE",
@@ -115,14 +122,13 @@ $(function(){
    });
 
 
-  // >--------THE TOP NAV SEE_FAVES CLICK EVENT-------<
+  // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
     showFavorites();
   });
 
   // START OF MAIN SEARCH
-  // $('#main_field').empty();
   $("#bigDaddySearch").on('click', function(){
     event.preventDefault();
 
@@ -233,6 +239,7 @@ $(function(){
 
             var favorites = $.ajax({
               url: "bands/create",
+              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
               type: "POST",
               // assigns a new key value pair in params for ajax Favorite create
               data: {band_name: band_name,

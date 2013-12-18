@@ -22,12 +22,13 @@
       <p class="nav_title">BandHub</p>
     </div>
 
-  <div class="main_search">
-    <div class="searchbar_and_button">
-      <input id="search_bands" type="text" placeholder="Enter your favorite band..." class="search_bar"/>
+    <div class="main_search">
+      <div class="searchbar_and_button">
+        <input id="search_bands" type="text" placeholder="Enter your favorite band..." class="search_bar"/>
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
         <button id="bigDaddySearch">Search!</button>
+      </div>
     </div>
-  </div>
 
      <div class="devise">
       <% if user_signed_in? %>
@@ -52,7 +53,7 @@
   </div>
 
   <div id="secondary">
-    <img style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" class="horns" src="assets/horns.png">
+    <img class="horns" src="assets/horns.png">
     <button id='see_favorites'>View Your BandHub Corral</button>
     <div class="pageslide_links">
       <p class="stc">Sort the Corral:</p>
@@ -65,13 +66,10 @@
 
 
   <div id="container" class="container">
-    <p class="notice"><%= flash[:notice] %></p>
-    <p class="alert"><%= flash[:alert] %></p>
 
   <div id="bands_results">
-    <img style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" class="concert" src="assets/concert.png">
+    <img class="concert" src="assets/concert.png">
   </div>
-
 
       <%= yield %>
 

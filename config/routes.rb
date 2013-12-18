@@ -8,17 +8,18 @@ Bandhub::Application.routes.draw do
 
   # resources :bands
   root :to => "bands#index"
-  # get "/"
+
   get "bands/index"
 
   get "bands/show"
 
   post "bands/create"
 
-  get "bands/destroy"
+  # get "bands/destroy"
+  get "bands/favorite/:id" => "bands#destroy"
 
   get "bands/favorite" => "bands#favorite"
   post "bands/favorite" => "bands#favorite"
-  delete "bands/favorite/:id" => "bands#destroy"
+
 
 end

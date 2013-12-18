@@ -41,7 +41,7 @@ li {
 }
 
 
-a, #sort_by a {
+a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite {
   transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
     -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
@@ -52,6 +52,10 @@ a, #sort_by a {
 a:hover, #sort_by a:hover {
   color: #2287B5;
   text-decoration: none;
+}
+
+a:visited {
+  color: #cccccc;
 }
 
 #sort_by a {
@@ -72,6 +76,9 @@ a:hover, #sort_by a:hover {
   font-family: "Numans";
 }
 
+.concert {
+  padding-top: 20px;
+}
 
 /*----------fixed top bar--------*/
 
@@ -86,6 +93,21 @@ a:hover, #sort_by a:hover {
   top: 0;
   /*box-shadow: 0px 5px 30px #5E5E5E;*/
   z-index: 1000;
+}
+
+.title {
+  /*width: 30%;*/
+}
+
+.main_search {
+  /*width: 30%;*/
+}
+
+.devise {
+  /*width: 30%;*/
+  float: right;
+  color: #cccccc;
+  padding: 10px 40px 0 0;
 }
 
 .nav_title {
@@ -132,14 +154,18 @@ a:hover, #sort_by a:hover {
 }
 
 
-.devise {
-  float: right;
-  color: #cccccc;
-  padding: 10px 40px 0 0;
+
+
+.devise_form a {
+  color: darkgray;
 }
 
-a:visited {
-  color: #cccccc;
+.devise_form a:visited {
+  color: darkgray;
+}
+
+.devise_form a:hover {
+  color: #2287B5;
 }
 
 a:hover {
@@ -416,7 +442,7 @@ img {
   border-radius: 3px;
   padding: 0 0 15px 0;
   margin: 25px 20px 15px 15px;
-  width: 320px;
+  width: 29%;
   height: auto;
   background-image: -webkit-gradient(
     linear,

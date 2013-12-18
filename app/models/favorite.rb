@@ -4,7 +4,7 @@ class Favorite < ActiveRecord::Base
   belongs_to :user
   belongs_to :band, dependent: :destroy
 
-# dependend: :destroy forces delete from Band's dependent table, in this case Favorite
+# dependent: :destroy forces delete from Band's dependent table, in this case Favorite
 
   validates_uniqueness_of :band_id, :scope => :user_id
 end
