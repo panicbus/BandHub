@@ -1,5 +1,4 @@
 function isotope(){
-    // alert('fuckface')
      $('#sort_by a').click(function(e){
     var sortAttr = $(this).attr('href').slice(1);
     e.preventDefault()

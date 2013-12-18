@@ -65,7 +65,7 @@ var showFavorites = function(){
           "</div>").appendTo(favorite_card); // ends favorite_card div
 
 
-        $('#bands_results').hide().prepend(favorite_card).fadeIn(1000); // appends all the favorite cards
+        $('#bands_results').hide().append(favorite_card).fadeIn(1000); // appends all the favorite cards
       }; // end of for loop
 
       // FAVE CARD SLIDE TOGGLE ON IMG CLICK
@@ -114,8 +114,8 @@ $(function(){
     $('.title').css('cursor', 'pointer');
    });
 
-  // THE TOP NAV SHOW FAVES CLICK EVENT
 
+  // >--------THE TOP NAV SEE_FAVES CLICK EVENT-------<
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
     showFavorites();

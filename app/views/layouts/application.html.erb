@@ -7,9 +7,14 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Nixie+One|Seymour+One|Average+Sans|New+Rocker|Coustard|Maiden+Orange|Short+Stack|Paytone+One|Cagliostro|Exo+2|Varela+Round|Amatic+SC|Text+Me+One|Imprima|Krona+One|Comfortaa|Faster+One|Miltonian+Tattoo|Numans|Autour+One' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="jquery.pageslide.css">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script type="text/javascript">
+    $('#hamburger').pageslide();
+  </script>
 </head>
 
   <div class="topbar">
@@ -17,9 +22,13 @@
       <img style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" class="horns" src="assets/horns.png">
       <p class="nav_title">BandHub</p>
     </div>
-      <!-- <div class="see_favorites_button_div"> -->
-        <button style="visibility: <%= current_user == nil ? "hidden" : "visible" %>" id='see_favorites'>View Your BandHub Corral</button>
-      <!-- </div> -->
+
+  <div class="main_search">
+    <div class="searchbar_and_button">
+      <input id="search_bands" type="text" placeholder="Enter your favorite band..." class="search_bar"/>
+        <button id="bigDaddySearch">Search!</button>
+    </div>
+  </div>
 
      <div class="devise">
       <% if user_signed_in? %>
@@ -37,33 +46,42 @@
 <header>
 </header>
 <body>
-  <div class="main_search">
-    <p class="title">BandHub</p>
-    <div class="searchbar_and_button">
-      <input id="search_bands" type="text" placeholder="Enter your favorite band..." class="search_bar"/>
-        <button id="bigDaddySearch">Search!</button>
+
+
+  <div style="visibility: <%= current_user == nil ? "hidden" : "visible" %>">
+    <a class="impatient" href="#secondary"><i id="hamburger" class="fa fa-bars fa-3x"></i></a>
+  </div>
+
+  <div id="secondary">
+     <button id='see_favorites'>View Your BandHub Corral</button>
+    <div class="pageslide_links">
+      <ul id="sort_by" >
+        <li><a href="#data-name">Sort by name</a></li>
+        <li><a href="#data-date">Sort by date added</a></li>
+      </ul>
     </div>
   </div>
-<div id="iBox">
-  <ul id="sort_by" >
-    <li><a href="#data-name">Sort by name</a></li>
-   <li><a href="#data-date">Sort by date added</a></li>
-    <!-- <li><a href=".category" data-filter=".icategory">sort by category</a></li> -->
-  </ul>
 
-</div>
+
   <div id="container" class="container">
-  <p class="notice"><%= flash[:notice] %></p>
-  <p class="alert"><%= flash[:alert] %></p>
+    <p class="notice"><%= flash[:notice] %></p>
+    <p class="alert"><%= flash[:alert] %></p>
+
+    <div id="bands_results">
+    </div>
 
 
-
-  <div id="bands_results">
+      <%= yield %>
 
   </div>
-    <%= yield %>
 
-  </div>
-
+  <!-- Pageslide scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="assets/jquery.pageslide.min.js"></script>
+  <script>
+      $(document).ready(function() {
+          $(".open, .impatient").pageslide();
+      });
+  </script>
 </body>
 </html>
