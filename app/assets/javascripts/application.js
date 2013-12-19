@@ -129,7 +129,7 @@ $(function(){
 
   // START OF MAIN SEARCH
   $("#bigDaddySearch").on('click', function(){
-    event.preventDefault();
+     event.preventDefault();
 
     // grab the params of the search form
     var query = $('#search_bands').val();
