@@ -484,7 +484,7 @@ img {
   display: none;
 }
 
-/*.on_tour_box:hover a, .links_box:hover a, .news_box:hover a */{
+.on_tour_box:hover a, .links_box:hover a, .news_box:hover a {
     transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
     -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
