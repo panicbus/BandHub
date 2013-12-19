@@ -7,6 +7,7 @@ class CreateFavorites < ActiveRecord::Migration
       t.string :bio
       t.string :response
       t.integer :user_id
+      t.integer :band_id
 
       t.timestamps
     end

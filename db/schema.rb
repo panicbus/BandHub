@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(:version => 20131216220305) do
   end
 
   create_table "favorites", :force => true do |t|
-    t.integer  "band_id",    :limit => 255
+    t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "band_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
