@@ -42,6 +42,8 @@ class BandsController < ApplicationController
     else
       # binding.pry_remote
     end
+
+    render nothing: true, status: 201
     # elsif current_user.favorites
     #   flash[:notice] = "Too many likes! That artist is already in your Band Corral."
     # else
