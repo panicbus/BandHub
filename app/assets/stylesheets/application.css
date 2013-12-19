@@ -41,7 +41,8 @@ li {
 }
 
 
-a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite {
+/*----easing for all links------*/
+a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite, .on_tour_box a, .links_box a, .news_box a, #hamburger {
   transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
     -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
@@ -49,10 +50,21 @@ a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite 
   text-decoration: none;
 }
 
-a:hover, #sort_by a:hover {
+.on_tour_box a, .links_box a, .news_box a {
+  color: #6b6b6b;
+}
+
+
+/*----hover color for all links---------*/
+a:hover, #sort_by a:hover, .on_tour_box a:hover, .links_box a:hover, .news_box a:hover {
   color: #2287B5;
   text-decoration: none;
 }
+
+a:hover {
+  color: #2287B5;
+ }
+
 
 a:visited {
   color: #cccccc;
@@ -155,7 +167,6 @@ a:visited {
 
 
 
-
 .devise_form a {
   color: darkgray;
 }
@@ -167,10 +178,6 @@ a:visited {
 .devise_form a:hover {
   color: #2287B5;
 }
-
-a:hover {
-   color: #2287B5;
- }
 
 .devise img {
   margin: 2px 0px 0px 1px;
@@ -216,6 +223,10 @@ a:hover {
   float: left;
   margin: 20px 0 0 20px;
   position: fixed;
+}
+
+#hamburger:hover {
+  color: #2287B5;
 }
 
 .horns {
@@ -471,6 +482,13 @@ img {
 .on_tour_box, .links_box, .news_box {
   padding: 6px 10px 10px 15px;
   display: none;
+}
+
+/*.on_tour_box:hover a, .links_box:hover a, .news_box:hover a */{
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
+    -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
+    -o-transition: all 0.2s ease-in-out; /* Opera */
 }
 
 .links_box {

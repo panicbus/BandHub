@@ -44,9 +44,8 @@ var showFavorites = function(){
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
           $('.band_photo').css('cursor', 'pointer');
 
-          // <hidden in slide toggle>
-        if (faves[i]['on_tour'] == null || faves[i]['on_tour'] == ""){
-                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " not currently on tour.</div>");
+        if (faves[i]['on_tour'] == "null" || faves[i]['on_tour'] == ""){
+                $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " - not currently on tour.</div>");
               } else {
                 $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + "!<br>" +
                                            "<div class='tour_dates_link'><a href='" +
