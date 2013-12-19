@@ -42,7 +42,7 @@ li {
 
 
 /*----easing for all links------*/
-a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite, .on_tour_box a, .links_box a, .news_box a, #hamburger {
+a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite, .on_tour_box a, .links_box a, .news_box a, .devise a, #hamburger {
   transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
     -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
@@ -61,13 +61,8 @@ a:hover, #sort_by a:hover, .on_tour_box a:hover, .links_box a:hover, .news_box a
   text-decoration: none;
 }
 
-a:hover {
-  color: #2287B5;
- }
-
-
 a:visited {
-  color: #cccccc;
+  color: #6b6b6b;
 }
 
 #sort_by a {
@@ -103,7 +98,6 @@ a:visited {
   font-size: 17px;
   position: fixed;
   top: 0;
-  /*box-shadow: 0px 5px 30px #5E5E5E;*/
   z-index: 1000;
 }
 
@@ -120,6 +114,14 @@ a:visited {
   float: right;
   color: #cccccc;
   padding: 10px 40px 0 0;
+}
+
+.devise a:hover {
+  color: #2287B5;
+}
+
+.devise a:visited {
+  color: #cccccc;
 }
 
 .nav_title {
@@ -164,8 +166,6 @@ a:visited {
 #bigDaddySearch:hover, #see_favorites:hover, .remove_favorite:hover, #add_favorite:hover {
    box-shadow: 0px 0px 15px #74AC31;
 }
-
-
 
 .devise_form a {
   color: darkgray;
@@ -223,6 +223,7 @@ a:visited {
   float: left;
   margin: 20px 0 0 20px;
   position: fixed;
+  color: #cccccc;
 }
 
 #hamburger:hover {
@@ -310,7 +311,6 @@ img {
   width: 30%;
   height: 250px;
   z-index: 1;
-
   padding: 15px;
 }
 
