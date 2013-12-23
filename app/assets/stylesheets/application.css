@@ -102,18 +102,25 @@ a:visited {
 }
 
 .title {
-  /*width: 30%;*/
+  float: left;
+  width: 27%;
 }
 
 .main_search {
-  /*width: 30%;*/
+  float: left;
+  width: 40%;
 }
 
 .devise {
-  /*width: 30%;*/
   float: right;
+  width: 30%;
   color: #cccccc;
-  padding: 10px 40px 0 0;
+  padding: 13px 15px 0 0;
+  text-align: right;
+}
+
+.devise2 {
+  display: none;
 }
 
 .devise a:hover {
@@ -127,7 +134,7 @@ a:visited {
 .nav_title {
   font-size: 36px;
   letter-spacing: 10px;
-  padding: 25px 0 0 30px;
+  padding: 25px 0 0 15px;
   margin-top: 0;
   float: left;
   font-family: 'Krona One', sans-serif;
@@ -138,6 +145,7 @@ a:visited {
 .searchbar_and_button {
   float: left;
   margin: 12px 0px 0px 10%;
+  width: 100%;
 }
 
 .search_bar {
@@ -146,7 +154,7 @@ a:visited {
 
 #search_bands {
   height: 25px;
-  width: 300px;
+  width: 70%;
   font-size: 20px;
   padding: 6px 0 6px 12px;
 }
@@ -443,7 +451,7 @@ img {
 
 .favorite_card {
   float: left;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 0 0 15px 0;
   margin: 25px 20px 15px 15px;
   width: 29%;
@@ -464,7 +472,7 @@ img {
 
 
 .favorite_card img {
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 
@@ -504,12 +512,124 @@ img {
   border-radius: 5px;
 }
 
-/*----------responsive media-----------*/
+/*----------RESPONSIVE MEDIA-----------*/
 
-@media (min-width: 425px) and (max-width: 700px) {
+@media (min-width: 700px) and (max-width: 1000px) {
+
+  .container {
+    width: 80%;
+    padding-top: 60px;
+  }
+
+  .topbar {
+    height: 115px;
+  }
+
+  .title {
+    width: 100%;
+    padding-bottom: 5px;
+  }
+
+  .nav_title {
+    margin: 0 100% 0 33%;
+    letter-spacing: 30px;
+  }
+
+  .main_search {
+    width: 50%;
+    float: left;
+  }
+
+  .devise {
+    width: 45%;
+    float: right;
+  }
+
+  .devise2 {
+    display: none;
+  }
+
+  .concert {
+    padding-top: 75px;
+  }
+
+  #hamburger {
+    margin-top: 75px;
+  }
+
+  .favorite_card {
+    width: 44%;
+  }
 
 }
 
-@media (max-width: 425px) {
+@media (min-width: 320px) and (max-width: 700px) {
 
 }
+
+@media (max-width: 360px) {
+
+  .container {
+    padding-top: 50px;
+    width: 85%;
+  }
+
+  .topbar {
+    height: 110px;
+    margin: 0 0 0 -20px;
+  }
+
+  .title {
+    width: 100%;
+    padding-bottom: 5px;
+  }
+
+  .nav_title {
+    margin: 0 100% 0 5%;
+    letter-spacing: 13px;
+  }
+
+  .main_search {
+    width: 90%;
+    float: left;
+  }
+
+  .devise {
+    display: none;
+  }
+
+  .devise2 {
+    display: block;
+  }
+
+  #search_bands {
+    height: 20px;
+    font-size: 17px;
+  }
+
+  #bigDaddySearch {
+    height: 34px;
+  }
+
+  .concert {
+    padding-top: 100px;
+  }
+
+  #hamburger {
+    margin: 75px 0 0 -10px;
+  }
+
+  .devise2 {
+    display: block;
+  }
+
+  .favorite_card {
+    width: 100%;
+  }
+
+  .on_tour_box, .links_box {
+    width: 90.7%;
+  }
+
+}
+

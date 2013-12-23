@@ -65,6 +65,16 @@
       <a href="http://the.echonest.com/"><img class="echonest_link" src="assets/echonest_banner.png"></a>
       <a href="http://www.songkick.com/"><img class="songkick_link" src="assets/songkick_logo.png"></a>
     </div>
+    <div class="devise2"> <!-- displayed in sidebar on mobile device media query -->
+      <% if user_signed_in? %>
+        You're BandHubbing as <strong><%= current_user.username.capitalize %></strong><br>
+      Not you? &nbsp;<%= link_to "Logout ", destroy_user_session_path, method: :delete %> &nbsp;|&nbsp;
+        <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to "Login", new_user_session_path %>
+      <%= link_to( image_tag("sign-in-twitter.png"), user_omniauth_authorize_path(:twitter) ) %>
+      <% end %>
+    </div>
   </div>
 
 
