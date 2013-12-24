@@ -114,12 +114,6 @@ var showFavorites = function(){
   // }); // ends the see favorites onclick
 }
 
-$(function(){
-  $(document).ready(function(){
-    $('.title').css('cursor', 'pointer');
-   });
-
-
   // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();

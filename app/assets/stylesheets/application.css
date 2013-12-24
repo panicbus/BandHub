@@ -530,6 +530,7 @@ img {
   .title {
     width: 100%;
     padding-bottom: 5px;
+    cursor: pointer;
   }
 
   .nav_title {
