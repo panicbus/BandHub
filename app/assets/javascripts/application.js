@@ -114,6 +114,8 @@ var showFavorites = function(){
   // }); // ends the see favorites onclick
 }
 
+$(function(){
+
   // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
@@ -156,7 +158,7 @@ var showFavorites = function(){
 
       var fadeOut = function (op) {
         // console.log("fadeout")
-        if(op>0){
+        if(op > 0){
          el.style.opacity = op;
          el.style.backgroundColor
          setTimeout(function(){
