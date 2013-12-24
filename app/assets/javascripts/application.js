@@ -42,7 +42,6 @@ var showFavorites = function(){
            "<p><div class='band_photo' data-id='" + faves[i]['id'] +
            "'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
-          $('.band_photo').css('cursor', 'pointer');
 
         if (faves[i]['on_tour'] == "null" || faves[i]['on_tour'] == ""){
                 $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " - not currently on tour.</div>");
@@ -154,8 +153,6 @@ $(function(){
       search_list_item = data['response']['artist']['name'];
 
         $('#bands_results').append("<div class='search_list_item'>" + search_list_item + "<div>");
-        $('.search_list_item').css('cursor', 'pointer');
-
     }) // ends get_request.done function
 
          //>>>START OF THE SHOW DISPLAY<<<
