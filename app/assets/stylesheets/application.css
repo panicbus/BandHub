@@ -63,6 +63,10 @@ a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite,
   text-decoration: none;
 }
 
+.devise a {
+  color: #cccccc;
+}
+
 a:visited {
   color: #6b6b6b;
 }
