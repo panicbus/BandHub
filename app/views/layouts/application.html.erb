@@ -36,7 +36,7 @@
       <%= link_to 'Edit profile', edit_user_registration_path %>
         <% else %>
       <%= link_to "Sign up", new_user_registration_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <%= link_to "Login", new_user_session_path %>
+      <%= link_to "Login", new_user_session_path %><br>
       <%= link_to( image_tag("sign-in-twitter.png"), user_omniauth_authorize_path(:twitter) ) %>
       <% end %>
     </div>
@@ -83,8 +83,10 @@
   <div id="container" class="container">
 
   <div id="bands_results">
-    <img class="concert" src="assets/concert.png">
-    <p class="subtitle">All Your Bands, In One Place</p><br>
+    <% if current_user %>
+      <img class="concert" src="assets/concert.png">
+    <% end %>
+      <p class="subtitle">All Your Bands, In One Place</p><br>
   </div>
 
       <%= yield %>
