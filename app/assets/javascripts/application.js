@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require underscore
 //= require_tree .
 
 
@@ -23,7 +22,7 @@ $.ajaxSetup({
   }
 });
 
-// Kicks to the Isotope (not Isotope) calls file //
+// Kicks to the isotope (not Isotope) calls file //
 $(function(){
   isotope();
 });
@@ -101,18 +100,16 @@ var showFavorites = function(){
               method: "DELETE",
               data: id
             }).done(function(){
-              // console.log(id);
+
         // this associates the entire .favorite_card with the [data-id='+ id +'] id .
             $('.favorite_card[data-id='+ id +']').fadeOut(1000, function(){
               $(this).remove();
               }); // ends .fadeOut remove function
             }) // ends .done
-          }); ///ends delete///
+          }); ///ends DELETE///
 
     }); // end of getJSON
-
-  // }); // ends the see favorites onclick
-}
+  }
 
 $(function(){
 
@@ -139,40 +136,15 @@ $(function(){
       data: {band: encodeURIComponent(query)}
        }); // ends echonest ajax rq// "GET" request to send search params to echonest api
 
-    //// FIRST LIST OF BAND NAMES ////
     // clear the div and the search field
     $("#bands_results").empty();
     $("search_bands").val("");
 
     get_request.done(function(data){
-      // console.log(data);
+
       search_list_item = data['response']['artist']['name'];
 
-        $('#bands_results').append("<div class='search_list_item'>" + search_list_item + "<div>");
-    }) // ends get_request.done function
-
-         //>>>START OF THE SHOW DISPLAY<<<
-    $('#bands_results').on('click', '.search_list_item', function(){
-      var id = $(this).attr('id');
-      var el = $('.search_list_item')[0]
-
-      var fadeOut = function (op) {
-        // console.log("fadeout")
-        if(op > 0){
-         el.style.opacity = op;
-         el.style.backgroundColor
-         setTimeout(function(){
-          fadeOut(op-.01);
-         },1)
-        }
-      }
-      fadeOut(1)
-
-
-      get_request.done(function(data){
-      // console.log(data);
-
-      // PARSING ALL THE ECHONEST API DATA
+      // PARSING THE ECHONEST API DATA
       image = data['response']['artist']['images'][0];
       blogs = data['response']['artist']['blogs'].slice(0,2);
       blogsa = data['response']['artist']['blogs'][1];
@@ -190,9 +162,6 @@ $(function(){
       // biographies = data['response']['artist']['biographies'][0];
       artist_location = data['response']['artist']['artist_location'];
       video = data['response']['artist']['video'].slice(0,1);
-
-      // console.log(urls);
-      // console.log(reviews.url);
 
       var songkick_get_request = $.ajax({
       url: "apis/songkick",
@@ -260,10 +229,9 @@ $(function(){
             }); // ends favorites ajax
 
           }); // ends #add_favorite actions
-      ////////////////
-    });  // ends songkick_get_request.done
-    }); // ends first get_request.done
-    }) // ends START OF THE SHOW DISPLAY onclick
+
+    }); // ends songkick_get_request.done
+    }); // ends START OF THE SHOW DISPLAY onclick
 
   }) // ends bigDaddySearch
 
