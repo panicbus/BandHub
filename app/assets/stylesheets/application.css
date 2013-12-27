@@ -278,6 +278,11 @@ a:visited {
   margin: 0 0 15px 5px;
 }
 
+.bio {
+  text-align: center;
+  margin: 10px 0 0 14px;
+}
+
 /*----------band show page--------------------*/
 .container {
   margin-right: auto;
@@ -285,32 +290,6 @@ a:visited {
   display: block;
   width: 87%;
 
-}
-
-.search_list_item, .searchlist li {
-  background: #2f2f2f;
-  background: rgba(0, 0, 0, 0.86);
-  color: #fff;
-  padding: 18px;
-  text-align: center;
-  font-size: 18px;
-  margin-top: 50px;
-  width: 60%;
-  border-radius: 50px;
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
-  transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out; /* Firefox 4 */
-    -webkit-transition: all 0.3s ease-in-out; /* Safari and Chrome */
-    -o-transition: all 0.3s ease-in-out; /* Opera */
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.search_list_item:hover, .searchlist li:hover {
-  background-color: #303030;
-  color: #A0A0A0;
 }
 
 img {

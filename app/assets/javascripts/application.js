@@ -27,9 +27,16 @@ $(function(){
   isotope();
 });
 
-$('.title').on('click', function(){
-   window.location = 'http://www.google.com';
-  });
+// displays the 'loading' gif when ajax calls are in motion
+// $(document).ready(function(){
+//   $('#loading').hide();
+//     $.ajaxStart(function(){
+//       $(this).show();
+//     });
+//     $.ajaxStop(function(){
+//       $(this).hide();
+//     });
+//   });
 
 var showFavorites = function(){
  //    //// Bandhub Corral data ////
@@ -122,6 +129,7 @@ $(function(){
     showFavorites();
   });
 
+  // display the splash page on logo click
   $('.title').on('click', function(){
    window.location = '/';
   });
@@ -130,22 +138,29 @@ $(function(){
   $("#bigDaddySearch").on('click', function(){
      event.preventDefault();
 
+    // clear the div and the search field
+    $("#bands_results").empty();
+    $("search_bands").val("");
+
     // grab the params of the search form
     var query = $('#search_bands').val();
 
     // "GET" request to send search params to echonest api
     var get_request = $.ajax({
       // sends the rq to the apisController
+      beforeSend: function(){
+        $('#bands_results').html("<img style='margin: 100px auto 0px auto' src='assets/loading.gif'>");
+      },
       url: "apis/api",
       type: "get",
       dataType: "json",
       // encodeURIComponent removes the space b/t words & encodes it w a proper searchable symbol
-      data: {band: encodeURIComponent(query)}
-       }); // ends echonest ajax rq// "GET" request to send search params to echonest api
+      data: {band: encodeURIComponent(query)},
+      success: function(html){
+          $('#bands_results').html(html);
+        }
+      }); // ends echonest ajax rq// "GET" request to send search params to echonest api
 
-    // clear the div and the search field
-    $("#bands_results").empty();
-    $("search_bands").val("");
 
     get_request.done(function(data){
 
