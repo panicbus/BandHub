@@ -27,6 +27,9 @@ $(function(){
   isotope();
 });
 
+$('.title').on('click', function(){
+   window.location = 'http://www.google.com';
+  });
 
 var showFavorites = function(){
  //    //// Bandhub Corral data ////
@@ -74,7 +77,7 @@ var showFavorites = function(){
 
       // FAVE CARD SLIDE TOGGLE ON IMG CLICK
         $(document).ready(function(){
-           $('.title').on('click', function(){
+           $('.horns').on('click', function(){ // close all
             $('.on_tour_box').slideUp('slow');
             $('.news_box').slideUp('slow');
             $('.links_box').slideUp('slow');
@@ -117,6 +120,10 @@ $(function(){
   $('#see_favorites').on('click', function(){
   $('#bands_results').empty();
     showFavorites();
+  });
+
+  $('.title').on('click', function(){
+   window.location = '/';
   });
 
   // START OF MAIN SEARCH
