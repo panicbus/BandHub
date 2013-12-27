@@ -42,7 +42,8 @@ li {
 
 
 /*----easing for all links------*/
-a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite, .on_tour_box a, .links_box a, .news_box a, .devise a, #hamburger {
+a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite,
+.on_tour_box a, .links_box a, .news_box a, .devise a, #hamburger, .bio a {
   transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
     -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
@@ -56,7 +57,8 @@ a, #sort_by a, #bigDaddySearch, #see_favorites, .add_favorite, .remove_favorite,
 
 
 /*----hover color for all links---------*/
-#sort_by a:hover, .on_tour_box a:hover, .links_box a:hover, .news_box a:hover, .devise a:hover {
+#sort_by a:hover, .on_tour_box a:hover, .links_box a:hover, .news_box a:hover,
+.devise a:hover, .bio a:hover {
   color: #2287B5;
   text-decoration: none;
 }
@@ -131,14 +133,6 @@ a:visited {
 
 .devise2 {
   display: none;
-}
-
-/*.devise a:hover {
-  color: #2287B5;
-}*/
-
-.devise a:visited {
-  color: #cccccc;
 }
 
 .nav_title {
