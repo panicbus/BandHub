@@ -74,7 +74,7 @@ var showFavorites = function(){
            // </hidden in slide toggle>
            "<br><div data-id='" + faves[i]['id'] + "' id='del_button'>" +
            "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
-           "'>Unfavorite</button>" +
+           "'>Remove</button>" +
            "</div>" + // ends del_button div
           "</div>").appendTo(favorite_card); // ends favorite_card div
 

@@ -1,31 +1,30 @@
 function isotope(){
-     $('#sort_by a').click(function(e){
+  $('#sort_by a').click(function(e){
     var sortAttr = $(this).attr('href').slice(1);
     e.preventDefault()
 
     var bands = $('#bands_results').children();
 
     bands.sort(function (a, b) {
-     if ($(a).attr(sortAttr) > $(b).attr(sortAttr)){
-      return 1;
-    }
-     if ($(b).attr(sortAttr) > $(a).attr(sortAttr)){
-      return -1;
-    }
-      // a must be equal to b
-      return 0;
+      if ($(a).attr(sortAttr) > $(b).attr(sortAttr)){
+        return 1;
+      }
+      if ($(b).attr(sortAttr) > $(a).attr(sortAttr)){
+        return -1;
+      }
+        // a must be equal to b
+        return 0;
     });
     console.log(bands);
 
     var appendAnim = function(items, index){
       $(items[index]).hide();
-      $(items[index]).fadeIn(500 + 300*index);
+      $(items[index]).fadeIn(500 + 300 * index);
       document.getElementById("bands_results").appendChild(items[index])
 
       if(index < items.length ){
-        appendAnim(items,index+1);
+        appendAnim(items,index + 1);
       }
-
     }
 
     appendAnim(bands,0)
