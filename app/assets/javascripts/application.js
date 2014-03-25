@@ -27,17 +27,6 @@ $(function(){
   isotope();
 });
 
-// displays the 'loading' gif when ajax calls are in motion
-// $(document).ready(function(){
-//   $('#loading').hide();
-//     $.ajaxStart(function(){
-//       $(this).show();
-//     });
-//     $.ajaxStop(function(){
-//       $(this).hide();
-//     });
-//   });
-
 var showFavorites = function(){
  //    //// Bandhub Corral data ////
     $.getJSON("bands/favorite").done(function(faves){
@@ -70,8 +59,6 @@ var showFavorites = function(){
            "<div data-id='" + faves[i]['id'] + "' class='links_box'><p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
            "<p><a href='" + faves[i]['urls1'] + "' target='_blank'>" + faves[i]['name'] + " on Last.fm</a>.</p>" +
            "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p></div>" +
-           // "<p><iframe id='ytplayer' type='text/html' width='300' height='200' src='" + faves[i]['video'] + "&output=embed&alt=jsonc' frameborder='0'/></p>" +
-           // </hidden in slide toggle>
            "<br><div data-id='" + faves[i]['id'] + "' id='del_button'>" +
            "<button class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
            "'>Remove</button>" +
