@@ -22,7 +22,7 @@ $.ajaxSetup({
   }
 });
 
-// Kicks to the isotope (not Isotope) calls file //
+// Kicks to the isotope (not "I"sotope) calls file //
 $(function(){
   isotope();
 });
@@ -37,7 +37,7 @@ var showFavorites = function(){
 
         $("<div class='band_photo_box' data-name='" + faves[i]['name'] + "' data-date='" + faves[i]['created_at'] + "' data-id='" + faves[i]['id'] +
           "'><p class='name'>" + faves[i]['name'] + "</p>" +
-           "<p><div class='band_photo' data-id='" + faves[i]['id'] +
+           "<p><div title='Click for details' class='band_photo' data-id='" + faves[i]['id'] +
            "'>" + "<img style='height: 200px; width: auto' src='" + faves[i]['image'] + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
 
