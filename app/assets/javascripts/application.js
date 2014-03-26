@@ -136,7 +136,7 @@ $(function(){
     var get_request = $.ajax({
       // sends the rq to the apisController
       beforeSend: function(){
-        $('#bands_results').html("<img style='margin: 100px auto 0px auto' src='assets/loading.gif'>");
+        $('#bands_results').html("<img class='spinner' src='assets/loading.gif'>");
       },
       url: "apis/api",
       type: "get",
@@ -184,10 +184,12 @@ $(function(){
       on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
       tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
 
-        // the flip card show display
+         ////////////////////////////////////////// 
+        ////// the flip card show display ////////
+       //////////////////////////////////////////
       $('#bands_results').append("<div id='flip_container'>" +
                                  "<div id='flip_card' class='shadow'>" +
-                                 "<div class='front face'><p>" + search_list_item +
+                                 "<div class='front face'><br><p>" + search_list_item +
                                  "</p></div>" +
                                  "<div class='back face center'>" +
                                  "<img style='height: 200px; width: auto' src='" + image.url +
