@@ -95,9 +95,18 @@ a:visited {
     color: #000;
     text-align: center;
     font-size: 30px;
-    margin: 20px 0 -15px 0;
+    margin: 40px 0 0 0;
     letter-spacing: 10px;
   }
+
+  .sub-subtitle {
+    color: #000;
+    text-align: center;
+    margin: 5px 0 0 0;
+    font-size: 22px; 
+    letter-spacing: 3px;
+  }
+
 
 /*----------fixed top bar--------*/
 .topbar {
@@ -200,7 +209,7 @@ a:visited {
 /*-------------DEVISE FORMS--------*/
 
 .devise_form {
-  margin: -20px auto 0 auto;
+  margin: 10px auto 30px;
   display: block;
   width: 30%;
   font-size: 20px;
@@ -216,16 +225,16 @@ a:visited {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ca72', endColorstr='#f1ffbf', GradientType=0 ); 
 
   border-radius: 5px;
-  padding: 15px;
+  padding: 5px 15px 5px;
 }
 
 .devise_form h1 {
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .devise_form label {
-  font-size: 20px;
-  margin-bottom: -10px;
+  font-size: 18px;
+  margin-bottom: -20px;
 }
 
 /*--------------SIDE BAR---------------------*/
@@ -395,8 +404,8 @@ a:visited {
   background: linear-gradient(to bottom, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ca72', endColorstr='#f1ffbf', GradientType=0 ); 
 }
+/*//////end of flip action CSS/////////*/
 
-/*//////end flip action/////////*/
 
 .band_photo {
   display: block;
@@ -427,7 +436,6 @@ a:visited {
 
 
 /*---------favorites display-----------*/
-
 .favorite_card {
   float: left;
   border-radius: 5px;
@@ -495,7 +503,6 @@ a:visited {
 }
 
 /*----------RESPONSIVE MEDIA-----------*/
-
 @media (min-width: 700px) and (max-width: 1000px) {
 
   .container {
