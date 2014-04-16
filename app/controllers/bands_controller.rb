@@ -37,11 +37,11 @@ class BandsController < ApplicationController
 
       favorite = current_user.favorites.create(band_id: @band.id)
 
-    if favorite.save
-      flash[:notice] = "Artist saved to Band Corral."
+    # if favorite.save
+      # flash[:notice] = "Artist saved to Band Corral."
     # else
     #   # binding.pry_remote
-    end
+    # end
 
     render nothing: true, status: 201
     
