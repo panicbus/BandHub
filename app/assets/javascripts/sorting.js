@@ -1,4 +1,4 @@
-function isotope(){
+function sorting(){
   $('#sort_by a').click(function(e){
     var sortAttr = $(this).attr('href').slice(1);
     e.preventDefault()
