@@ -37,17 +37,26 @@ $(function(){
     showFavorites();
   });
 
+
   // display the splash page on logo click
   $('.title').on('click', function(){
    window.location = '/';
   });
 
-  
+  // var $container = $('#bands_results');
+  //   // initialize
+  //   $container.masonry({
+  //     columnWidth: 200,
+  //     itemSelector: '.list-item'
+  //   });
+
+  //   var msnry = $container.data('masonry');
+    
   // to refresh all cards with current API data
-  $('.refresh').click(function(){
-    event.preventDefault();
-    hit_the_api();
-  })
+  // $('.refresh').click(function(){
+  //   event.preventDefault();
+  //   hit_the_api();
+  // })
 
   // jquery-ui drag & drop sort
     $( "#bands_results" ).sortable();

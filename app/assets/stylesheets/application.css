@@ -264,8 +264,7 @@ a:visited {
 
 /*----------band show page--------------------*/
 .container {
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto 30px;
   display: block;
   width: 87%;
 }
@@ -442,11 +441,20 @@ a:visited {
   font-size: 20px;
   margin: 10px 0 -10px;
 }
-.fa-th {
+/*.fa-th {
   color: gray;
   float: left;
   cursor: move;
   margin: -5px 0 0 5px;
+}*/
+
+.gripper {
+  background-image: url("/assets/drag-handle2.png");
+  background-repeat: no-repeat;
+  width: auto; /*or your image's width*/
+  height: auto; /*or your image's height*/
+  margin: 0;
+  padding: 0;
 }
 
 .on_tour_box {
@@ -540,9 +548,9 @@ a:visited {
     margin-top: 75px;
   }
 
-  .favorite_card {
+  /*.favorite_card {
     width: 44%;
-  }
+  }*/
 
 }
 
@@ -612,9 +620,9 @@ a:visited {
     text-align: center;
   }
 
-  .favorite_card {
+ /* .favorite_card {
     width: 100%;
-  }
+  }*/
 
   .on_tour_box, .links_box {
     width: 90.7%;

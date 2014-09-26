@@ -14,7 +14,7 @@
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="jquery.pageslide.css">
   <link rel="stylesheet" href="/css/jquery-ui.css">
-  <script src="/assets/masonry.pkgd.min.js"></script> <!-- look at this path to make work -->
+  <script src="assets/masonry.pkgd.min.js"></script> <!-- look at this path to make work -->
   <script type="text/javascript">
     $('#hamburger').pageslide();
   </script>
@@ -133,7 +133,10 @@
 
   <div id="container" class="container">
  
-  <div id="bands_results">
+  <div id='bands_results' class='js-masonry' data-masonry-options='{ 
+                        "columnWidth": 200, 
+                        "itemSelector": ".list-item" 
+                        }'>
     
     <% if current_user %>
       <img class="concert" src="assets/concert.png">

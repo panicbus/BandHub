@@ -5,12 +5,12 @@ $(document).ready(function(){
   $("#bigDaddySearch").click(function(){
      event.preventDefault();
 
-    // clear the div and the search field
-    $("#bands_results").empty();
-    $("search_bands").val("");
-
     // grab the params of the search form
     var query = $('#search_bands').val();
+    
+    // clear the div and the search field
+    $("#bands_results").empty();
+    $('#search_bands').val("");
 
     // "GET" request to send search params to echonest api
     var get_request = $.ajax({
