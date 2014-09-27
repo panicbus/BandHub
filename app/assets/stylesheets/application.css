@@ -42,7 +42,7 @@ li {
 
 
 /*----easing for all links------*/
-a, #sort_by a, #bigDaddySearch, #see_favorites, .refresh, .add_favorite, .remove_favorite,
+a, #sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove_favorite,
 .on_tour_box a, .links_box a, .news_box a, .devise a, #hamburger, .bio a {
   transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
@@ -153,13 +153,13 @@ a:visited {
   border-radius: 0 !important;
 }
 
-#bigDaddySearch, #see_favorites, .remove_favorite, #add_favorite, .refresh {
+#bigDaddySearch, #see_favorites, .remove_favorite, .refresh {
   background-color: #74AC31;
   color: white;
 }
 
 #bigDaddySearch:hover, #see_favorites:hover, .remove_favorite:hover, #add_favorite:hover, .refresh:hover {
-   box-shadow: 0px 0px 15px #74AC31;
+   box-shadow: 0px 0px 12px #74AC31;
 }
 
 .devise_form a {
@@ -283,87 +283,23 @@ a:visited {
 }
 
  /*--------the card flip action---------*/
-#flip_container {
-  -webkit-perspective: 1000px;
-  -moz-perspective: 1000px;
-  -o-perspective: 1000px;
-  perspective: 1000px;
+.results_container {
   position: relative;
-  margin: 50px auto;
-  width: 30%;
+  margin: 10% auto;
+  width: 35%;
   height: 250px;
-  z-index: 1;
-  padding: 15px;
 }
 
-#flip_card {
-  width: 100%;
-  height: 100%;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 0.3s linear;
-  -moz-transform-style: preserve-3d;
-  -moz-transition: all 0.3s linear;
-  -o-transform-style: preserve-3d;
-  -o-transition: all 0.3s linear;
-  transform-style: preserve-3d;
-  transition: all 0.3s linear;
-}
-
-#flip_container:hover #flip_card, #flip_container.hover_effect #flip_card {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-
-}
-
-.face {
+.results_card {
   position: absolute;
-  width: 95%;
-  height: 100%;
-
-  background: rgba(182,202,114,1);
-  background: -moz-linear-gradient(top, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(182,202,114,1)), color-stop(100%, rgba(241,255,191,1)));
-  background: -webkit-linear-gradient(top, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
-  background: -o-linear-gradient(top, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
-  background: -ms-linear-gradient(top, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
-  background: linear-gradient(to bottom, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ca72', endColorstr='#f1ffbf', GradientType=0 ); 
-
-  font-family: "Krona One";
-  padding: 15px;
-  font-size: 26px;
-  text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
-  letter-spacing: 6px;
-  line-height: 120%;
-  text-align: center;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.face p {
-  margin-top: 50px;
-}
-
-.face.back {
-  display: block;
-    -webkit-transform: rotateY(180deg);
-    -webkit-box-sizing: border-box;
-    -moz-transform: rotateY(180deg);
-    -moz-box-sizing: border-box;
-    -o-transform: rotateY(180deg);
-    -o-box-sizing: border-box;
-    transform: rotateY(180deg);
-    box-sizing: border-box;
-  padding: 10px;
-
   width: 100%;
-  height: 110%;
-  color: white;
+  height: 130%;
+  font-family: "Krona One";
+  font-size: 26px;
+  letter-spacing: 6px;
   text-align: center;
+  padding-top: 10px;
+
   background: rgba(182,202,114,1);
   background: -moz-linear-gradient(top, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(182,202,114,1)), color-stop(100%, rgba(241,255,191,1)));
@@ -373,7 +309,25 @@ a:visited {
   background: linear-gradient(to bottom, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ca72', endColorstr='#f1ffbf', GradientType=0 ); 
 }
-/*//////end of flip action CSS/////////*/
+
+.results-card p {
+  margin-top: 15%;
+}
+.results-card img {
+  margin: 10px 20px;
+}
+
+#add_favorite {
+  background-color: #74AC31;
+  font-size: 15px;
+  color: #191919;
+  letter-spacing: 1px;
+  padding: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+}
+/*//////end of results card /////////*/
 
 
 .band_photo {
@@ -389,10 +343,6 @@ a:visited {
 .band_photo_box img {
   height: 200px;
   width: auto;
-}
-
-#add_favorite {
-  margin-top: 8px;
 }
 
 .success_message {
@@ -441,20 +391,11 @@ a:visited {
   font-size: 20px;
   margin: 10px 0 -10px;
 }
-/*.fa-th {
+.fa-th {
   color: gray;
   float: left;
   cursor: move;
   margin: -5px 0 0 5px;
-}*/
-
-.gripper {
-  background-image: url("/assets/drag-handle2.png");
-  background-repeat: no-repeat;
-  width: auto; /*or your image's width*/
-  height: auto; /*or your image's height*/
-  margin: 0;
-  padding: 0;
 }
 
 .on_tour_box {

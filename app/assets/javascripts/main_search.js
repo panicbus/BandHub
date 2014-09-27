@@ -64,16 +64,13 @@ $(document).ready(function(){
       tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
 
          ////////////////////////////////////////// 
-        ////// the flip card show display ////////
+        ///////// search results display /////////
        //////////////////////////////////////////
-      $('#bands_results').append("<div id='flip_container'>" +
-                                 "<div id='flip_card' class='shadow'>" +
-                                 "<div class='front face'><br><p>" + search_list_item +
-                                 "</p></div>" +
-                                 "<div class='back face center'>" +
-                                 "<img style='height: 200px; width: auto' src='" + image.url +
-                                 "'><button id='add_favorite'>Add " + search_list_item + " to Your BandHub Corral</button></div>" +
-                                 "</div></div></div>");
+      $('#bands_results').append("<div class='results_container'>" +
+                                 "<div class='results_card'>" +
+                                 "<p>" + search_list_item + "</p>" +
+                                 "<img style='height: 200px; width: auto' src='" + image.url + "'>" +
+                                 "<div id='add_favorite'>Add " + search_list_item + " to your BandHub Corral</div></div></div>");
 
           $('#add_favorite').on('click', function(){
             $('#flip_container').remove().fadeOut(1000);
