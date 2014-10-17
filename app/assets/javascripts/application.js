@@ -22,10 +22,21 @@ $.ajaxSetup({
   }
 });
 
+
 // to run the sort function in sorting.js //
 $(function(){
   sorting();
 });
+
+
+// adds/removes an active state on clicked band cards
+// $(function(){
+//     $('body').on('click', '.list-item', function(){
+//     $('.list-item').removeClass('active');
+//     $(this).addClass('active');
+//   });  
+// });
+
 
 
 
@@ -36,7 +47,6 @@ $(function(){
     $('#bands_results').empty();
     showFavorites();
   });
-
 
   // display the splash page on logo click
   $('.title').on('click', function(){
