@@ -3,8 +3,7 @@
 <head>
   <title>BandHub</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-  <!-- <link href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" /> -->
-   <script src="js/jquery-ui.js"></script>
+  <!-- // <script src="js/jquery-ui.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -14,7 +13,7 @@
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="jquery.pageslide.css">
   <link rel="stylesheet" href="/css/jquery-ui.css">
-  <script src="assets/masonry.pkgd.min.js"></script> <!-- look at this path to make work -->
+  <script src="/assets/masonry.pkgd.min.js"></script> <!-- look at this path to make work -->
   <script type="text/javascript">
     $('#hamburger').pageslide();
   </script>
@@ -23,20 +22,16 @@
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
     ga('create', 'UA-48329636-5', 'bandhub.herokuapp.com');
     ga('send', 'pageview');
   </script>
 </head>
-
-
 
 <header>
 </header>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -49,9 +44,7 @@
         </div>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
         <form class="navbar-form navbar-left main_search" role="search">
           <div class="form-group">
             <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band">
@@ -140,9 +133,9 @@
     
     <% if current_user %>
       <img class="concert" src="assets/concert.png">
-    <% end %>
       <p class="subtitle">All Your Bands, In One Place</p><br>
       <p class="sub-subtitle">To start, search for your favorite band above.</p><br>
+    <% end %>
     
   </div>
 

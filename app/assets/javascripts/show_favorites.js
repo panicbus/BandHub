@@ -9,42 +9,73 @@ var showFavorites = function(){
     } else {
   
       for (var i = 0; i < faves.length; i++){
+ 
+        var bandId = faves[i]['id'];
+        var bandName = faves[i]['name'];
+        var bandImage = faves[i]['image'];
+        var createdAt = faves[i]['created_at'];
+        var onTour = faves[i]['on_tour'];
+        var tourDates = faves[i]['tour_dates'];
+        var newsOneLink = faves[i]['news'];
+        var newsOneTitle = faves[i]['news1'];
+        var newsTwoLink = faves[i]['newsa'];
+        var newsTwoTitle = faves[i]['news1a'];
+        var blogsOneLink = faves[i]['blogs'];
+        var blogsOneTitle = faves[i]['blogs1'];
+        var blogsTwoLink = faves[i]['blogsa'];
+        var blogsTwoTitle = faves[i]['blogs1a'];
+        var officialWebsite = faves[i]['urls'];
+        var lastFm = faves[i]['urls1'];
+        var bandTwitter = faves[i]['urls2'];
 
-        var favorite_card = $("<div class='ui-state-default list-item'><div data-method='faves_card' data-name='" + faves[i]['name'] + 
-        											"'data-date='" + faves[i]['created_at'] + 
-        											"'data-id='" + faves[i]['id'] + 
-        											"'><p class='name'><i class='fa fa-th'></i>" + faves[i]['name'] + "</p></div>");
+        var favorite_card = $("<div class='ui-state-default list-item'><div data-name='" + bandName + 
+        											"'data-date='" + createdAt + 
+        											"'data-id='" + bandId + 
+        											"'><p class='name'><i class='fa fa-th'></i>" + bandName + "</p></div>");
 
-        $("<div class='band_photo_box' data-name='" + faves[i]['name'] + "' data-date='" + faves[i]['created_at'] + "' data-id='" + faves[i]['id'] +
+        $("<div class='band_photo_box' data-name='" + bandName + "' data-date='" + createdAt + "' data-id='" + bandId +
           "'>" +
-           "<p><div title='Click for details' class='band_photo' data-id='" + faves[i]['id'] +
-           "'>" + "<img src='" + faves[i]['image'] + "'></div></p>" +
+           "<p><div title='Click for details' class='band_photo' data-id='" + bandId +
+           "'>" + "<img src='" + bandImage + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(1000);
 
-        if (faves[i]['on_tour'] == "null" || faves[i]['on_tour'] == ""){
-          $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " - not currently on tour.</div>");
+        if (onTour == "null" || onTour == ""){
+          $(favorite_card).append("<div data-id='" + bandId + "' class='on_tour_box'>" + bandName + " - not currently on tour.</div>");
         } else {
-          $(favorite_card).append("<div data-id='" + faves[i]['id'] + "' class='on_tour_box'>" + faves[i]['name'] + " is on tour until " + faves[i]['on_tour'] + "!<br>" +
-                                  "<div class='tour_dates_link'><a href='" +
-                                    faves[i]['tour_dates'] + "' target='_blank'>Click for tour dates and locations</a>.</div></div>").hide().appendTo('#bands_results').fadeIn(1000);
+          $(favorite_card).append("<div data-id='" + bandId + "' class='on_tour_box'>" + bandName + " is on tour until " + onTour + "!<br>" +
+                                  "<a href='" + tourDates + "' target='_blank'>Click for tour dates and locations</a>." + 
+                                  "</div>").hide().appendTo('#bands_results').fadeIn(1000);
         }; // ends if/else
 
-            // news and blogs
-        // if (faves[i]['urls2'] != "null"){}    
-        $("<div data-id='" + faves[i]['id'] + "' class='news_box' data-id='" + faves[i]['name'] +
-          "'>Recent news stories tagged with " + faves[i]['name'] + ":<br>" +
-           "&#8226;<a href='" + faves[i]['news'] + "' target='_blank'>" + faves[i]['news1'] + "</a><br>" +
-           "&#8226;<a href='" + faves[i]['newsa'] + "' target='_blank'>" + faves[i]['news1a'] + "</a><br><br>" +
-           "Recent blog posts featuring " + faves[i]['name'] + ":<br>" +
-           "&#8226;<a href='" + faves[i]['blogs'] + "' target='_blank'>" + faves[i]['blogs1'] + "</a><br>" +
-           "&#8226;<a href='" + faves[i]['blogsa'] + "' target='_blank'>" + faves[i]['blogs1a'] + "</a><br></div>" +
-           "<div data-id='" + faves[i]['id'] + "' class='links_box'><p><a href='" + faves[i]['urls'] + "' target='_blank'>" + faves[i]['name'] + "'s offical website</a>.</p>" +
-           "<p><a href='" + faves[i]['urls1'] + "' target='_blank'>" + faves[i]['name'] + " on Last.fm</a>.</p>" +
-           "<p><a href='" + faves[i]['urls2'] + "' target='_blank'>Follow " + faves[i]['name'] + " on Twitter</a>.</p></div>" +
-           "<br><div class='remove_favorite' data-method='delete' data-id='" + faves[i]['id'] +
+        // news and blogs if and if not twitter 
+        if (bandTwitter == null){
+         $("<div data-id='" + bandId + "' class='news_box' data-id='" + bandName +
+           "'>Recent news stories tagged with " + bandName + ":<br>" +
+           "&#8226; <a href='" + newsOneLink + "' target='_blank'>" + newsOneTitle + "</a><br>" +
+           "&#8226; <a href='" + newsTwoLink + "' target='_blank'>" + newsTwoTitle + "</a><br><br>" +
+           "Recent blog posts featuring " + bandName + ":<br>" +
+           "&#8226; <a href='" + blogsOneLink + "' target='_blank'>" + blogsOneTitle + "</a><br>" +
+           "&#8226; <a href='" + blogsTwoLink + "' target='_blank'>" + blogsTwoTitle + "</a><br></div>" +
+           "<div data-id='" + bandId + "' class='links_box'><p><a href='" + officialWebsite + "' target='_blank'>" + bandName + "'s offical website</a>.</p>" +
+           "<p><a href='" + lastFm + "' target='_blank'>" + bandName + " on Last.fm</a>.</p>" + bandName + " isn't on Twitter yet.</p></div>" +
+           "<br><div class='remove_favorite' data-method='delete' data-id='" + bandId +
            "'>Remove</div>" +
            "</div>" + // ends del_button div
-          "</div>").appendTo(favorite_card); // ends favorite_card div
+          "</div></div>").appendTo(favorite_card); 
+        } else {
+          $("<div data-id='" + bandId + "' class='news_box' data-id='" + bandName +
+           "'>Recent news stories tagged with " + bandName + ":<br>" +
+           "&#8226; <a href='" + newsOneLink + "' target='_blank'>" + newsOneTitle + "</a><br>" +
+           "&#8226; <a href='" + newsTwoLink + "' target='_blank'>" + newsTwoTitle + "</a><br><br>" +
+           "Recent blog posts featuring " + bandName + ":<br>" +
+           "&#8226; <a href='" + blogsOneLink + "' target='_blank'>" + blogsOneTitle + "</a><br>" +
+           "&#8226; <a href='" + blogsTwoLink + "' target='_blank'>" + blogsTwoTitle + "</a><br></div>" +
+           "<div data-id='" + bandId + "' class='links_box'><p><a href='" + officialWebsite + "' target='_blank'>" + bandName + "'s offical website</a>.</p>" +
+           "<p><a href='" + lastFm + "' target='_blank'>" + bandName + " on Last.fm</a>.</p><a href='" + bandTwitter + "' target='_blank'>Follow " + bandName + " on Twitter</a>.</p></div>" +
+           "<br><div class='remove_favorite' data-method='delete' data-id='" + bandId +
+           "'>Remove</div>" +
+           "</div>" + // ends del_button div
+          "</div></div>").appendTo(favorite_card)};
 
 
         $('#bands_results').hide().append(favorite_card).fadeIn(500); // appends all the favorite cards
@@ -88,6 +119,7 @@ var showFavorites = function(){
     ////////////////////////////
     $('.remove_favorite').click(function(event){
 
+
       var id = $(this).attr("data-id");
          // console.log('this is the clicked data-id = '+ id +'');
       $.ajax({
@@ -95,17 +127,14 @@ var showFavorites = function(){
         method: "DELETE",
         data: id
       }).done(function(faves){
- 
-	      $('div[data-id='+ id +']').parent().fadeOut(1000, function(){
+        $('div[data-id='+ id +']').parent().fadeOut(1000, function(){
 	      	$(this).remove(); 
-          if (!faves.length){ 
-            $('#bands_results').html("<div class='no-results'>Your Corrall is empty. Add some bands!</div>");
-          }
 	      }); // ends .fadeOut 
-     	}) // ends .done
-
+        
+     	}); // ends .done  
     }); ///ends DELETE///
           
   }); // ends getJSON
+
 }
 

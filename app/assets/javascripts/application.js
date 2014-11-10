@@ -29,19 +29,7 @@ $(function(){
 });
 
 
-// adds/removes an active state on clicked band cards
-// $(function(){
-//     $('body').on('click', '.list-item', function(){
-//     $('.list-item').removeClass('active');
-//     $(this).addClass('active');
-//   });  
-// });
-
-
-
-
 $(function(){
-
   // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
   $('#see_favorites').on('click', function(){
     $('#bands_results').empty();
@@ -53,14 +41,17 @@ $(function(){
    window.location = '/';
   });
 
-  // var $container = $('#bands_results');
-  //   // initialize
-  //   $container.masonry({
-  //     columnWidth: 200,
-  //     itemSelector: '.list-item'
-  //   });
 
-  //   var msnry = $container.data('masonry');
+  // MASONRY //
+  var $container = $('#bands_results');
+
+  // initialize
+  $container.masonry({
+    columnWidth: 200,
+    itemSelector: '.list-item'
+  });
+
+  var msnry = $container.data('masonry');
     
   // to refresh all cards with current API data
   // $('.refresh').click(function(){
