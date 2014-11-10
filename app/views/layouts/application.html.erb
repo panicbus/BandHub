@@ -126,17 +126,14 @@
 
   <div id="container" class="container">
  
-  <div id='bands_results' class='js-masonry' data-masonry-options='{ 
-                        "columnWidth": 200, 
-                        "itemSelector": ".list-item" 
-                        }'>
+  <div id='bands_results'>
     
     <% if current_user %>
       <img class="concert" src="assets/concert.png">
       <p class="subtitle">All Your Bands, In One Place</p><br>
       <p class="sub-subtitle">To start, search for your favorite band above.</p><br>
     <% end %>
-    
+
   </div>
 
       <%= yield %>

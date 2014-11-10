@@ -10,23 +10,23 @@ var showFavorites = function(){
   
       for (var i = 0; i < faves.length; i++){
  
-        var bandId = faves[i]['id'];
-        var bandName = faves[i]['name'];
-        var bandImage = faves[i]['image'];
-        var createdAt = faves[i]['created_at'];
-        var onTour = faves[i]['on_tour'];
-        var tourDates = faves[i]['tour_dates'];
-        var newsOneLink = faves[i]['news'];
-        var newsOneTitle = faves[i]['news1'];
-        var newsTwoLink = faves[i]['newsa'];
-        var newsTwoTitle = faves[i]['news1a'];
-        var blogsOneLink = faves[i]['blogs'];
-        var blogsOneTitle = faves[i]['blogs1'];
-        var blogsTwoLink = faves[i]['blogsa'];
-        var blogsTwoTitle = faves[i]['blogs1a'];
-        var officialWebsite = faves[i]['urls'];
-        var lastFm = faves[i]['urls1'];
-        var bandTwitter = faves[i]['urls2'];
+        bandId = faves[i]['id'];
+        bandName = faves[i]['name'];
+        bandImage = faves[i]['image'];
+        createdAt = faves[i]['created_at'];
+        onTour = faves[i]['on_tour'];
+        tourDates = faves[i]['tour_dates'];
+        newsOneLink = faves[i]['news'];
+        newsOneTitle = faves[i]['news1'];
+        newsTwoLink = faves[i]['newsa'];
+        newsTwoTitle = faves[i]['news1a'];
+        blogsOneLink = faves[i]['blogs'];
+        blogsOneTitle = faves[i]['blogs1'];
+        blogsTwoLink = faves[i]['blogsa'];
+        blogsTwoTitle = faves[i]['blogs1a'];
+        officialWebsite = faves[i]['urls'];
+        lastFm = faves[i]['urls1'];
+        bandTwitter = faves[i]['urls2'];
 
         var favorite_card = $("<div class='ui-state-default list-item'><div data-name='" + bandName + 
         											"'data-date='" + createdAt + 
@@ -37,14 +37,14 @@ var showFavorites = function(){
           "'>" +
            "<p><div title='Click for details' class='band_photo' data-id='" + bandId +
            "'>" + "<img src='" + bandImage + "'></div></p>" +
-           "</div>").hide().appendTo(favorite_card).fadeIn(1000);
+           "</div>").hide().appendTo(favorite_card).fadeIn(500);
 
         if (onTour == "null" || onTour == ""){
           $(favorite_card).append("<div data-id='" + bandId + "' class='on_tour_box'>" + bandName + " - not currently on tour.</div>");
         } else {
           $(favorite_card).append("<div data-id='" + bandId + "' class='on_tour_box'>" + bandName + " is on tour until " + onTour + "!<br>" +
                                   "<a href='" + tourDates + "' target='_blank'>Click for tour dates and locations</a>." + 
-                                  "</div>").hide().appendTo('#bands_results').fadeIn(1000);
+                                  "</div>").hide().appendTo('#bands_results').fadeIn(500);
         }; // ends if/else
 
         // news and blogs if and if not twitter 
@@ -127,13 +127,19 @@ var showFavorites = function(){
         method: "DELETE",
         data: id
       }).done(function(faves){
-        $('div[data-id='+ id +']').parent().fadeOut(1000, function(){
+        $('div[data-id='+ id +']').parent().fadeOut(500, function(){
 	      	$(this).remove(); 
 	      }); // ends .fadeOut 
-        
-     	}); // ends .done  
+     	  
+      }); // ends .done  
+      $.getJSON("bands/favorite").done(function(faves){
+        if (faves == ""){ 
+          $('#bands_results').html("<div class='no-results'>Your Corrall is empty. Add some bands!</div>");
+        }
+      });
     }); ///ends DELETE///
-          
+      
+
   }); // ends getJSON
 
 }

@@ -53,11 +53,11 @@ $(function(){
 
   var msnry = $container.data('masonry');
     
-  // to refresh all cards with current API data
-  // $('.refresh').click(function(){
-  //   event.preventDefault();
-  //   hit_the_api();
-  // })
+ // to refresh all cards with current API data
+  $('.refresh').click(function(){
+    event.preventDefault();
+    hit_the_api();
+  })
 
   // jquery-ui drag & drop sort
     $( "#bands_results" ).sortable();
