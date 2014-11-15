@@ -119,7 +119,6 @@ var showFavorites = function(){
     ////////////////////////////
     $('.remove_favorite').click(function(event){
 
-
       var id = $(this).attr("data-id");
          // console.log('this is the clicked data-id = '+ id +'');
       $.ajax({
@@ -132,11 +131,14 @@ var showFavorites = function(){
 	      }); // ends .fadeOut 
      	  
       }); // ends .done  
+
+      // add message if faves is empty
       $.getJSON("bands/favorite").done(function(faves){
         if (faves == ""){ 
           $('#bands_results').html("<div class='no-results'>Your Corrall is empty. Add some bands!</div>");
         }
       });
+
     }); ///ends DELETE///
       
 
