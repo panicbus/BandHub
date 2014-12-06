@@ -23,10 +23,15 @@ $(document).ready(function(){
       dataType: "json",
       // encodeURIComponent removes the space b/t words & encodes it w a proper searchable symbol
       data: {band: encodeURIComponent(query)},
-      success: function(html){
-          $('#bands_results').html(html);
+      success: function(data) {
+        if (data.response.status.message == "Success") {
+          $('#bands_results').html(""); // put something in the html to end the success check
+        } else { 
+          $("#bands_results").html("<div class='no-results'>No matches for that artist.</div>");
         }
-      }); // ends echonest ajax rq// "GET" request to send search params to echonest api
+      }
+
+    }); // ends echonest ajax rq// "GET" request to send search params to echonest api
 
     get_request.done(function(data){
 

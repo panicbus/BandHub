@@ -5,7 +5,7 @@ var showFavorites = function(){
   $.getJSON("bands/favorite").done(function(faves){
 
     if (faves == ""){ 
-    	$('#bands_results').html("<div class='no-results'>Your Corrall is empty. Add some bands!</div>");
+    	$('#bands_results').html("<div class='empty-corall-msg'>Your Corrall is empty. Add some bands!</div>");
     } else {
   
       for (var i = 0; i < faves.length; i++){
@@ -135,7 +135,7 @@ var showFavorites = function(){
       // add message if faves is empty
       $.getJSON("bands/favorite").done(function(faves){
         if (faves == ""){ 
-          $('#bands_results').html("<div class='no-results'>Your Corrall is empty. Add some bands!</div>");
+          $('#bands_results').html("<div class='empty-corall-msg'>Your Corrall is empty. Add some bands!</div>");
         }
       });
 

@@ -47,10 +47,15 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
         <form class="navbar-form navbar-left main_search" role="search">
           <div class="form-group">
-            <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band">
-            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+            <div class="ui-widget">
+              <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band">
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+            </div>
           </div>
           <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button>
+          <div class="ui-widget" >
+            <div id="log"  class="ui-widget-content"> </div>
+          </div>
         </form>
 
         <ul class="nav navbar-nav navbar-right">
