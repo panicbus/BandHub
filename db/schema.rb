@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131216220305) do
+ActiveRecord::Schema.define(:version => 20141208042926) do
 
   create_table "bands", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "bio"
     t.string   "news"
     t.string   "reviews"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20131216220305) do
     t.string   "news1a"
     t.string   "blogsa"
     t.string   "blogs1a"
+    t.string   "echo_id"
+    t.string   "songkick_band_id"
   end
 
   create_table "favorites", :force => true do |t|

@@ -35,7 +35,10 @@ $(document).ready(function(){
 
     get_request.done(function(data){
 
+
       search_list_item = data['response']['artist']['name'];
+
+      echo_id = data['response']['artist']['id'];
 
       // PARSING THE ECHONEST API DATA
       image = data['response']['artist']['images'][0];
@@ -65,6 +68,8 @@ $(document).ready(function(){
 
       songkick_get_request.done(function(data){
       // console.log(data);
+      // songkick_band_id = data['resultsPage']['results']['artist'][0]['id']
+      songkick_band_id = data['resultsPage']['results']['artist'][0]['displayName']
       on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
       tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
 
@@ -78,42 +83,48 @@ $(document).ready(function(){
                                  "<div id='add_favorite'>Add " + search_list_item + " to your BandHub Corral</div></div></div>");
 
           $('#add_favorite').on('click', function(){
-            $('#flip_container').remove().fadeOut(1000);
+            $('#flip_container').remove().fadeOut(1000); // check to see if this is needed!!
 
+            // TODO: turn this on
             $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
                                               "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
       ////////////////////////////////////////
               $('#bands_results').empty();
 
 
-            band_name = data['resultsPage']['results']['artist'][0]['displayName']
+            // band_name = data['resultsPage']['results']['artist'][0]['displayName']
 
             var favorites = $.ajax({
               url: "bands/create",
               beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
               type: "POST",
               // assigns a new key value pair in params for ajax Favorite create
-              data: {band_name: band_name,
-                     blogs: blogs,
-                     blogsa: blogsa,
-                     blogs1: blogs1,
-                     blogs1a: blogs1a,
-                     image: image,
-                     news: news,
-                     newsa: newsa,
-                     news1: news1,
-                     news1a: news1a,
-                     reviews: reviews,
-                     reviews1: reviews1,
-                     urls: urls,
-                     urls1: urls1,
-                     urls2: urls2,
+              data: {echo_id: echo_id,
+                     songkick_band_id: songkick_band_id,
                      on_tour: on_tour,
-                     tour_dates: tour_dates,
-                     // biographies: biographies,
-                     artist_location: artist_location,
-                     video: video}
-              // success: showSuccessMessage
+                     tour_date: tour_dates}
+
+              // data: {band_name: band_name,
+              //        blogs: blogs,
+              //        blogsa: blogsa,
+              //        blogs1: blogs1,
+              //        blogs1a: blogs1a,
+              //        image: image,
+              //        news: news,
+              //        newsa: newsa,
+              //        news1: news1,
+              //        news1a: news1a,
+              //        reviews: reviews,
+              //        reviews1: reviews1,
+              //        urls: urls,
+              //        urls1: urls1,
+              //        urls2: urls2,
+              //        on_tour: on_tour,
+              //        tour_dates: tour_dates,
+              //        // biographies: biographies,
+              //        artist_location: artist_location,
+              //        video: video}
+              // // success: showSuccessMessage
 
             }).done(function(){
               
