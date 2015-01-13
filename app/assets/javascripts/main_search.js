@@ -25,7 +25,7 @@ $(document).ready(function(){
       data: {band: encodeURIComponent(query)},
       success: function(data) {
         if (data.response.status.message == "Success") {
-          $('#bands_results').html(""); // put something in the html to end the success check
+          $('#bands_results').html(""); // to put something in the html to end the success check
         } else { 
           $("#bands_results").html("<div class='no-results'>No matches for that artist.</div>");
         }
@@ -64,14 +64,12 @@ $(document).ready(function(){
         type: "get",
         dataType: "json",
         data: {band: encodeURIComponent(query)}
-       }); 
+      }); 
 
       songkick_get_request.done(function(data){
-      // console.log(data);
-      // songkick_band_id = data['resultsPage']['results']['artist'][0]['id']
-      songkick_band_id = data['resultsPage']['results']['artist'][0]['displayName']
-      on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
-      tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
+        songkick_band_id = data['resultsPage']['results']['artist'][0]['displayName']
+        on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
+        tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
 
          ////////////////////////////////////////// 
         ///////// search results display /////////
@@ -89,10 +87,7 @@ $(document).ready(function(){
             $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
                                               "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
       ////////////////////////////////////////
-              $('#bands_results').empty();
-
-
-            // band_name = data['resultsPage']['results']['artist'][0]['displayName']
+            $('#bands_results').empty();
 
             var favorites = $.ajax({
               url: "bands/create",
@@ -103,29 +98,6 @@ $(document).ready(function(){
                      songkick_band_id: songkick_band_id,
                      on_tour: on_tour,
                      tour_date: tour_dates}
-
-              // data: {band_name: band_name,
-              //        blogs: blogs,
-              //        blogsa: blogsa,
-              //        blogs1: blogs1,
-              //        blogs1a: blogs1a,
-              //        image: image,
-              //        news: news,
-              //        newsa: newsa,
-              //        news1: news1,
-              //        news1a: news1a,
-              //        reviews: reviews,
-              //        reviews1: reviews1,
-              //        urls: urls,
-              //        urls1: urls1,
-              //        urls2: urls2,
-              //        on_tour: on_tour,
-              //        tour_dates: tour_dates,
-              //        // biographies: biographies,
-              //        artist_location: artist_location,
-              //        video: video}
-              // // success: showSuccessMessage
-
             }).done(function(){
               
               showFavorites(); // displays the favorites page after favoriting action

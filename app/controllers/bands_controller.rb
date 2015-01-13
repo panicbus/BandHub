@@ -73,7 +73,10 @@ class BandsController < ApplicationController
       echo_band_info = Typhoeus.get( echo_url )  
       songkick_info = Typhoeus.get( songkick_url )
       # Typhoeus returns an object, here we're drilling down to get response body & converting it from JSON to hash 
-      band_info = {:echo_info => JSON.parse(echo_band_info.response_body), :kick_info => JSON.parse(songkick_info.response_body), :created_at => band.created_at}
+      band_info = {:echo_info => JSON.parse(echo_band_info.response_body), 
+                   :kick_info => JSON.parse(songkick_info.response_body), 
+                   :created_at => band.created_at, 
+                   :database_id => band.id}
       bandsArray.push(band_info)
     end
     bandsArray
