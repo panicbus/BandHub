@@ -89,6 +89,7 @@ var showFavorites = function(){
     $(document).ready(function(){
       $('.band_photo').click(function(){
         var id = $(this).attr("data-id");
+        var scroll_to = $(this).offset().top + $(this).height() - 150;
         
         // if not active, open this div and close all the others.
         if (!$(this).parents('.list-item').hasClass("active")){
@@ -98,11 +99,15 @@ var showFavorites = function(){
           $('.news_box[data-id='+ id +']').slideToggle();
           $('.links_box[data-id='+ id +']').slideToggle();
           $(this).parents('.list-item').addClass('active'); 
+          // to scroll to the bottom of the open band
+          $('html, body').animate({
+              scrollTop: scroll_to
+          });
         } else {
           // if I am active, then close me!
           $('.on_tour_box, .news_box, .links_box').slideUp();          
           $('.list-item').removeClass('active');
-        }    
+        }
       }); // ends band_photo toggle
 
       // close divs by clicking outside the tiles

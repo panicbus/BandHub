@@ -35,8 +35,6 @@ $(function(){
   });
 });
 
-
-
 // to run the sort function in sorting.js //
 $(function(){
   sorting();
