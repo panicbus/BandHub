@@ -10,7 +10,6 @@ var showFavorites = function(){
   
       for (var i = 0; i < faves.length; i++){
         createdAt       = faves[i].created_at;
-        debugger
         databaseId      = faves[i].database_id;
         bandId          = faves[i].echo_info.response.artist.id;
         bandName        = faves[i].echo_info.response.artist.name;
@@ -38,8 +37,7 @@ var showFavorites = function(){
         											"'data-id='" + databaseId + 
         											"'><p class='name'><i class='fa fa-th'></i>" + bandName + "</p></div>");
 
-        $("<div class='band_photo_box' data-name='" + bandName + "' data-date='" + createdAt + "' data-id='" + bandId +
-          "'>" +
+        $("<div class='band_photo_box' data-date='" + createdAt + "' data-id='" + bandId + "'>" +
            "<p><div title='Click for details' class='band_photo' data-id='" + databaseId +
            "'>" + "<img src='" + bandImage + "'></div></p>" +
            "</div>").hide().appendTo(favorite_card).fadeIn(500);
@@ -127,7 +125,7 @@ var showFavorites = function(){
       var id = $(this).attr("data-id");
          console.log('this is the clicked data-id = '+ id +'');
       $.ajax({
-        url: "/bands/favorite/"+id,
+        url: "/bands/favorite/"+ id,
         method: "DELETE",
         data: id
       }).done(function(faves){

@@ -1,9 +1,9 @@
 // This is the main search 
-
 $(document).ready(function(){
 
   $("#bigDaddySearch").click(function(){
      event.preventDefault();
+
 
     // grab the params of the search form
     var query = $('#search_bands').val();
@@ -15,9 +15,9 @@ $(document).ready(function(){
     // "GET" request to send search params to echonest api
     var get_request = $.ajax({
       // sends the rq to the apisController
-      beforeSend: function(){
-        $('#bands_results').html("<img class='spinner' src='assets/loading.gif'>");
-      },
+      // beforeSend: function(){
+      //   $('#bands_results').html("<img class='spinner' src='assets/loading.gif'>");
+      // },
       url: "apis/api",
       type: "get",
       dataType: "json",
@@ -80,31 +80,36 @@ $(document).ready(function(){
                                  "<img class='results_img' src='" + image.url + "'>" +
                                  "<div id='add_favorite'>Add " + search_list_item + " to your BandHub Corral</div></div></div>");
 
-          $('#add_favorite').on('click', function(){
-            $('#flip_container').remove().fadeOut(1000); // check to see if this is needed!!
+      $('#add_favorite').on('click', function(){
 
-            // TODO: turn this on
-            $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
+        // TODO: turn this on
+        $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
                                               "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
-      ////////////////////////////////////////
-            $('#bands_results').empty();
 
-            var favorites = $.ajax({
-              url: "bands/create",
-              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-              type: "POST",
-              // assigns a new key value pair in params for ajax Favorite create
-              data: {echo_id: echo_id,
-                     songkick_band_id: songkick_band_id,
-                     on_tour: on_tour,
-                     tour_date: tour_dates}
-            }).done(function(){
-              
-              showFavorites(); // displays the favorites page after favoriting action
+        $('#bands_results').empty();
 
-            }); // ends favorites ajax
+        var favorites = $.ajax({
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+            $('#bands_results').html("<img class='spinner' src='assets/loading.gif'>");
+          },
+          url: "bands/create",
+          type: "POST",
+          // assigns a new key value pair in params for ajax Favorite create
+          data: {echo_id: echo_id,
+                 songkick_band_id: songkick_band_id,
+                 on_tour: on_tour,
+                 tour_date: tour_dates},
+          complete: function(){
+            $('#bands_results').html("");
+          }
+        }).done(function(){
+          
+          showFavorites(); // displays the favorites page after favoriting action
 
-          }); // ends #add_favorite actions
+        }); // ends favorites ajax
+
+      }); // ends #add_favorite actions
 
     }); // ends songkick_get_request.done
     }); // ends START OF THE SHOW DISPLAY onclick

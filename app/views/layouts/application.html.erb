@@ -77,10 +77,6 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-
-
-
-
   <!-- to only show the hamburger to users logged in -->
   <div style="visibility: <%= current_user == nil ? "hidden" : "visible" %>">
     <a class="impatient" href="#secondary"><i id="hamburger" class="fa fa-bars fa-3x"></i></a>
@@ -96,10 +92,6 @@
         <li><a href="#data-name">By name</a></li>  <!-- for the sorting fn in isotopeCalls.js -->
         <li><a href="#data-date">By date added</a></li>
       </ul>
-    </div>
-
-    <div class="refresh_button_div">
-      <button class="refresh">Refresh your feed</button>
     </div>
 
     <div class="api_attributes" style="margin-top: 20px">
@@ -141,8 +133,10 @@
 
   </div>
 
-      <%= yield %>
-
+  <%= yield %>
+  <div id="loading">
+    <img class='spinner' src='assets/loading.gif'>
+  </div>
   
   </div>
 

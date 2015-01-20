@@ -23,6 +23,20 @@ $.ajaxSetup({
 });
 
 
+// initialize the ajax loading spinner
+$(function(){
+  var $loading = $('#loading').hide();
+  $(document)
+    .ajaxStart(function () {
+      $loading.show();
+    })
+    .ajaxStop(function () {
+      $loading.hide();
+  });
+});
+
+
+
 // to run the sort function in sorting.js //
 $(function(){
   sorting();
@@ -53,14 +67,8 @@ $(function(){
 
   var msnry = $container.data('masonry');
     
- // to refresh all cards with current API data
-  $('.refresh').click(function(){
-    event.preventDefault();
-    hit_the_api();
-  })
-
   // jquery-ui drag & drop sort
-    $( "#bands_results" ).sortable();
-    $( "#bands_results" ).disableSelection();
+  $( "#bands_results" ).sortable();
+  $( "#bands_results" ).disableSelection();
   
 }) 
