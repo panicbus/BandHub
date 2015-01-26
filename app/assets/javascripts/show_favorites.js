@@ -3,11 +3,11 @@
 var showFavorites = function(){
 
   $.getJSON("bands/favorite").done(function(faves){
-
     if (faves == ""){ 
     	$('#bands_results').html("<div class='empty-corall-msg'>Your Corrall is empty. Add some bands!</div>");
     } else {
-  
+      
+      // parsing the json data
       for (var i = 0; i < faves.length; i++){
         createdAt       = faves[i].created_at;
         databaseId      = faves[i].database_id;
@@ -99,7 +99,7 @@ var showFavorites = function(){
           $('.news_box[data-id='+ id +']').slideToggle();
           $('.links_box[data-id='+ id +']').slideToggle();
           $(this).parents('.list-item').addClass('active'); 
-          // to scroll to the bottom of the open band
+          // to scroll to the bottom of the toggling div
           $('html, body').animate({
               scrollTop: scroll_to
           });
@@ -108,7 +108,7 @@ var showFavorites = function(){
           $('.on_tour_box, .news_box, .links_box').slideUp();          
           $('.list-item').removeClass('active');
         }
-      }); // ends band_photo toggle
+      });
 
       // close divs by clicking outside the tiles
       $(document).mouseup(function (e){
@@ -122,6 +122,8 @@ var showFavorites = function(){
       });
     }); /// end fave card slide toggle ///
 
+
+
       ////////////////////////////
      ////////  DELETE  //////////
     ////////////////////////////
@@ -130,13 +132,16 @@ var showFavorites = function(){
       var id = $(this).attr("data-id");
          console.log('this is the clicked data-id = '+ id +'');
       $.ajax({
+        beforeSend:function(){
+          $('#loading').hide();
+        },
         url: "/bands/favorite/"+ id,
         method: "DELETE",
         data: id
       }).done(function(faves){
         $('div[data-id='+ id +']').parent().fadeOut(500, function(){
 	      	$(this).remove(); 
-	      }); // ends .fadeOut 
+	      }); // ends fadeOut 
      	  
       }); // ends .done  
 
@@ -149,7 +154,6 @@ var showFavorites = function(){
 
     }); ///ends DELETE///
       
-
   }); // ends getJSON
 
 }

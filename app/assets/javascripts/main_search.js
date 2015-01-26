@@ -1,34 +1,47 @@
 // This is the main search 
 $(document).ready(function(){
 
-  $("#bigDaddySearch").click(function(){
-     event.preventDefault();
 
+  $("#bigDaddySearch").click(function(){
+    event.preventDefault();
+    
+    var success = true;
+    if ($("#search_bands").val() == '') {
+      $(this).next().text('This is a required field.');
+      success = false;
+    }
+    if (success == false) {
+      event.preventDefault();
+      return
+    }
 
     // grab the params of the search form
     var query = $('#search_bands').val();
     
     // clear the div and the search field
-    $("#bands_results").empty();
-    $('#search_bands').val("");
+    $('#bands_results').empty();
+    $('.its-required').empty();
+    $('#search_bands').val('');
 
     // "GET" request to send search params to echonest api
     var get_request = $.ajax({
       // sends the rq to the apisController
-      // beforeSend: function(){
-      //   $('#bands_results').html("<img class='spinner' src='assets/loading.gif'>");
-      // },
       url: "apis/api",
+      global: false,
       type: "get",
       dataType: "json",
       // encodeURIComponent removes the space b/t words & encodes it w a proper searchable symbol
       data: {band: encodeURIComponent(query)},
+      beforeSend: function (){ 
+        $('#bigDaddySearch').attr('disabled', 'disabled'); 
+      },
       success: function(data) {
         if (data.response.status.message == "Success") {
           $('#bands_results').html(""); // to put something in the html to end the success check
         } else { 
           $("#bands_results").html("<div class='no-results'>No matches for that artist.</div>");
         }
+        $('#bigDaddySearch').removeAttr('disabled');
       }
 
     }); // ends echonest ajax rq// "GET" request to send search params to echonest api
@@ -91,7 +104,6 @@ $(document).ready(function(){
         var favorites = $.ajax({
           beforeSend: function(xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-            $('#bands_results').html("<img class='spinner' src='assets/loading.gif'>");
           },
           url: "bands/create",
           type: "POST",

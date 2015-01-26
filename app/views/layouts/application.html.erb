@@ -52,7 +52,7 @@
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
             </div>
           </div>
-          <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button>
+          <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button><span class="its-required"></span>
           <div class="ui-widget" >
             <div id="log"  class="ui-widget-content"> </div>
           </div>
@@ -85,7 +85,7 @@
   <!-- the sidebar slider -->
   <div id="secondary">
     <img class="horns" title="Close all your open bands in the Corral" src="assets/horns.png">
-    <button id='see_favorites'>View Your BandHub Corral</button>
+    <button id='see_favorites' type='submit' class="btn btn-default">View Your BandHub Corral</button>
     <div class="pageslide_links">
       <p class="stc">Sort the Corral:</p>
       <ul id="sort_by" >

@@ -43,13 +43,15 @@ $(function(){
 
 $(function(){
   // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
-  $('#see_favorites').on('click', function(){
+  $('#see_favorites').click(function(){
+    $(this).prop('disabled', true);
     $('#bands_results').empty();
+    $('.its-required').empty(); // just in case
     showFavorites();
   });
 
   // display the splash page on logo click
-  $('.title').on('click', function(){
+  $('.title').click(function(){
    window.location = '/';
   });
 

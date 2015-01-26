@@ -153,13 +153,25 @@ a:visited {
   border-radius: 0 !important;
 }
 
-#bigDaddySearch, #see_favorites, .remove_favorite, .refresh {
+#bigDaddySearch, #see_favorites, .remove_favorite {
   background-color: #74AC31;
+  border: 0;
+  border-radius: 0 !important;
   color: white;
+  white-space: normal;
 }
 
-#bigDaddySearch:hover, #see_favorites:hover, .remove_favorite:hover, #add_favorite:hover, .refresh:hover {
+#bigDaddySearch:hover, #see_favorites:hover, .remove_favorite:hover, #add_favorite:hover {
    box-shadow: 0px 0px 12px #74AC31;
+}
+
+/*the nothing entered in the search field message*/
+.its-required {
+  color: red;
+  font-size: 20px;
+  margin: 5px 0px 0px 15px;
+  display: inline-block;
+  position: absolute;
 }
 
 .devise_form a {
