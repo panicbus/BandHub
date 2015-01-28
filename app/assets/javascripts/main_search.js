@@ -93,14 +93,14 @@ $(document).ready(function(){
                                  "<img class='results_img' src='" + image.url + "'>" +
                                  "<div id='add_favorite'>Add " + search_list_item + " to your BandHub Corral</div></div></div>");
 
-      $('#add_favorite').on('click', function(){
+      $('#add_favorite').click(function(){
 
         // TODO: turn this on
-        $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
-                                              "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
+        // $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
+                                              // "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
 
         $('#bands_results').empty();
-
+        
         var favorites = $.ajax({
           beforeSend: function(xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));

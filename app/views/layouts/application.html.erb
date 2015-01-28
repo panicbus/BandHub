@@ -48,7 +48,7 @@
         <form class="navbar-form navbar-left main_search" role="search">
           <div class="form-group">
             <div class="ui-widget">
-              <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band">
+              <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band" name="textfield" value="">
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
             </div>
           </div>
@@ -123,21 +123,28 @@
 
   <div id="container" class="container">
  
-  <div id='bands_results'>
+    <div id='bands_results'>
+      
+      <% if current_user %>
+        <img class="concert" src="assets/concert.png">
+        <p class="subtitle">All Your Bands, In One Place</p><br>
+        <p class="sub-subtitle">To start, search for your favorite band above.</p><br>
+      <% end %>
+
+    </div>
+
+
+    <div id="flash_success">
+    </div>
     
-    <% if current_user %>
-      <img class="concert" src="assets/concert.png">
-      <p class="subtitle">All Your Bands, In One Place</p><br>
-      <p class="sub-subtitle">To start, search for your favorite band above.</p><br>
-    <% end %>
+    <%= yield %>
+    <div id="loading">
+      <img class='spinner' src='assets/loading.gif'>
+    </div>
+    
 
-  </div>
 
-  <%= yield %>
-  <div id="loading">
-    <img class='spinner' src='assets/loading.gif'>
-  </div>
-  
+
   </div>
 
   <!-- essential JS scripts -->

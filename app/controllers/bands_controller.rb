@@ -11,18 +11,21 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.create(echo_id: params[:echo_id],
-                        songkick_band_id: params[:songkick_band_id])
+
+    @band = Band.create(
+      echo_id: params[:echo_id],
+      songkick_band_id: params[:songkick_band_id]
+    )
 
     favorite = current_user.favorites.create(band_id: @band.id)
 
-    # if favorite.save
-      # flash[:notice] = "Artist saved to Band Corral."
-    # else
-    #   # binding.pry_remote
-    # end
+    if @band.save
+      flash[:message] = "Favorite saved."
+    else
+      flash[:message] = "Nope"
+    end
 
-    render nothing: true, status: 201
+    # render nothing: true, status: 201
     
   end
 

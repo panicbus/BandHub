@@ -299,6 +299,14 @@ a:visited {
   font-size: 22px;
 }
 
+#flash_success {
+  font-size: 25px;
+  top: 450px;
+  left: 400px;
+  position: absolute;
+}
+
+
  /*--------the search results card ---------*/
 .empty-corall-msg {
   text-align: center;
