@@ -299,10 +299,12 @@ a:visited {
   font-size: 22px;
 }
 
-#flash_success {
+.flash_success {
   font-size: 25px;
   top: 450px;
   left: 400px;
+  width: 100px;
+  height: 100px;
   position: absolute;
 }
 

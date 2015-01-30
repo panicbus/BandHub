@@ -19,10 +19,14 @@ class BandsController < ApplicationController
 
     favorite = current_user.favorites.create(band_id: @band.id)
 
-    if @band.save
+    # if favorite.save
       flash[:message] = "Favorite saved."
-    else
-      flash[:message] = "Nope"
+    # else
+      # flash[:message] = "Nope"
+    # end
+
+    respond_to do |format|
+      format.js 
     end
 
     # render nothing: true, status: 201

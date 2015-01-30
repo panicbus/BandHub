@@ -35,7 +35,7 @@ var showFavorites = function(){
         var favorite_card = $("<div class='ui-state-default list-item'><div data-name='" + bandName + 
         											"'data-date='" + createdAt + 
         											"'data-id='" + databaseId + 
-        											"'><p class='name'><i class='fa fa-th'></i>" + bandName + "</p></div>");
+        											"'><p class='name'><i class='fa fa-th draggy'></i>" + bandName + "</p></div>");
 
         $("<div class='band_photo_box' data-date='" + createdAt + "' data-id='" + bandId + "'>" +
            "<p><div title='Click for details' class='band_photo' data-id='" + databaseId +

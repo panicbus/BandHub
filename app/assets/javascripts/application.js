@@ -35,6 +35,16 @@ $(function(){
   });
 });
 
+$(function(){
+  $( ".list-item" ).draggable({
+    containment: "parent"
+  });
+
+  var containment = $( ".list-item" ).draggable( "option", "containment" );
+   
+})
+
+
 // to run the sort function in sorting.js //
 $(function(){
   sorting();
@@ -67,8 +77,7 @@ $(function(){
 
   var msnry = $container.data('masonry');
     
-  // jquery-ui drag & drop sort
-  $( "#bands_results" ).sortable();
-  $( "#bands_results" ).disableSelection();
+  // jquery-ui drag & drop sort with handle
+  $( "#bands_results" ).sortable({ handle: '.draggy' });
   
 }) 
