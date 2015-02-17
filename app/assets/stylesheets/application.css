@@ -31,11 +31,10 @@ button {
 }
 
 li {
-  /*list-style-type: none;*/
   margin-bottom: 8px;
 }
 
-#see_favorites, .remove_favorite, .refresh {
+#see_favorites, .remove_favorite {
   letter-spacing: 4px;
   outline: none;
 }
@@ -112,13 +111,18 @@ a:visited {
 
 .title {
   cursor: pointer;
+  font-size: 36px;
+  padding-top: 10px;
+  font-family: 'Krona One', sans-serif;
+  color: #c0d380 !important;
 }
 
-.main_search {
-/*  float: left;
-  width: 40%;*/
+/*not using this anymore*/
+/*.main_search {
+  float: left;
+  width: 40%;
   margin-left: 20px;
-}
+}*/
 
 .devise {
   color: #c0d380;
@@ -130,29 +134,17 @@ a:visited {
   display: none;
 }
 
-.nav_title {
-  font-size: 36px;
-  letter-spacing: 10px;
-  padding: 19px 0 0 15px;
-  font-family: 'Krona One', sans-serif;
-  color: #c0d380 !important;
+.search-input-group {
+  margin: 10px 0;
 }
-
 #search_bands {
   height: 40px;
-  width: 134%;
-  float: left;
-}
-#bigDaddySearch {
- margin-left: 98px;
- height: 40px;
 }
 #search_bands, #bigDaddySearch {
   font-size: 20px;
   border: 0;
   border-radius: 0 !important;
 }
-
 #bigDaddySearch, #see_favorites, .remove_favorite {
   background-color: #74AC31;
   border: 0;
@@ -168,9 +160,10 @@ a:visited {
 /*the nothing entered in the search field message*/
 .its-required {
   color: red;
+  background: #fff;
+  padding: 0 5px;
   font-size: 20px;
-  margin: 5px 0px 0px 15px;
-  display: inline-block;
+  margin: 45px 0px 0px -150px;
   position: absolute;
 }
 
@@ -221,17 +214,32 @@ a:visited {
   margin-bottom: -20px;
 }
 
-/*--------------SIDE BAR---------------------*/
 
+/*--------------LOADING SPINNER-------------*/
+#loading {
+  display: block;
+  margin: 100px auto;
+}
+.spinner {
+  margin: 0 auto;
+  display: block;
+}
+
+/*--------------SIDE BAR---------------------*/
 #hamburger {
   float: left;
-  margin: 20px 0 0 20px;
+  margin: 25px 0 0 20px;
   position: fixed;
   color: #000;
+  z-index: 100;
 }
 
 #hamburger:hover {
   color: #2287B5;
+}
+
+#secondary {
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .horns {
@@ -242,27 +250,18 @@ a:visited {
 }
 
 
-#loading {
-  display: block;
-  margin: 100px auto;
-}
-.spinner {
-  margin: 0 auto;
-  display: block;
-}
-
 .pageslide_links {
   padding: 15px;
   font-size: 18px;
 }
 
-#see_favorites, .refresh {
+#see_favorites {
   width: 90%;
   margin: 36% 0 10px 10px;
   font-size: 15px;
 }
 
-.see_favorites_button_div, .refresh_button_div {
+.see_favorites_button_div {
   clear: both;
   margin-top: -80px;
 }
@@ -274,22 +273,26 @@ a:visited {
   margin: 0 0 15px 5px;
 }
 
+.api_attributes img {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
 .bio {
   text-align: center;
   margin: 10px 0 0 14px;
 }
 
-/*----------band show page--------------------*/
-.container {
-  margin: 0 auto 30px;
-  display: block;
-  width: 87%;
+/*----------band search results page--------------------*/
+#container {
+  max-width: 1170px;
+  margin-top: 50px;
 }
 
 .concert {
   padding-top: 20px;
   display: block;
-  position: relative;
   margin: 0 auto;
   width: 400px;
 }
@@ -299,6 +302,7 @@ a:visited {
   font-size: 22px;
 }
 
+/*not working yet*/
 .flash_success {
   font-size: 25px;
   top: 450px;
@@ -395,6 +399,7 @@ a:visited {
   width: auto;
 }
 
+/*// not working currently//*/
 .success_message {
   width: 65%;
   font-size: 20px;
@@ -412,9 +417,8 @@ a:visited {
 /* .list-item was formerly .favorite_card - changed for jquery ui functionality*/
 .list-item {
   float: left;
-  margin: 25px 20px 15px 15px;
-  width: 29%;
-  height: auto;
+  margin: 25px;
+  width: 300px;
   text-align: center;
   -webkit-box-shadow: 0px 0px 30px rgba(50, 50, 50, 0.5);
   -moz-box-shadow:    0px 0px 30px rgba(50, 50, 50, 0.5);
@@ -428,19 +432,20 @@ a:visited {
   background: -ms-linear-gradient(top, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
   background: linear-gradient(to bottom, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ca72', endColorstr='#f1ffbf', GradientType=0 ); 
-  list-style-type: none;
 }
 
 .band_photo img {
-  border-radius: 4px;
+  border-radius: 3px;
   max-width: 100%;
   cursor: pointer;
 }
 
 .name {
   font-size: 20px;
-  margin: 10px 0 -10px;
+  margin: 10px 0 -5px;
 }
+
+/*the drag gripper*/
 .fa-th {
   color: gray;
   float: left;
@@ -465,9 +470,9 @@ a:visited {
 
 .on_tour_box:hover a, .links_box:hover a, .news_box:hover a {
     transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
-    -webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
-    -o-transition: all 0.2s ease-in-out; /* Opera */
+    -moz-transition: all 0.2s ease-in-out; 
+    -webkit-transition: all 0.2s ease-in-out; 
+    -o-transition: all 0.2s ease-in-out; 
 }
 
 .links_box {
@@ -476,22 +481,15 @@ a:visited {
 }
 
 .remove_favorite {
-  margin: 0px auto -15px;
-  display: block;
-  width: 100%;
-  padding: 5px 5px 5px 0;
+  padding: 5px;
   text-align: right;
   cursor: pointer;
 }
 
-.api_attributes img {
-  max-width: 100%;
-  margin: 0 auto;
-  display: block;
-}
+
 
 /*----------RESPONSIVE MEDIA-----------*/
-@media (min-width: 700px) and (max-width: 1000px) {
+/*@media (min-width: 700px) and (max-width: 1000px) {
 
   .container {
     width: 80%;
@@ -544,31 +542,27 @@ a:visited {
     margin-top: 75px;
   }
 
-  /*.favorite_card {
-    width: 44%;
-  }*/
-
-}
+}*/
 
 /* -------for jquery-ui autocomplete-----------*/
-
-.ui-autocomplete-loading { 
+/*.ui-autocomplete-loading { 
   background: white url('ui-anim_basic_16x16.gif') right center no-repeat; 
 }
-/*.ui-widget { margin-top:20px}*/
+.ui-widget { margin-top:20px}
+
 #log { 
-  /*height: 24px; */
+  height: 24px; 
   height: autox; 
   width: 532px; 
   overflow: auto;
 }
+*/
 
+/*@media (min-width: 320px) and (max-width: 700px) {
 
-@media (min-width: 320px) and (max-width: 700px) {
+}*/
 
-}
-
-@media (max-width: 360px) {
+/*@media (max-width: 360px) {
 
   .container {
     padding-top: 50px;
@@ -630,13 +624,13 @@ a:visited {
     text-align: center;
   }
 
- /* .favorite_card {
+  .favorite_card {
     width: 100%;
-  }*/
+  }
 
   .on_tour_box, .links_box {
     width: 90.7%;
   }
 
-}
+}*/
 

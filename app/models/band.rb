@@ -4,7 +4,7 @@ class Band < ActiveRecord::Base
   has_many :favorites
   has_many :bands, through: :favorites
 
-  # validates :songkick_band_id, uniqueness: true
-  validates :songkick_band_id, uniqueness: {message: "boom, that artist already added"}
+  validates :songkick_band_id, uniqueness: true
+  # validates :songkick_band_id, uniqueness: {message: "boom, that artist already added"}
 
 end

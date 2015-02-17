@@ -3,8 +3,6 @@
 <head>
   <title>BandHub</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-  <!-- // <script src="js/jquery-ui.js"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,10 +11,11 @@
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="jquery.pageslide.css">
   <link rel="stylesheet" href="/css/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="/assets/jquery-ui.js"></script>
   <script src="/assets/masonry.pkgd.min.js"></script> <!-- look at this path to make work -->
-  <script type="text/javascript">
-    $('#hamburger').pageslide();
-  </script>
+  <script src="/assets/masonry.pkgd.js"></script> <!-- look at this path to make work -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -27,8 +26,6 @@
   </script>
 </head>
 
-<header>
-</header>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -39,41 +36,43 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="title">
-          <a class="navbar-brand nav_title" href="#">Bandhub</a>
-        </div>
       </div>
+      
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="title">
+            Bandhub
+          </div>
+        </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
-        <form class="navbar-form navbar-left main_search" role="search">
-          <div class="form-group">
-            <div class="ui-widget">
-              <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band" name="textfield" value="">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <form class="input-group search-input-group">
+              <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band" autocomplete="off">
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-            </div>
-          </div>
-          <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button><span class="its-required"></span>
-          <div class="ui-widget" >
-            <div id="log"  class="ui-widget-content"> </div>
-          </div>
-        </form>
+              <span class="input-group-btn">
+                <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button><span class="its-required"></span>
+              </span>
+            </form>
+          </div><!-- /.col-lg-6 -->
 
-        <ul class="nav navbar-nav navbar-right">
-
-          <div class="devise">
-            <% if user_signed_in? %>
-              You're BandHubbing as <strong><%= current_user.username.capitalize %></strong><br>
-            Not you? &nbsp;<%= link_to "Logout ", destroy_user_session_path, method: :delete %> &nbsp;|&nbsp;
-            <%= link_to 'Edit profile', edit_user_registration_path %>
-              <% else %>
-            <%= link_to "Sign up", new_user_registration_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
-            <%= link_to "Login", new_user_session_path %><br>
-            <%= link_to( image_tag("sign-in-twitter.png"), user_omniauth_authorize_path(:twitter) ) %>
-            <% end %>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <ul class="nav navbar-nav navbar-right">
+              <div class="devise">
+                <% if user_signed_in? %>
+                  You're BandHubbing as <strong><%= current_user.username.capitalize %></strong><br>
+                Not you? &nbsp;<%= link_to "Logout ", destroy_user_session_path, method: :delete %> &nbsp;|&nbsp;
+                <%= link_to 'Edit profile', edit_user_registration_path %>
+                  <% else %>
+                <%= link_to "Sign up", new_user_registration_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
+                <%= link_to "Login", new_user_session_path %><br>
+                <%= link_to( image_tag("sign-in-twitter.png"), user_omniauth_authorize_path(:twitter) ) %>
+                <% end %>
+              </div>
+            </ul>
           </div>
-
-        </ul>
-      </div><!-- /.navbar-collapse -->
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </nav>
 
@@ -85,7 +84,7 @@
   <!-- the sidebar slider -->
   <div id="secondary">
     <img class="horns" title="Close all your open bands in the Corral" src="assets/horns.png">
-    <button id='see_favorites' type='submit' class="btn btn-default">View Your BandHub Corral</button>
+    <button id='see_favorites' type='submit' class="btn btn-default sb-close">View Your BandHub Corral</button>
     <div class="pageslide_links">
       <p class="stc">Sort the Corral:</p>
       <ul id="sort_by" >
@@ -121,21 +120,18 @@
   </div>
 
 
-  <div id="container" class="container">
+  <div id="container" class="container" class="js-masonry"  data-masonry-options='{ "columnWidth": ".list-item", "itemSelector": ".list-item"}'>
  
     <div id='bands_results'>
-      
       <% if current_user %>
         <img class="concert" src="assets/concert.png">
         <p class="subtitle">All Your Bands, In One Place</p><br>
         <p class="sub-subtitle">To start, search for your favorite band above.</p><br>
       <% end %>
-
     </div>
 
-
     <div class="flash_success">
-    
+      
     </div>
 
     <%= yield %>
@@ -143,18 +139,61 @@
       <img class='spinner' src='assets/loading.gif'>
     </div>
     
-
-
-
-  </div>
+  </div> <!-- end of container -->
 
   <!-- essential JS scripts -->
- 
   <script src="assets/jquery.pageslide.min.js"></script>
+
   <script>
       $(document).ready(function() {
-          $(".open, .impatient").pageslide();
+          $(".impatient").pageslide();
       });
+  </script>
+
+  <!-- // MASONRY // -->
+  <script>
+    $(function(){
+      $.fn.imagesLoaded = function( callback ){
+      var elems = this.find( 'img' ),
+          elems_src = [],
+          self = this,
+          len = elems.length;
+     
+      if ( !elems.length ) {
+        callback.call( this );
+        return this;
+      }
+     
+      elems.one('load error', function() {
+        if ( --len === 0 ) {
+          // Rinse and repeat.
+          len = elems.length;
+          elems.one( 'load error', function() {
+            if ( --len === 0 ) {
+              callback.call( self );
+            }
+          }).each(function() {
+            this.src = elems_src.shift();
+          });
+        }
+      }).each(function() {
+        elems_src.push( this.src );
+        // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
+        // data uri bypasses webkit log warning (thx doug jones)
+        this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+      });
+     
+      return this;
+    };
+      var $container = $('#container');
+      $container.imagesLoaded(function(){
+        $container.masonry({
+          gutter: 20,
+          columnWidth: '.list-item',
+          itemSelector: '.list-item'
+        });
+      });
+    })
   </script>
 </body>
 </html>

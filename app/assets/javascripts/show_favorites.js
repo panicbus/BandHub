@@ -80,15 +80,20 @@ var showFavorites = function(){
            "</div>" + // ends del_button div
           "</div></div>").appendTo(favorite_card)};
 
-
+        // $('#bands_results').masonry(); this makes the ajax request just die
+        // $('#bands_results').hide().append(favorite_card).masonry( 'appended', favorite_card ); // appends all the favorite cards
         $('#bands_results').hide().append(favorite_card).fadeIn(300); // appends all the favorite cards
       }; // end of for loop
     }; // end of empty corral if statement
 
     ///// FAVE CARD SLIDE TOGGLE ON IMG CLICK ////
     $(document).ready(function(){
-      $('.band_photo').click(function(){
+      var $container = $('#container').masonry({
+        columnWidth: '.list-item'
+      });
+      $container.on('click', '.band_photo', function(){
         var id = $(this).attr("data-id");
+        // to keep the bottom of the opening div onscreen
         var scroll_to = $(this).offset().top + $(this).height() - 150;
         
         // if not active, open this div and close all the others.

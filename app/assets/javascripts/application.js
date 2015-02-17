@@ -22,7 +22,6 @@ $.ajaxSetup({
   }
 });
 
-
 // initialize the ajax loading spinner
 $(function(){
   var $loading = $('#loading').hide();
@@ -35,28 +34,18 @@ $(function(){
   });
 });
 
-$(function(){
-  $( ".list-item" ).draggable({
-    containment: "parent"
-  });
-
-  var containment = $( ".list-item" ).draggable( "option", "containment" );
-   
-})
-
-
 // to run the sort function in sorting.js //
 $(function(){
   sorting();
 });
 
 
+// >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
 $(function(){
-  // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
   $('#see_favorites').click(function(){
-    $(this).prop('disabled', true);
+    $(this).prop('disabled', true); // disables the see faves button after click
     $('#bands_results').empty();
-    $('.its-required').empty(); // just in case
+    $('.its-required').empty(); // removes the empty search error message in nav if there is one
     showFavorites();
   });
 
@@ -65,19 +54,7 @@ $(function(){
    window.location = '/';
   });
 
-
-  // MASONRY //
-  var $container = $('#bands_results');
-
-  // initialize
-  $container.masonry({
-    columnWidth: 200,
-    itemSelector: '.list-item'
-  });
-
-  var msnry = $container.data('masonry');
-    
   // jquery-ui drag & drop sort with handle
   $( "#bands_results" ).sortable({ handle: '.draggy' });
-  
-}) 
+
+}); 

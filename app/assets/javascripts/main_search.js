@@ -93,14 +93,14 @@ $(document).ready(function(){
                                  "<img class='results_img' src='" + image.url + "'>" +
                                  "<div id='add_favorite'>Add " + search_list_item + " to your BandHub Corral</div></div></div>");
 
-      $('#add_favorite').click(function(){
+      $('#add_favorite').on('click', function(){
 
         // TODO: turn this on
         // $('#bands_results').append("<div class='success_message'>" + search_list_item + " successfully saved to your profile.<br>" +
                                               // "Click 'View BandHub Page' button to see " + search_list_item + "'s details!</div>").slideDown("fast").delay(2500).fadeOut(500);
 
         $('#bands_results').empty();
-        
+
         var favorites = $.ajax({
           beforeSend: function(xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
@@ -112,6 +112,12 @@ $(document).ready(function(){
                  songkick_band_id: songkick_band_id,
                  on_tour: on_tour,
                  tour_date: tour_dates},
+          success: function (html) {
+            if (html.length > 0) {
+              var el = jQuery(html);
+              jQuery("#container").append(el).masonry( 'appended', el, true );
+            }
+          },
           complete: function(){
             $('#bands_results').html("");
           }
