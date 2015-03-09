@@ -9,8 +9,8 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Krona+One|Numans|Raleway:200' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="jquery.pageslide.css">
-  <link rel="stylesheet" href="/css/jquery-ui.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/assets/jquery.pageslide.css"> -->
+  <!-- <link rel="stylesheet" href="/assets/jquery-ui.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="/assets/jquery-ui.js"></script>
@@ -39,7 +39,7 @@
       </div>
       
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="col-lg-3 col-md-3 col-sm-12">
           <div class="title">
             Bandhub
           </div>
@@ -47,16 +47,17 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
           <div class="col-lg-6 col-md-6 col-sm-6">
-            <form class="input-group search-input-group">
+            <form class="input-group search-input-group the-search-bar">
               <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band" autocomplete="off">
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
               <span class="input-group-btn">
-                <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button><span class="its-required"></span>
+                <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button>
+              <div class="its-required"></div>
               </span>
             </form>
           </div><!-- /.col-lg-6 -->
 
-          <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="col-lg-3 col-md-3 col-sm-6">
             <ul class="nav navbar-nav navbar-right">
               <div class="devise">
                 <% if user_signed_in? %>
@@ -195,5 +196,8 @@
       });
     })
   </script>
+
+  <!-- <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
 </body>
 </html>

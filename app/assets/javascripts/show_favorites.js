@@ -128,7 +128,6 @@ var showFavorites = function(){
     }); /// end fave card slide toggle ///
 
 
-
       ////////////////////////////
      ////////  DELETE  //////////
     ////////////////////////////
@@ -137,8 +136,9 @@ var showFavorites = function(){
       var id = $(this).attr("data-id");
          console.log('this is the clicked data-id = '+ id +'');
       $.ajax({
-        beforeSend:function(){
+        beforeSend:function(xhr){
           $('#loading').hide();
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
         },
         url: "/bands/favorite/"+ id,
         method: "DELETE",

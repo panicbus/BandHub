@@ -11,14 +11,14 @@
     width: 200px;
 
     /* These styles are optional, and describe how the pageslide will look */
-    background-color: rgba(0,0,0,0.7); 
+    background-color: rgba(0,0,0,1); 
     color: #FFF;
 }
 
 #secondary {
     display: none; 
     color: #EFEFEF;
-    background-color: rgba(0,0,0,0.7); 
+    background-color: rgba(0,0,0,1); 
 }
 
 .open {

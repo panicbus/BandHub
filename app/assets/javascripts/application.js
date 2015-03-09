@@ -35,9 +35,9 @@ $(function(){
 });
 
 // to run the sort function in sorting.js //
-$(function(){
-  sorting();
-});
+// $(function(){
+//   sorting();
+// });
 
 
 // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
