@@ -307,7 +307,7 @@ a:visited {
 }
 
 /*not working yet*/
-.flash_success {
+/*.flash_success {
   font-size: 25px;
   top: 10px;
   left: 400px;
@@ -324,7 +324,7 @@ a:visited {
   height: 100px;
   position: absolute;
   z-index: 100000; 
-}
+}*/
 
 
  /*--------the search results card ---------*/

@@ -18,8 +18,9 @@ function sorting(){
     console.log(bands);
 
     var appendAnim = function(items, index){
-      $(items[index]).hide();
-      $(items[index]).fadeIn(500 + 300 * index);
+      // $(items[index]).hide();
+      $(items[index]).show();
+      // $(items[index]).fadeIn(500 + 300 * index);
       document.getElementById("bands_results").appendChild(items[index])
 
       if(index < items.length ){

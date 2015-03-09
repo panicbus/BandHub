@@ -1,8 +1,8 @@
 class BandsController < ApplicationController
 
   before_filter :authenticate_user!
-  # skip_before_filter  :verify_authenticity_token
-  
+  after_filter { flash.discard if request.xhr? }
+
   def index
     @bands = Band.all
     @band = Band.new

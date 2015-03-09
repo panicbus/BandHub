@@ -1,7 +1,6 @@
 // This is the main search 
 $(document).ready(function(){
-
-
+  
   $("#bigDaddySearch").click(function(){
     event.preventDefault();
     
@@ -22,6 +21,7 @@ $(document).ready(function(){
     $('#bands_results').empty();
     $('.its-required').empty();
     $('#search_bands').val('');
+
 
     // "GET" request to send search params to echonest api
     var get_request = $.ajax({
@@ -122,7 +122,7 @@ $(document).ready(function(){
             $('#bands_results').html("");
           }
         }).done(function(){
-          
+          sorting();
           showFavorites(); // displays the favorites page after favoriting action
 
         }); // ends favorites ajax
@@ -133,6 +133,16 @@ $(document).ready(function(){
     }); // ends START OF THE SHOW DISPLAY onclick
 
   }) // ends bigDaddySearch
+  
+  // remove the form is required message if there is one 
+  $(document).mouseup(function (e) {
+    var searchbutton = $('#bigDaddySearch');
+    if (!searchbutton.is(e.target) // if the target of the click isn't the container...
+        && searchbutton.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+      $('.its-required').empty();
+    }
+  });
 
 });
 

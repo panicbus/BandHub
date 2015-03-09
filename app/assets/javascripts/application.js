@@ -46,6 +46,7 @@ $(function(){
     $(this).prop('disabled', true); // disables the see faves button after click
     $('#bands_results').empty();
     $('.its-required').empty(); // removes the empty search error message in nav if there is one
+    sorting();
     showFavorites();
   });
 
