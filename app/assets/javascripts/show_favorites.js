@@ -137,8 +137,8 @@ var showFavorites = function(){
          console.log('this is the clicked data-id = '+ id +'');
       $.ajax({
         beforeSend:function(xhr){
-          $('#loading').hide();
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+          $('#loading').hide();
         },
         url: "/bands/favorite/"+ id,
         method: "DELETE",

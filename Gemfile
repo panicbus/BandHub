@@ -68,4 +68,5 @@ end
 
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'thread'
 

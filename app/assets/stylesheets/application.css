@@ -309,11 +309,21 @@ a:visited {
 /*not working yet*/
 .flash_success {
   font-size: 25px;
-  top: 450px;
+  top: 10px;
   left: 400px;
   width: 100px;
   height: 100px;
   position: absolute;
+  z-index: 1000;
+  border: 2px solid blue;
+}
+.the-success-msg {
+  font-size: 30px;
+  background: lightblue;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 100000; 
 }
 
 
