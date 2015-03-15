@@ -1,27 +1,37 @@
 function sorting(){
   $('#sort_by a').click(function(e){
+    // sets variable to only data-name and data-date (removes the href)
     var sortAttr = $(this).attr('href').slice(1);
     e.preventDefault()
 
+    // targets all cards in on the page
     var bands = $('#bands_results').children();
+    var theSortAttr = bands.find('div').attr(sortAttr);
+    // var bandName = bands.findAttr;
+    console.log("bands is " + bands);
+    console.log("band name is " + theSortAttr);
+    // debugger
 
     bands.sort(function (a, b) {
-      if ($(a).attr(sortAttr) > $(b).attr(sortAttr)){
+      // debugger
+
+      if ($(a).find('div').attr(sortAttr) > $(b).find('div').attr(sortAttr)){
         return 1;
       }
-      if ($(b).attr(sortAttr) > $(a).attr(sortAttr)){
+      if ($(b).find('div').attr(sortAttr) > $(a).find('div').attr(sortAttr)){
         return -1;
-      }
-        // a must be equal to b
+      }        // a must be equal to b
         return 0;
     });
-    console.log(bands);
 
     var appendAnim = function(items, index){
-      // $(items[index]).hide();
-      $(items[index]).show();
-      // $(items[index]).fadeIn(500 + 300 * index);
-      document.getElementById("bands_results").appendChild(items[index])
+      console.log("items[index] is " + items[index] + "********")
+      console.log("items" + items)
+      console.log("index " + index)
+      $(items[index]).hide();
+      // $(items[index]).show();
+      $(items[index]).fadeIn(500 + 300 * index);
+      $('#bands_results').append(items[index])
 
       if(index < items.length ){
         appendAnim(items,index + 1);

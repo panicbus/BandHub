@@ -12,14 +12,6 @@
  *= require_tree .
  */
 
-/*taken from http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation*/
-html {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   margin: 0px;
 }
