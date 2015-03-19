@@ -7,8 +7,12 @@ var showFavorites = function(){
     	$('#bands_results').html("<div class='empty-corall-msg'>Your Corrall is empty. Add some bands!</div>");
     } else {
       
+      // to set up default corral sort 
+      var dateArray = [];
+
       // parsing the json data
       for (var i = 0; i < faves.length; i++){
+
         createdAt       = faves[i].created_at;
         databaseId      = faves[i].database_id;
         bandId          = faves[i].echo_info.response.artist.id;
@@ -83,8 +87,43 @@ var showFavorites = function(){
         // $('#bands_results').masonry(); this makes the ajax request just die
         // $('#bands_results').hide().append(favorite_card).masonry( 'appended', favorite_card ); // appends all the favorite cards
         $('#bands_results').hide().append(favorite_card).fadeIn(300); // appends all the favorite cards
+      
+        dateArray.push(createdAt);
+        
+
       }; // end of for loop
     }; // end of empty corral if statement
+
+    // sorts the data-date 
+    dateArray.sort();
+    console.log(dateArray)
+
+    // targets all cards in on the page
+    var cardList = $('#bands_results').children();
+
+    // sorts the cards associated with each data-date
+    cardList.sort(function (a, b) {
+      if ($(a).find('div').attr('data-date') > $(b).find('div').attr('data-date')){
+        return -1;
+      }
+      if ($(b).find('div').attr('data-date') > $(a).find('div').attr('data-date')){
+        return 1;
+      }
+        return 0;
+    });
+
+    // puts em back on the page
+    var appendAnim = function(items, index){
+      $(items[index]).hide();
+      $(items[index]).show();
+      $('#bands_results').append(items[index])
+
+      if(index < items.length ){
+        appendAnim(items,index + 1);
+      }
+    }
+    appendAnim(cardList,0)
+
 
     ///// FAVE CARD SLIDE TOGGLE ON IMG CLICK ////
     $(document).ready(function(){

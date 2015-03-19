@@ -39,16 +39,38 @@ $(function(){
 //   sorting();
 // });
 
+var initSort = function(){
+
+  var bands = $('#bands_results').children();
+  var sortAttr = bands.find('div').attr('data-date');
+  bands.sort(function (a, b) {
+  
+    if ($(a).find('div').attr(sortAttr) > $(b).find('div').attr(sortAttr)){
+      return -1;
+    }
+    if ($(b).find('div').attr(sortAttr) > $(a).find('div').attr(sortAttr)){
+      return 1;
+    }
+      return 0;
+  });
+}
+
+
 
 // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
 $(function(){
+
   $('#see_favorites').click(function(){
     $(this).prop('disabled', true); // disables the see faves button after click
     $('#bands_results').empty();
     $('.its-required').empty(); // removes the empty search error message in nav if there is one
+
+    initSort();
     sorting();
     showFavorites();
+
   });
+  
 
   // display the splash page on logo click
   $('.title').click(function(){
