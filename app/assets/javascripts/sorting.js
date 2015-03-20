@@ -8,7 +8,7 @@ function sorting(){
     var bands = $('#bands_results').children();
 
     bands.sort(function (a, b) {
-    
+
       if ($(a).find('div').attr(sortAttr) > $(b).find('div').attr(sortAttr)){
         return 1;
       }
@@ -20,8 +20,8 @@ function sorting(){
 
     var appendAnim = function(items, index){
       $(items[index]).hide();
-      // $(items[index]).show();
-      $(items[index]).fadeIn(500 + 300 * index);
+      $(items[index]).show();
+      // $(items[index]).fadeIn(500 + 300 * index);
       $('#bands_results').append(items[index])
 
       if(index < items.length ){

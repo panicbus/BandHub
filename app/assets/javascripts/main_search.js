@@ -1,9 +1,9 @@
-// This is the main search 
+// This is the main search
 $(document).ready(function(){
-  
+
   $("#bigDaddySearch").click(function(){
     event.preventDefault();
-    
+
     var success = true;
     if ($("#search_bands").val() == '') {
       $(this).next().text('This is a required field.');
@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     // grab the params of the search form
     var query = $('#search_bands').val();
-    
+
     // clear the div and the search field
     $('#bands_results').empty();
     $('.its-required').empty();
@@ -32,13 +32,13 @@ $(document).ready(function(){
       dataType: "json",
       // encodeURIComponent removes the space b/t words & encodes it w a proper searchable symbol
       data: {band: encodeURIComponent(query)},
-      beforeSend: function (){ 
-        $('#bigDaddySearch').attr('disabled', 'disabled'); 
+      beforeSend: function (){
+        $('#bigDaddySearch').attr('disabled', 'disabled');
       },
       success: function(data) {
         if (data.response.status.message == "Success") {
           $('#bands_results').html(""); // to put something in the html to end the success check
-        } else { 
+        } else {
           $("#bands_results").html("<div class='no-results'>No matches for that artist.</div>");
         }
         $('#bigDaddySearch').removeAttr('disabled');
@@ -77,14 +77,14 @@ $(document).ready(function(){
         type: "get",
         dataType: "json",
         data: {band: encodeURIComponent(query)}
-      }); 
+      });
 
       songkick_get_request.done(function(data){
         songkick_band_id = data['resultsPage']['results']['artist'][0]['displayName']
         on_tour = data['resultsPage']['results']['artist'][0]['onTourUntil'];
         tour_dates = data['resultsPage']['results']['artist'][0]['uri'];
 
-         ////////////////////////////////////////// 
+         //////////////////////////////////////////
         ///////// search results display /////////
        //////////////////////////////////////////
       $('#bands_results').append("<div class='results_container'>" +
@@ -133,12 +133,12 @@ $(document).ready(function(){
     }); // ends START OF THE SHOW DISPLAY onclick
 
   }) // ends bigDaddySearch
-  
-  // remove the form is required message if there is one 
+
+  // remove the 'form is required' message if there is one
   $(document).mouseup(function (e) {
     var searchbutton = $('#bigDaddySearch');
-    if (!searchbutton.is(e.target) // if the target of the click isn't the container...
-        && searchbutton.has(e.target).length === 0) // ... nor a descendant of the container
+    if (!searchbutton.is(e.target)
+        && searchbutton.has(e.target).length === 0)
     {
       $('.its-required').empty();
     }

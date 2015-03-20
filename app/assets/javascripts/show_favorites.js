@@ -3,11 +3,11 @@
 var showFavorites = function(){
 
   $.getJSON("bands/favorite").done(function(faves){
-    if (faves == ""){ 
+    if (faves == ""){
     	$('#bands_results').html("<div class='empty-corall-msg'>Your Corrall is empty. Add some bands!</div>");
     } else {
-      
-      // to set up default corral sort 
+
+      // to set up default corral sort
       var dateArray = [];
 
       // parsing the json data
@@ -36,9 +36,9 @@ var showFavorites = function(){
         lastFm          = faves[i].echo_info.response.artist.urls.lastfm_url;
         bandTwitter     = faves[i].echo_info.response.artist.urls.twitter_url;
 
-        var favorite_card = $("<div class='ui-state-default list-item'><div data-name='" + bandName + 
-        											"'data-date='" + createdAt + 
-        											"'data-id='" + databaseId + 
+        var favorite_card = $("<div class='ui-state-default list-item'><div data-name='" + bandName +
+        											"'data-date='" + createdAt +
+        											"'data-id='" + databaseId +
         											"'><p class='name'><i class='fa fa-th draggy'></i>" + bandName + "</p></div>");
 
         $("<div class='band_photo_box' data-date='" + createdAt + "' data-id='" + bandId + "'>" +
@@ -50,11 +50,11 @@ var showFavorites = function(){
           $(favorite_card).append("<div data-id='" + databaseId + "' class='on_tour_box'>" + bandName + " - not currently on tour.</div>");
         } else {
           $(favorite_card).append("<div data-id='" + databaseId + "' class='on_tour_box'>" + bandName + " is on tour until " + onTour + "!<br>" +
-                                  "<a href='" + tourDates + "' target='_blank'>Click for tour dates and locations</a>." + 
+                                  "<a href='" + tourDates + "' target='_blank'>Click for tour dates and locations</a>." +
                                   "</div>").hide().appendTo('#bands_results').fadeIn(500);
         }; // ends on tour if/else
 
-        // news and blogs if and if not twitter 
+        // news and blogs if and if not twitter
         if (bandTwitter == null){
          $("<div data-id='" + databaseId + "' class='news_box' data-id='" + bandName +
            "'>Recent news stories tagged with " + bandName + ":<br>" +
@@ -68,7 +68,7 @@ var showFavorites = function(){
            "<br><div class='remove_favorite' data-method='delete' data-id='" + databaseId +
            "'>Remove</div>" +
            "</div>" + // ends del_button div
-          "</div></div>").appendTo(favorite_card); 
+          "</div></div>").appendTo(favorite_card);
         } else {
           $("<div data-id='" + databaseId + "' class='news_box' data-id='" + bandName +
            "'>Recent news stories tagged with " + bandName + ":<br>" +
@@ -87,14 +87,14 @@ var showFavorites = function(){
         // $('#bands_results').masonry(); this makes the ajax request just die
         // $('#bands_results').hide().append(favorite_card).masonry( 'appended', favorite_card ); // appends all the favorite cards
         $('#bands_results').hide().append(favorite_card).fadeIn(300); // appends all the favorite cards
-      
+
         dateArray.push(createdAt);
-        
+
 
       }; // end of for loop
     }; // end of empty corral if statement
 
-    // sorts the data-date 
+    // sorts the data-date
     dateArray.sort();
     console.log(dateArray)
 
@@ -125,48 +125,6 @@ var showFavorites = function(){
     appendAnim(cardList,0)
 
 
-    ///// FAVE CARD SLIDE TOGGLE ON IMG CLICK ////
-    $(document).ready(function(){
-      var $container = $('#container').masonry({
-        columnWidth: '.list-item'
-      });
-      $container.on('click', '.band_photo', function(){
-        var id = $(this).attr("data-id");
-        // to keep the bottom of the opening div onscreen
-        var scroll_to = $(this).offset().top + $(this).height() - 150;
-        
-        // if not active, open this div and close all the others.
-        if (!$(this).parents('.list-item').hasClass("active")){
-          $('.list-item').removeClass('active');
-          $('.on_tour_box, .news_box, .links_box').slideUp(); 
-          $('.on_tour_box[data-id='+ id +']').slideToggle();
-          $('.news_box[data-id='+ id +']').slideToggle();
-          $('.links_box[data-id='+ id +']').slideToggle();
-          $(this).parents('.list-item').addClass('active'); 
-          // to scroll to the bottom of the toggling div
-          $('html, body').animate({
-              scrollTop: scroll_to
-          });
-        } else {
-          // if I am active, then close me!
-          $('.on_tour_box, .news_box, .links_box').slideUp();          
-          $('.list-item').removeClass('active');
-        }
-      });
-
-      // close divs by clicking outside the tiles
-      $(document).mouseup(function (e){
-        var target = $(e.target);
-
-        if (!target.hasClass('list-item') // if the target of the click isn't the tile...
-          && target.parents('.list-item').length == 0)  // ... nor a descendant of the tile
-          {
-            $('.on_tour_box, .news_box, .links_box').slideUp();
-          }
-      });
-    }); /// end fave card slide toggle ///
-
-
       ////////////////////////////
      ////////  DELETE  //////////
     ////////////////////////////
@@ -184,20 +142,20 @@ var showFavorites = function(){
         data: id
       }).done(function(faves){
         $('div[data-id='+ id +']').parent().fadeOut(500, function(){
-	      	$(this).remove(); 
-	      }); // ends fadeOut 
-     	  
-      }); // ends .done  
+	      	$(this).remove();
+	      }); // ends fadeOut
+
+      }); // ends .done
 
       // add message if faves is empty
       $.getJSON("bands/favorite").done(function(faves){
-        if (faves == ""){ 
+        if (faves == ""){
           $('#bands_results').html("<div class='empty-corall-msg'>Your Corrall is empty. Add some bands!</div>");
         }
       });
 
     }); ///ends DELETE///
-      
+
   }); // ends getJSON
 
 }

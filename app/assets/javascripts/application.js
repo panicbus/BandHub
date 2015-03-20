@@ -34,28 +34,6 @@ $(function(){
   });
 });
 
-// to run the sort function in sorting.js //
-// $(function(){
-//   sorting();
-// });
-
-var initSort = function(){
-
-  var bands = $('#bands_results').children();
-  var sortAttr = bands.find('div').attr('data-date');
-  bands.sort(function (a, b) {
-  
-    if ($(a).find('div').attr(sortAttr) > $(b).find('div').attr(sortAttr)){
-      return -1;
-    }
-    if ($(b).find('div').attr(sortAttr) > $(a).find('div').attr(sortAttr)){
-      return 1;
-    }
-      return 0;
-  });
-}
-
-
 
 // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
 $(function(){
@@ -65,12 +43,11 @@ $(function(){
     $('#bands_results').empty();
     $('.its-required').empty(); // removes the empty search error message in nav if there is one
 
-    initSort();
     sorting();
     showFavorites();
 
   });
-  
+
 
   // display the splash page on logo click
   $('.title').click(function(){
@@ -80,4 +57,4 @@ $(function(){
   // jquery-ui drag & drop sort with handle
   $( "#bands_results" ).sortable({ handle: '.draggy' });
 
-}); 
+});
