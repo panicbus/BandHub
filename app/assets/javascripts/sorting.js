@@ -21,7 +21,7 @@ function sorting(){
     var appendAnim = function(items, index){
       $(items[index]).hide();
       $(items[index]).show();
-      // $(items[index]).fadeIn(500 + 300 * index);
+      // $(items[index]).fadeIn(500 + 300 * index); // a 'nice' animation
       $('#bands_results').append(items[index])
 
       if(index < items.length ){
