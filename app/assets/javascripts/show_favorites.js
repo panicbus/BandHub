@@ -94,35 +94,36 @@ var showFavorites = function(){
       }; // end of for loop
     }; // end of empty corral if statement
 
-    // sorts the data-date
-    dateArray.sort();
-    console.log(dateArray)
+    // if there are any cards, sort by data-date
+    if (faves.length > 0) {
+      dateArray.sort();
 
-    // targets all cards in on the page
-    var cardList = $('#bands_results').children();
+      // targets all cards in on the page
+      var cardList = $('#bands_results').children();
 
-    // sorts the cards associated with each data-date
-    cardList.sort(function (a, b) {
-      if ($(a).find('div').attr('data-date') > $(b).find('div').attr('data-date')){
-        return -1;
+      // sorts the cards associated with each data-date
+      cardList.sort(function (a, b) {
+        if ($(a).find('div').attr('data-date') > $(b).find('div').attr('data-date')){
+          return -1;
+        }
+        if ($(b).find('div').attr('data-date') > $(a).find('div').attr('data-date')){
+          return 1;
+        }
+          return 0;
+      });
+
+      // puts em back on the page
+      var appendAnim = function(items, index){
+        $(items[index]).hide();
+        $(items[index]).show();
+        $('#bands_results').append(items[index])
+
+        if(index < items.length ){
+          appendAnim(items,index + 1);
+        }
       }
-      if ($(b).find('div').attr('data-date') > $(a).find('div').attr('data-date')){
-        return 1;
-      }
-        return 0;
-    });
-
-    // puts em back on the page
-    var appendAnim = function(items, index){
-      $(items[index]).hide();
-      $(items[index]).show();
-      $('#bands_results').append(items[index])
-
-      if(index < items.length ){
-        appendAnim(items,index + 1);
-      }
+      appendAnim(cardList,0)
     }
-    appendAnim(cardList,0)
 
 
       ////////////////////////////

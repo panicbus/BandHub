@@ -37,7 +37,7 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-      
+
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12">
           <div class="title">
@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <form class="input-group search-input-group the-search-bar">
               <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band" autocomplete="off">
@@ -122,7 +122,7 @@
 
 
   <div id="container" class="container" class="js-masonry"  data-masonry-options='{ "columnWidth": ".list-item", "itemSelector": ".list-item"}'>
- 
+
     <div id='bands_results'>
       <% if current_user %>
         <img class="concert" src="assets/concert.png">
@@ -132,7 +132,7 @@
     </div>
 
     <div class="the-success-msg">
-      Message: 
+      <!-- Message:  -->
       <p><%= flash[:notice] %></p>
     </div>
 
@@ -141,7 +141,7 @@
     <div id="loading">
       <img class='spinner' src='assets/loading.gif'>
     </div>
-    
+
   </div> <!-- end of container -->
 
   <!-- essential JS scripts -->
@@ -161,12 +161,12 @@
           elems_src = [],
           self = this,
           len = elems.length;
-     
+
       if ( !elems.length ) {
         callback.call( this );
         return this;
       }
-     
+
       elems.one('load error', function() {
         if ( --len === 0 ) {
           // Rinse and repeat.
@@ -185,7 +185,7 @@
         // data uri bypasses webkit log warning (thx doug jones)
         this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
       });
-     
+
       return this;
     };
       var $container = $('#container');
