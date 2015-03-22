@@ -34,6 +34,14 @@ $(function(){
   });
 });
 
+$(function(){
+  $('.about-link').click(function(e) {
+    e.stopPropagation();
+      if ($(e.target).is('[data-toggle=modal]')) {
+        $($(e.target).data('target')).modal()
+      }
+  });
+});
 
 // >--------THE SIDEBAR SEE_FAVES CLICK EVENT-------<
 $(function(){

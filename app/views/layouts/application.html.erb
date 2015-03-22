@@ -77,6 +77,25 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+  <!-- ABOUT MODAL -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- to only show the hamburger to users logged in -->
   <div style="visibility: <%= current_user == nil ? "hidden" : "visible" %>">
     <a class="impatient" href="#secondary"><i id="hamburger" class="fa fa-bars fa-3x"></i></a>
@@ -98,13 +117,21 @@
       <a href="http://the.echonest.com/"><img class="echonest_link" src="assets/echonest_banner.png"></a>
       <a href="http://www.songkick.com/"><img class="songkick_link" src="assets/songkick_logo.png"></a>
       <hr>
-      <div class="bio">
+      <div class="bio-snippet">
         <p>Site created by</p>
-        <p>Nico Crisafulli &copy; 2013</p>
+        <p>Nico Crisafulli &copy; 2015</p>
         <a href="https://github.com/panicbus"><i class="fa fa-github-alt fa-lg"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
         <a href="https://twitter.com/10TimesOne"><i class="fa fa-twitter fa-lg"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
         <a style="color:darkgray" href="mailto:nicocrisafulli@gmail.com?Subject=BandHub%20rocks" target="_blank"><i class="fa fa-envelope-o fa-lg"></i></a>
-        <a href="#"><p style="font-size: 18px; margin-top: 8px">About BandHub</p></a>
+        <div class="about-link" data-toggle="modal" data-target=".bs-example-modal-lg">About BandHub</div>
+      </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content about-modal">
+          This is the about modal. Write about Band Hub.
+        </div>
       </div>
     </div>
 
@@ -151,6 +178,8 @@
       $(document).ready(function() {
           $(".impatient").pageslide();
       });
+
+
   </script>
 
   <!-- // MASONRY // -->
