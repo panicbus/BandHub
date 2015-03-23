@@ -34,7 +34,13 @@ $(function(){
   });
 });
 
+// make the about link happen in the sidebar
 $(function(){
+  $(document).ready(function() {
+    $(".impatient").pageslide();
+  });
+
+
   $('.about-link').click(function(e) {
     e.stopPropagation();
       if ($(e.target).is('[data-toggle=modal]')) {

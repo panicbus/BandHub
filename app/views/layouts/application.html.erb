@@ -107,7 +107,7 @@
     <button id='see_favorites' type='submit' class="btn btn-default sb-close">View Your BandHub Corral</button>
     <div class="pageslide_links">
       <p class="stc">Sort the Corral:</p>
-      <ul id="sort_by" >
+      <ul class="sort_by" >
         <li><a href="#data-name">By name</a></li>  <!-- for the sorting fn in sorting.js -->
         <li><a href="#data-date">By date added</a></li>
       </ul>
@@ -120,9 +120,9 @@
       <div class="bio-snippet">
         <p>Site created by</p>
         <p>Nico Crisafulli &copy; 2015</p>
-        <a href="https://github.com/panicbus"><i class="fa fa-github-alt fa-lg"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
-        <a href="https://twitter.com/10TimesOne"><i class="fa fa-twitter fa-lg"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
-        <a style="color:darkgray" href="mailto:nicocrisafulli@gmail.com?Subject=BandHub%20rocks" target="_blank"><i class="fa fa-envelope-o fa-lg"></i></a>
+        <a href="https://github.com/panicbus" class="social" target="_blank"><i class="fa fa-github-alt fa-lg"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
+        <a href="https://twitter.com/10TimesOne" class="social" target="_blank"><i class="fa fa-twitter fa-lg"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;
+        <a href="mailto:nicocrisafulli@gmail.com?Subject=BandHub%20rocks" class="social" target="_blank"><i class="fa fa-envelope-o fa-lg"></i></a>
         <div class="about-link" data-toggle="modal" data-target=".bs-example-modal-lg">About BandHub</div>
       </div>
     </div>
@@ -130,7 +130,7 @@
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content about-modal">
-          This is the about modal. Write about Band Hub.
+          This is Band Hub. A place to store your favorite bands, see current news about them and stash their their vital details, all at the click of a button.
         </div>
       </div>
     </div>
@@ -173,14 +173,6 @@
 
   <!-- essential JS scripts -->
   <script src="assets/jquery.pageslide.min.js"></script>
-
-  <script>
-      $(document).ready(function() {
-          $(".impatient").pageslide();
-      });
-
-
-  </script>
 
   <!-- // MASONRY // -->
   <script>
