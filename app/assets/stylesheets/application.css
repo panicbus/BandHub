@@ -227,7 +227,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 /*--------------SIDE BAR---------------------*/
 #hamburger {
   float: left;
-  margin: 25px 0 0 20px;
+  margin: 75px 0 0 20px;
   position: fixed;
   color: #000;
   z-index: 100;
