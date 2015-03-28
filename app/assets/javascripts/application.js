@@ -34,12 +34,12 @@ $(function(){
   });
 });
 
+
 // make the about link happen in the sidebar
 $(function(){
   $(document).ready(function() {
     $(".impatient").pageslide();
   });
-
 
   $('.about-link').click(function(e) {
     e.stopPropagation();
@@ -70,5 +70,9 @@ $(function(){
 
   // jquery-ui drag & drop sort with handle
   $( "#bands_results" ).sortable({ handle: '.draggy' });
+
+  $('#container').on('click', function(){
+    $('.navbar-collapse').collapse('hide');
+  });
 
 });

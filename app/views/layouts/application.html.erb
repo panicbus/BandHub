@@ -161,48 +161,48 @@
 
   <!-- // MASONRY // -->
   <script>
-    $(function(){
-      $.fn.imagesLoaded = function( callback ){
-      var elems = this.find( 'img' ),
-          elems_src = [],
-          self = this,
-          len = elems.length;
+    // $(function(){
+    //   $.fn.imagesLoaded = function( callback ){
+    //   var elems = this.find( 'img' ),
+    //       elems_src = [],
+    //       self = this,
+    //       len = elems.length;
 
-      if ( !elems.length ) {
-        callback.call( this );
-        return this;
-      }
+    //   if ( !elems.length ) {
+    //     callback.call( this );
+    //     return this;
+    //   }
 
-      elems.one('load error', function() {
-        if ( --len === 0 ) {
-          // Rinse and repeat.
-          len = elems.length;
-          elems.one( 'load error', function() {
-            if ( --len === 0 ) {
-              callback.call( self );
-            }
-          }).each(function() {
-            this.src = elems_src.shift();
-          });
-        }
-      }).each(function() {
-        elems_src.push( this.src );
-        // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
-        // data uri bypasses webkit log warning (thx doug jones)
-        this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-      });
+    //   elems.one('load error', function() {
+    //     if ( --len === 0 ) {
+    //       // Rinse and repeat.
+    //       len = elems.length;
+    //       elems.one( 'load error', function() {
+    //         if ( --len === 0 ) {
+    //           callback.call( self );
+    //         }
+    //       }).each(function() {
+    //         this.src = elems_src.shift();
+    //       });
+    //     }
+    //   }).each(function() {
+    //     elems_src.push( this.src );
+    //     // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
+    //     // data uri bypasses webkit log warning (thx doug jones)
+    //     this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    //   });
 
-      return this;
-    };
-      var $container = $('#container');
-      $container.imagesLoaded(function(){
-        $container.masonry({
-          gutter: 20,
-          columnWidth: '.list-item',
-          itemSelector: '.list-item'
-        });
-      });
-    })
+    //   return this;
+    // };
+    //   var $container = $('#container');
+    //   $container.imagesLoaded(function(){
+    //     $container.masonry({
+    //       gutter: 20,
+    //       columnWidth: '.list-item',
+    //       itemSelector: '.list-item'
+    //     });
+    //   });
+    // })
   </script>
 
   <!-- <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
