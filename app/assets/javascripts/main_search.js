@@ -41,7 +41,16 @@ $(document).ready(function(){
         } else {
           $("#bands_results").html("<div class='no-results'>No matches for that artist.</div>");
         }
+        // if (!data) {
+        //   errorMessage('Error: ' + data.error);
+        //   return false;
+        // }
         $('#bigDaddySearch').removeAttr('disabled');
+      },
+      error: function(data) {
+        if (data.response.status.message == "Error") {
+          alert("there was an error")
+        }
       }
 
     }); // ends echonest ajax rq// "GET" request to send search params to echonest api

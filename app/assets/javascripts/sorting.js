@@ -40,7 +40,3 @@ function sorting(){
     }
   });
 };
-
-
-
-

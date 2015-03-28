@@ -36,6 +36,69 @@ var showFavorites = function(){
         lastFm          = faves[i].echo_info.response.artist.urls.lastfm_url;
         bandTwitter     = faves[i].echo_info.response.artist.urls.twitter_url;
 
+        // if ( onTour == undefined ) {
+
+        // }
+        // if ( onTour == undefined ) {
+
+        // }
+        // if ( tourDates == undefined ) {
+
+        // }
+        if ( newsOneLink == undefined || newsOneLink == null ) {
+          $('.news_box').hide();
+        } else {
+          newsOneLink
+        }
+        // if ( newsOneTitle == undefined ) {
+
+        // }
+        // if ( newsOneSummary == undefined ) {
+
+        // }
+        // if ( newsTwoLink == undefined ) {
+
+        // }
+        // if ( newsTwoTitle == undefined ) {
+
+        // }
+        // if ( newsTwoSummary == undefined ) {
+
+        // }
+        // if ( blogsOneLink == undefined ) {
+
+        // }
+        // if ( blogsOneTitle == undefined ) {
+
+        // }
+        // if ( blogsOneSummary == undefined ) {
+
+        // }
+        // if ( blogsTwoLink == undefined ) {
+
+        // }
+        // if ( blogsTwoTitle == undefined ) {
+
+        // }
+        // if ( blogsTwoSummary == undefined ) {
+
+        // }
+        // if ( officialWebsite == undefined ) {
+
+        // }
+        // if ( lastFm == undefined ) {
+
+        // }
+        // if ( bandTwitter == undefined ) {
+
+        // }
+
+
+        // $( "#bands_results" ).error(function() {
+        //   alert( "Handler for .error() called." );
+        //   $( this ).hide();
+        // }).attr( "content", "Nothing here" );
+
         var favorite_card = $("<div class='ui-state-default list-item'><div data-name='" + bandName +
         											"'data-date='" + createdAt +
         											"'data-id='" + databaseId +

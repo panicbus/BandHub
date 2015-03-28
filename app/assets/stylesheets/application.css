@@ -222,7 +222,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 /*--------------SIDE BAR---------------------*/
 #hamburger {
   float: left;
-  margin: 25px 0 0 20px;
+  margin: 75px 0 0 20px;
   position: fixed;
   color: #000;
   z-index: 100;
@@ -234,6 +234,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 
 #secondary {
   background: rgba(0, 0, 0, 0.7);
+  /*overflow: scroll;*/
 }
 
 .horns {
@@ -270,11 +271,23 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
   list-style-type: none;
   text-indent: -20px;
 }
-
+.api_attributes {
+  margin-top: 20px
+}
 .api_attributes img {
   max-width: 100%;
   margin: 0 auto;
   display: block;
+}
+
+.devise2 {
+  display: none;
+  text-align: center;
+}
+@media (max-width: 766px) {
+  .devise2 {
+    display: block;
+  }
 }
 
 /*the section at the bottom of the slidebar*/
@@ -299,8 +312,20 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 
 /*----------band search results page--------------------*/
 #container {
-  max-width: 1170px;
-  margin-top: 50px;
+  /*max-width: 1170px;*/
+  /*margin-top: 50px;*/
+
+  /*this is changed*/
+  /*see http://stackoverflow.com/a/20593342/2526710*/
+  width: 100vw;
+  height: 56.25vw; /* height:width ratio = 9/16 = .5625  */
+  max-height: 100vh;
+  max-width: 177.78vh; /* 16/9 = 1.778 */
+  max-width: 177.78vh; /* 16/9 = 1.778 */
+  margin: 50px auto;
+  position: absolute;
+  top:0;bottom:0; /* vertical center */
+  left:0;right:0; /* horizontal center */
 }
 
 .concert {
@@ -512,9 +537,9 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 
 
 /*----------RESPONSIVE MEDIA-----------*/
-/*@media (min-width: 700px) and (max-width: 1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
 
-  .container {
+/*  .container {
     width: 80%;
     padding-top: 60px;
   }
@@ -522,36 +547,30 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
   .topbar {
     height: 115px;
   }
-
-  .title {
+*/
+/*  .title {
     width: 100%;
     padding-bottom: 5px;
     cursor: pointer;
   }
+*/
 
- .navbar-brand {
-    font-family: 'Raleway' sans-serif;
-
- }
-
-  .nav_title {
+/*  .nav_title {
     margin: 0 100% 0 33%;
     letter-spacing: 30px;
   }
-
-  .main_search {
+*/
+/*  .main_search {
     width: 50%;
     float: left;
   }
-
-  .devise {
+*/
+/*  .devise {
     width: 45%;
     float: right;
   }
+*/
 
-  .devise2 {
-    display: none;
-  }
 
   .concert {
     padding-top: 50px;
@@ -565,7 +584,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
     margin-top: 75px;
   }
 
-}*/
+}
 
 /* -------for jquery-ui autocomplete-----------*/
 /*.ui-autocomplete-loading {
@@ -581,9 +600,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 }
 */
 
-/*@media (min-width: 320px) and (max-width: 700px) {
 
-}*/
 
 /*@media (max-width: 360px) {
 
