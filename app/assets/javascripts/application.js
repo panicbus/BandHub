@@ -71,7 +71,7 @@ $(function(){
   // jquery-ui drag & drop sort with handle
   $( "#bands_results" ).sortable({ handle: '.draggy' });
 
-  $('#container').on('click', function(){
+  $(document).on('click', function(){
     $('.navbar-collapse').collapse('hide');
   });
 

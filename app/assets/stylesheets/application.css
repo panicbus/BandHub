@@ -34,6 +34,11 @@ button {
   font-family: 'Raleway', sans-serif;
 }
 
+/*normalize inputs*/
+input {
+  width: 100%;
+}
+
 li {
   margin-bottom: 8px;
 }
@@ -394,7 +399,6 @@ float: right;
   position: absolute;
   width: 100%;
   height: auto;
-  overflow: auto;
   font-family: "Krona One";
   font-size: 26px;
   letter-spacing: 6px;

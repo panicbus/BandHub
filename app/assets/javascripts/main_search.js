@@ -121,12 +121,6 @@ $(document).ready(function(){
                  songkick_band_id: songkick_band_id,
                  on_tour: on_tour,
                  tour_date: tour_dates},
-          success: function (html) {
-            if (html.length > 0) {
-              var el = jQuery(html);
-              jQuery("#container").append(el).masonry( 'appended', el, true );
-            }
-          },
           complete: function(){
             $('#bands_results').html("");
           }
