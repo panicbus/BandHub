@@ -12,6 +12,11 @@
  *= require_tree .
  */
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
   margin: 0px;
 }
@@ -222,7 +227,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 /*--------------SIDE BAR---------------------*/
 #hamburger {
   float: left;
-  margin: 75px 0 0 20px;
+  margin: 25px 0 0 20px;
   position: fixed;
   color: #000;
   z-index: 100;
@@ -234,7 +239,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 
 #secondary {
   background: rgba(0, 0, 0, 0.7);
-  /*overflow: scroll;*/
+  overflow: scroll;
 }
 
 .horns {
@@ -312,20 +317,8 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 
 /*----------band search results page--------------------*/
 #container {
-  /*max-width: 1170px;*/
-  /*margin-top: 50px;*/
-
-  /*this is changed*/
-  /*see http://stackoverflow.com/a/20593342/2526710*/
-  width: 100vw;
-  height: 56.25vw; /* height:width ratio = 9/16 = .5625  */
-  max-height: 100vh;
-  max-width: 177.78vh; /* 16/9 = 1.778 */
-  max-width: 177.78vh; /* 16/9 = 1.778 */
-  margin: 50px auto;
-  position: absolute;
-  top:0;bottom:0; /* vertical center */
-  left:0;right:0; /* horizontal center */
+  max-width: 1170px;
+  margin-top: 50px;
 }
 
 .concert {
