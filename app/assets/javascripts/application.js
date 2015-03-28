@@ -71,8 +71,13 @@ $(function(){
   // jquery-ui drag & drop sort with handle
   $( "#bands_results" ).sortable({ handle: '.draggy' });
 
-  $(document).on('click', function(){
-    $('.navbar-collapse').collapse('hide');
+  // to close the collapse menu by clicking elsewhere
+  $(document).click(function (event) {
+    var clickover = $(event.target);
+    var opened = $(".navbar-collapse").hasClass("in");
+    if (opened === true && !clickover.hasClass("closer")) {
+      $(".navbar-collapse").collapse('hide');
+    }
   });
 
 });

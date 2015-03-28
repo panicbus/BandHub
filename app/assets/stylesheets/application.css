@@ -193,7 +193,7 @@ a, .sort_by a, #bigDaddySearch, #see_favorites, .refresh, #add_favorite, .remove
 .navbar-toggle {
   z-index: 10000;
 }
-.container-fluid>.navbar-header {
+.container-fluid > .navbar-header {
 float: right;
 }
 
@@ -331,8 +331,8 @@ float: right;
 
 /*----------band search results page--------------------*/
 #container {
-  max-width: 1170px;
-  margin-top: 50px;
+  width: 100%;
+  margin-top: 61px;
 }
 
 .concert {
@@ -390,7 +390,7 @@ float: right;
 
 .results_container {
   position: relative;
-  margin: 5% auto;
+  margin: 75px auto 0;
   width: 35%;
   height: 250px;
 }

@@ -27,8 +27,8 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
+  <nav class="navbar navbar-inverse navbar-fixed-top closer" role="navigation">
+    <div class="container-fluid closer">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -39,19 +39,19 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-3">
-          <div class="title">
+        <div class="col-sm-3 closer">
+          <div class="title closer">
             Bandhub
           </div>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="col-lg-6 col-md-6 col-sm-6 closer">
             <form class="input-group search-input-group the-search-bar">
-              <input id="search_bands" type="text" class="form-control search_bar" placeholder="Start here: enter your favorite band" autocomplete="off">
+              <input id="search_bands" type="text" class="form-control search_bar closer" placeholder="Start here: enter your favorite band" autocomplete="off">
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
               <span class="input-group-btn">
-                <button type="submit" id="bigDaddySearch" class="btn btn-default">Search!</button>
+                <button type="submit" id="bigDaddySearch" class="btn btn-default closer">Search!</button>
               <div class="its-required"></div>
               </span>
             </form>
@@ -59,10 +59,10 @@
 
           <div class="col-sm-3">
             <ul class="nav navbar-nav navbar-right">
-              <div class="devise">
+              <div class="devise closer">
                 <% if user_signed_in? %>
                   You're BandHubbing as <strong><%= current_user.username.capitalize %></strong><br>
-                Not you? &nbsp;<%= link_to "Logout ", destroy_user_session_path, method: :delete %> &nbsp;|&nbsp;
+                <%= link_to "Logout ", destroy_user_session_path, method: :delete %> &nbsp;|&nbsp;
                 <%= link_to 'Edit profile', edit_user_registration_path %>
                   <% else %>
                 <%= link_to "Sign up", new_user_registration_path %> &nbsp;&nbsp;|&nbsp;&nbsp;
