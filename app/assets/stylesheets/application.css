@@ -333,6 +333,7 @@ float: right;
 #container {
   width: 100%;
   margin-top: 61px;
+  /*height:100vh;*/
 }
 
 .concert {
@@ -389,21 +390,18 @@ float: right;
 }
 
 .results_container {
-  position: relative;
-  margin: 75px auto 0;
-  width: 35%;
-  height: 250px;
+  margin: 75px 0;
 }
 
 .results_card {
-  position: absolute;
-  width: 100%;
+  width: 35%;
   height: auto;
   font-family: "Krona One";
   font-size: 26px;
   letter-spacing: 6px;
   text-align: center;
   padding-top: 10px;
+  margin: 20px auto;
 
   background: rgba(182,202,114,1);
   background: -moz-linear-gradient(top, rgba(182,202,114,1) 0%, rgba(241,255,191,1) 100%);
@@ -420,8 +418,8 @@ float: right;
 }
 .results_img {
   margin-bottom: 15px;
-  width: 80% !important;
-  height: auto;
+  max-width: 80%;
+  max-height: 300px;
 }
 
 #add_favorite {
