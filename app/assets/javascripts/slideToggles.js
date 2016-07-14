@@ -1,8 +1,5 @@
 ///// FAVE CARD SLIDE TOGGLE ON IMG CLICK ////
 $(document).ready(function(){
-  // var $container = $('#container').masonry({
-  //   columnWidth: '.list-item'
-  // });
   $('#container').on('click', '.band_photo', function(){
     var id = $(this).attr("data-id");
     // to keep the bottom of the opening div onscreen

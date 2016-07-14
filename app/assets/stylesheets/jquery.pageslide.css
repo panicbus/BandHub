@@ -1,12 +1,12 @@
 #pageslide {
     /* These styles MUST be included. Do not change. */
     display: none;
-    position: relative;
+    position: absolute;
     position: fixed;
     top: 0;
     height: 100%;
     z-index: 999999;
-
+    overflow: scroll;
     /* Specify the width of your pageslide here */
     width: 200px;
 
@@ -19,6 +19,5 @@
     display: none;
     color: #EFEFEF;
     background-color: rgba(0,0,0,1);
-    overflow: scroll;
 }
 

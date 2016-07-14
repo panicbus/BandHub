@@ -34,6 +34,14 @@ $(function(){
   });
 });
 
+// $(function(){
+//   $(document).ready(function(){
+//       // alert('boom');
+//     $(".container").shapeshift({
+//         minColumns: 1
+//     });
+//   });
+// });
 
 // make the about link happen in the sidebar
 $(function(){

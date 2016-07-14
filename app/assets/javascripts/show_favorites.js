@@ -45,11 +45,11 @@ var showFavorites = function(){
         // if ( tourDates == undefined ) {
 
         // }
-        if ( newsOneLink == undefined || newsOneLink == null ) {
-          $('.news_box').hide();
-        } else {
-          newsOneLink
-        }
+        // if ( newsOneLink == undefined || newsOneLink == null ) {
+        //   $('.news_box').hide();
+        // } else {
+        //   newsOneLink
+        // }
         // if ( newsOneTitle == undefined ) {
 
         // }
@@ -93,21 +93,21 @@ var showFavorites = function(){
 
         // }
 
-
         // $( "#bands_results" ).error(function() {
         //   alert( "Handler for .error() called." );
         //   $( this ).hide();
         // }).attr( "content", "Nothing here" );
 
-        var favorite_card = $("<div class='ui-state-default list-item'><div data-name='" + bandName +
-        											"'data-date='" + createdAt +
-        											"'data-id='" + databaseId +
-        											"'><p class='name'><i class='fa fa-th draggy'></i>" + bandName + "</p></div>");
+        var favorite_card =
+
+        $("<div class='ui-state-default list-item'><div data-name='" + bandName +
+					"'data-date='" + createdAt + "'data-id='" + databaseId +
+					"'><p class='name'><i class='fa fa-th draggy'></i>" + bandName + "</p></div>");
 
         $("<div class='band_photo_box' data-date='" + createdAt + "' data-id='" + bandId + "'>" +
-           "<p><div title='Click for details' class='band_photo' data-id='" + databaseId +
-           "'>" + "<img src='" + bandImage + "'></div></p>" +
-           "</div>").hide().appendTo(favorite_card).fadeIn(500);
+          "<p><div title='Click for details' class='band_photo' data-id='" + databaseId +
+          "'>" + "<img src='" + bandImage + "'></div></p>" +
+          "</div>").hide().appendTo(favorite_card).fadeIn(500);
 
         if (onTour == null){
           $(favorite_card).append("<div data-id='" + databaseId + "' class='on_tour_box'>" + bandName + " - not currently on tour.</div>");
@@ -127,11 +127,11 @@ var showFavorites = function(){
            "&#8226; <a href='" + blogsOneLink + "' target='_blank'>" + blogsOneTitle + "</a><br>" +
            "&#8226; <a href='" + blogsTwoLink + "' target='_blank'>" + blogsTwoTitle + "</a><br></div>" +
            "<div data-id='" + databaseId + "' class='links_box'><p><a href='" + officialWebsite + "' target='_blank'>" + bandName + "'s offical website</a>.</p>" +
-           "<p><a href='" + lastFm + "' target='_blank'>" + bandName + " on Last.fm</a>.</p>" + bandName + " isn't on Twitter yet.</p></div>" +
+           "<p><a href='" + lastFm + "' target='_blank'>" + bandName + " on Last.fm</a>.</p><p>" + bandName + " isn't on Twitter yet.</p></div>" +
            "<br><div class='remove_favorite' data-method='delete' data-id='" + databaseId +
            "'>Remove</div>" +
            "</div>" + // ends del_button div
-          "</div></div>").appendTo(favorite_card);
+          "</div>").appendTo(favorite_card);
         } else {
           $("<div data-id='" + databaseId + "' class='news_box' data-id='" + bandName +
            "'>Recent news stories tagged with " + bandName + ":<br>" +
@@ -141,18 +141,15 @@ var showFavorites = function(){
            "&#8226; <a href='" + blogsOneLink + "' target='_blank'>" + blogsOneTitle + "</a><br>" +
            "&#8226; <a href='" + blogsTwoLink + "' target='_blank'>" + blogsTwoTitle + "</a><br></div>" +
            "<div data-id='" + databaseId + "' class='links_box'><p><a href='" + officialWebsite + "' target='_blank'>" + bandName + "'s offical website</a>.</p>" +
-           "<p><a href='" + lastFm + "' target='_blank'>" + bandName + " on Last.fm</a>.</p><a href='" + bandTwitter + "' target='_blank'>Follow " + bandName + " on Twitter</a>.</p></div>" +
+           "<p><a href='" + lastFm + "' target='_blank'>" + bandName + " on Last.fm</a>.</p><p><a href='" + bandTwitter + "' target='_blank'>Follow " + bandName + " on Twitter</a>.</p></div>" +
            "<br><div class='remove_favorite' data-method='delete' data-id='" + databaseId +
            "'>Remove</div>" +
            "</div>" + // ends del_button div
-          "</div></div>").appendTo(favorite_card)};
+          "</div>").appendTo(favorite_card)};
 
-        // $('#bands_results').masonry(); this makes the ajax request just die
-        // $('#bands_results').hide().append(favorite_card).masonry( 'appended', favorite_card ); // appends all the favorite cards
         $('#bands_results').hide().append(favorite_card).fadeIn(300); // appends all the favorite cards
 
         dateArray.push(createdAt);
-
 
       }; // end of for loop
     }; // end of empty corral if statement

@@ -333,7 +333,22 @@ float: right;
 #container {
   width: 100%;
   margin-top: 61px;
-  /*height:100vh;*/
+}
+/*// for shapeshift*/
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.container > div {
+  height: 310px;
+  position: absolute;
+  width: 300px;
+}
+
+.container .ss-placeholder-child {
+  background: transparent;
+  border: 1px dashed red;
 }
 
 .concert {
@@ -466,6 +481,12 @@ float: right;
 
 
 /*---------favorites display-----------*/
+
+#bands_results {
+  width: 85%;
+  margin: 0 auto;
+}
+
 /* .list-item was formerly .favorite_card - changed for jquery ui functionality*/
 .list-item {
   float: left;
